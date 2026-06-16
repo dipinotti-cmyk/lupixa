@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lupixa — Portfólio · Diogo Pinotti</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FAFAF8; --ink: #0F0F0E; --muted: #6B6A65; --subtle: #A8A7A2;
+  --accent: #1A56DB; --accent-light: #EEF2FF; --white: #FFFFFF;
+  --border: #E8E7E2; --card: #FFFFFF; --green: #0E7A4F; --green-bg: #EDFAF3;
+  --radius: 14px; --radius-sm: 8px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 58px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-badge { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--muted); background: var(--border); padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em; }
+.hero-banner { background: var(--ink); color: var(--white); padding: 48px 32px; text-align: center; }
+.hero-banner-inner { max-width: 680px; margin: 0 auto; }
+.hero-banner-tag { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 99px; padding: 4px 12px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-banner h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.8px; line-height: 1.3; color: var(--white); margin-bottom: 16px; }
+.hero-banner p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; margin: 0 auto; }
+.hero-banner p em { font-style: italic; color: rgba(255,255,255,0.8); }
+.creds { max-width: 860px; margin: 0 auto; padding: 32px 32px 0; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.cred-pill { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 99px; padding: 8px 16px; font-size: 13px; font-weight: 500; color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.cred-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.cred-pill.star::before { content: '⭐'; font-size: 13px; }
+.section { max-width: 1080px; margin: 0 auto; padding: 56px 32px; }
+.section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 28px; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+.card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.thumb-lp { background: linear-gradient(135deg,#EEF2FF,#C7D7FF); }
+.thumb-auto { background: linear-gradient(135deg,#FFF7ED,#FEDDAB); }
+.thumb-crm { background: linear-gradient(135deg,#ECFDF5,#A7F3D0); }
+.thumb-wp { background: linear-gradient(135deg,#F5F3FF,#DDD6FE); }
+.thumb-ecom { background: linear-gradient(135deg,#FFFBEB,#FDE68A); }
+.thumb-ia { background: linear-gradient(135deg,#FFF0F6,#FBCFE8); }
+.browser { position: absolute; inset: 10px; background: white; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); overflow: hidden; display: flex; flex-direction: column; }
+.browser-bar { height: 22px; background: #F3F3F3; border-bottom: 1px solid #E5E5E5; display: flex; align-items: center; padding: 0 8px; gap: 4px; flex-shrink: 0; }
+.b-dot { width: 6px; height: 6px; border-radius: 50%; }
+.b-dot.r{background:#FF5F57;} .b-dot.y{background:#FEBC2E;} .b-dot.g{background:#28C840;}
+.browser-url { flex: 1; height: 10px; background: #E8E8E8; border-radius: 3px; margin: 0 6px; }
+.browser-body { padding: 8px; flex: 1; }
+.b-line { height: 6px; border-radius: 3px; background: #EBEBEB; margin-bottom: 5px; }
+.b-line.accent-lp { background: #C7D7FF; }
+.b-line.accent-auto { background: #FEDDAB; }
+.b-line.accent-crm { background: #A7F3D0; }
+.b-line.accent-wp { background: #DDD6FE; }
+.b-line.accent-ecom { background: #FDE68A; }
+.b-line.accent-ia { background: #FBCFE8; }
+.b-btn { margin-top: 6px; height: 14px; width: 60px; border-radius: 3px; }
+.b-btn.lp { background: #4F6EF7; } .b-btn.auto { background: #D97706; } .b-btn.crm { background: #059669; }
+.b-btn.wp { background: #7C3AED; } .b-btn.ecom { background: #B45309; } .b-btn.ia { background: #DB2777; }
+.card-body { padding: 18px 20px 20px; }
+.tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.03em; text-transform: uppercase; }
+.t-lp { background:#EEF2FF; color:#3730A3; } .t-auto { background:#FFF7ED; color:#92400E; }
+.t-crm { background:#ECFDF5; color:#065F46; } .t-wp { background:#F5F3FF; color:#4C1D95; }
+.t-ecom { background:#FFFBEB; color:#78350F; } .t-ia { background:#FFF0F6; color:#9D174D; }
+.t-real { background:#ECFDF5; color:#065F46; border: 1px solid #A7F3D0; }
+.t-demo { background:#F3F4F6; color:#6B7280; }
+.card h3 { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 6px; line-height: 1.4; }
+.card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
+.card-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--subtle); }
+.card-destaque { grid-column: span 2; display: flex; }
+.card-destaque .thumb { width: 45%; flex-shrink: 0; aspect-ratio: auto; border-radius: 0; }
+.card-destaque .card-body { display: flex; flex-direction: column; justify-content: center; padding: 28px 28px; }
+.card-destaque h3 { font-size: 18px; margin-bottom: 8px; }
+.card-destaque p { font-size: 14px; margin-bottom: 20px; }
+.rating { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--green); background: var(--green-bg); border-radius: 99px; padding: 5px 12px; width: fit-content; margin-bottom: 12px; }
+.depoimento { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; margin-bottom: 16px; line-height: 1.6; }
+.depoimento cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.sobre-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.sobre-box h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.6px; margin-bottom: 12px; }
+.sobre-box p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 10px; }
+.sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.stat-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 800; letter-spacing: -1px; color: var(--ink); display: block; }
+.stat-label { font-size: 11px; color: var(--subtle); font-weight: 500; margin-top: 2px; }
+footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: center; font-size: 12px; color: var(--subtle); font-family: 'DM Mono', monospace; }
+@media (max-width: 700px) {
+  nav { padding: 0 20px; } .hero-banner { padding: 36px 20px; }
+  .creds { padding: 24px 20px 0; } .section { padding: 40px 20px; }
+  .card-destaque { grid-column: span 1; flex-direction: column; }
+  .card-destaque .thumb { width: 100%; aspect-ratio: 16/9; }
+  .grid-2 { grid-template-columns: 1fr; } .sobre-box { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-logo">Lupi<span>xa</span></a>
+  <span class="nav-badge">Portfólio · Diogo Pinotti</span>
+</nav>
+<div class="hero-banner">
+  <div class="hero-banner-inner">
+    <div class="hero-banner-tag">📋 Workana</div>
+    <h1>Se você chegou aqui, foi porque fiz uma proposta para o seu projeto.</h1>
+    <p>Aqui você encontra meu trabalho de verdade — <em>sem filtro, sem enrolação.</em> Tudo o que está aqui foi feito por mim.</p>
+  </div>
+</div>
+<div class="creds">
+  <div class="cred-pill star">Top 1% Workana · Avaliação 5.0</div>
+  <div class="cred-pill"><span class="dot"></span> 17 anos em operação crítica de TI</div>
+  <div class="cred-pill"><span class="dot"></span> Projetos entregues com prazo cumprido</div>
+  <div class="cred-pill"><span class="dot"></span> Cotia, SP · Disponível agora</div>
+</div>
+<div class="section" id="projetos">
+  <div class="section-header">
+    <span class="section-label">Projetos reais — clientes reais</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid">
+    <div class="card card-destaque">
+      <div class="thumb thumb-auto">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-auto" style="width:55%"></div>
+            <div class="b-line" style="width:80%"></div>
+            <div class="b-line" style="width:65%"></div>
+            <div class="b-line accent-auto" style="width:40%"></div>
+            <div class="b-line" style="width:70%"></div>
+            <div class="b-btn auto"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="rating">✅ Projeto entregue · 5.0 ★</div>
+        <div class="tags">
+          <span class="tag t-auto">Automação</span>
+          <span class="tag t-ia">IA</span>
+          <span class="tag t-real">Case real</span>
+        </div>
+        <h3>Simulador Comercial de Importação</h3>
+        <p>Planilha com cálculos automáticos de tributos, geração de PDF em 1 clique via Apps Script, catálogo de fornecedores com imagens integradas e manual operacional com vídeo de uso. Entregue em 4 dias — prazo era 7.</p>
+        <div class="depoimento">
+          "Diogo muito prestativo e rápido!! fez um trabalho incrível."
+          <cite>— Matheus Cisang · M5 Assessoria de Importação Fitness</cite>
+        </div>
+        <div class="card-footer">
+          <span class="card-meta">Google Sheets + Apps Script · 2025</span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-destaque">
+      <div class="thumb thumb-crm">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-crm" style="width:60%"></div>
+            <div class="b-line" style="width:85%"></div>
+            <div class="b-line" style="width:50%"></div>
+            <div class="b-line accent-crm" style="width:70%"></div>
+            <div class="b-btn crm"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="rating">✅ Projeto entregue · 5.0 ★</div>
+        <div class="tags">
+          <span class="tag t-crm">CRM & Leads</span>
+          <span class="tag t-auto">Automação</span>
+          <span class="tag t-real">Case real</span>
+        </div>
+        <h3>LeadFlow — Mini CRM Automatizado</h3>
+        <p>Formulário de captura estruturado, mini CRM em Google Sheets com status e follow-up visual, automação Make + Gmail com aviso a cada novo lead e dashboard comercial completo com documentação.</p>
+        <div class="depoimento">
+          "O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."
+          <cite>— The Accelerator BRL</cite>
+        </div>
+        <div class="card-footer">
+          <span class="card-meta">Google Sheets + Make + Gmail · 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" style="padding-top:0">
+  <div class="section-header">
+    <span class="section-label">Projetos demonstrativos</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="thumb thumb-lp">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-lp" style="width:70%"></div>
+            <div class="b-line" style="width:90%"></div>
+            <div class="b-line" style="width:55%"></div>
+            <div class="b-btn lp"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tags"><span class="tag t-lp">Landing Page</span><span class="tag t-demo">Demo</span></div>
+        <h3>Landing Page — Barbearia</h3>
+        <p>Página de captação com agendamento via WhatsApp, galeria de serviços e depoimentos. Responsiva e rápida.</p>
+        <div class="card-footer"><span class="card-meta">HTML/CSS · Demonstrativo</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb thumb-lp">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-lp" style="width:50%"></div>
+            <div class="b-line" style="width:80%"></div>
+            <div class="b-line accent-lp" style="width:65%"></div>
+            <div class="b-btn lp"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tags"><span class="tag t-lp">Landing Page</span><span class="tag t-demo">Demo</span></div>
+        <h3>Landing Page — Personal Trainer</h3>
+        <p>Página de captação com tabela de planos, depoimentos e CTA direto para WhatsApp. Mobile-first.</p>
+        <div class="card-footer"><span class="card-meta">HTML/CSS · Demonstrativo</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb thumb-wp">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-wp" style="width:60%"></div>
+            <div class="b-line" style="width:85%"></div>
+            <div class="b-line" style="width:45%"></div>
+            <div class="b-btn wp"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tags"><span class="tag t-wp">WordPress</span><span class="tag t-demo">Demo</span></div>
+        <h3>Site Institucional — Clínica de Estética</h3>
+        <p>WordPress com Elementor, mobile otimizado, formulário de contato e integração com WhatsApp.</p>
+        <div class="card-footer"><span class="card-meta">WordPress + Elementor · Demonstrativo</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb thumb-ecom">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-ecom" style="width:45%"></div>
+            <div class="b-line" style="width:75%"></div>
+            <div class="b-line" style="width:60%"></div>
+            <div class="b-btn ecom"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tags"><span class="tag t-ecom">E-commerce</span><span class="tag t-demo">Demo</span></div>
+        <h3>Loja Virtual — Produtos Naturais</h3>
+        <p>Nuvemshop com catálogo estruturado, descrições otimizadas, imagens organizadas e frete configurado.</p>
+        <div class="card-footer"><span class="card-meta">Nuvemshop · Demonstrativo</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb thumb-ia">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-ia" style="width:70%"></div>
+            <div class="b-line" style="width:55%"></div>
+            <div class="b-line accent-ia" style="width:80%"></div>
+            <div class="b-btn ia"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tags"><span class="tag t-ia">IA Aplicada</span><span class="tag t-auto">Automação</span><span class="tag t-demo">Demo</span></div>
+        <h3>Briefing Inteligente com IA</h3>
+        <p>Formulário → planilha → OpenAI → documento estruturado → notificação automática. Briefings gerados em segundos.</p>
+        <div class="card-footer"><span class="card-meta">Make + OpenAI · Demonstrativo</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb thumb-crm">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="browser-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="b-line accent-crm" style="width:50%"></div>
+            <div class="b-line" style="width:80%"></div>
+            <div class="b-line" style="width:40%"></div>
+            <div class="b-btn crm"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tags"><span class="tag t-crm">CRM & Leads</span><span class="tag t-demo">Demo</span></div>
+        <h3>Pipeline de Vendas — Consultoria</h3>
+        <p>CRM no Google Sheets com status de proposta, follow-up automatizado e alerta de oportunidades paradas.</p>
+        <div class="card-footer"><span class="card-meta">Sheets + Make · Demonstrativo</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" style="padding-top:0">
+  <div class="section-header">
+    <span class="section-label">Quem está por trás dos projetos</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="sobre-box">
+    <div>
+      <h2>Diogo Pinotti</h2>
+      <p>Pai de três, marido, e há 17 anos em operação crítica de TI — garantindo sistemas que não podem parar, de madrugada, enquanto o Brasil dorme.</p>
+      <p>De tarde, resolvo problemas de pequenos negócios. Cada projeto que pego é tratado como se fosse o meu próprio negócio.</p>
+      <p style="color: var(--green); font-weight: 600; font-size:13px;">⭐ Top 1% Workana · Avaliação 5.0</p>
+    </div>
+    <div class="sobre-stats">
+      <div class="stat-box"><span class="stat-num">17</span><span class="stat-label">anos em TI</span></div>
+      <div class="stat-box"><span class="stat-num">5.0</span><span class="stat-label">Avaliação Workana</span></div>
+      <div class="stat-box"><span class="stat-num">Top 1%</span><span class="stat-label">Ranking Workana</span></div>
+      <div class="stat-box"><span class="stat-num">100%</span><span class="stat-label">No prazo</span></div>
+    </div>
+  </div>
+</div>
+<footer>
+  Lupixa · Portfólio de projetos · Diogo Pinotti · 2025
+</footer>
+</body>
+</html>
