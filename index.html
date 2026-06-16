@@ -379,7 +379,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
         <div class="card-footer"><span class="card-meta">Make + Gmail · Demo</span><span class="card-cta">Ver detalhes →</span></div>
       </div>
     </div>
-    <div class="card" onclick="openModal('notificacao')">
+    <div class="card" onclick="openModal('briefing')">
       <div class="thumb">
         <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/03-zapier-gmail-notification-test.png" alt="Notificação">
         <span class="thumb-badge badge-demo">Demonstrativo</span>
@@ -577,8 +577,8 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
     <div>
       <h2>Diogo Pinotti</h2>
       <p>Pai de três, marido, e há 17 anos em operação crítica de TI — garantindo sistemas que não podem parar, de madrugada, enquanto o Brasil dorme.</p>
-      <p>De tarde, resolvo problemas de pequenos negócios. Cada projeto que pego é tratado como se fosse o meu próprio negócio — porque entendo o que está em jogo para quem está do outro lado.</p>
-      <p>Comecei no freelance porque queria construir algo meu. Trago para cada cliente a mesma responsabilidade que tenho com sistemas que movimentam bilhões.</p>
+      <p>De tarde, resolvo problemas de empresas e profissionais que querem ganhar tempo, eficiência e previsibilidade. Cada projeto que pego é tratado como se fosse o meu próprio negócio — porque entendo o que está em jogo para quem está do outro lado.</p>
+      <p>Comecei no freelance porque quero construir algo meu. Trago para cada cliente a mesma responsabilidade que tenho com sistemas que movimentam bilhões.</p>
       <p style="color:var(--green);font-weight:600;font-size:13px;margin-top:16px;">⭐ Top 1% Workana · Avaliação 5.0</p>
     </div>
     <div class="sobre-stats">
@@ -619,24 +619,26 @@ const projects = {
   'leadflow': {
     title: 'LeadFlow — Mini CRM Automatizado',
     badge: { text: 'Case Real', class: 'badge-real' },
-    tags: ['Google Forms', 'Google Sheets', 'Make', 'Gmail API'],
+    tags: ['CRM', 'Google Forms', 'Google Sheets', 'Make', 'Gmail API', 'Database'],
     images: [
       GH + 'Capa%20LeadFlow.png',
-      GH + '01-proposal-tracker-demo-sheet.png',
-      GH + '02-make-workflow-overview.png',
-      GH + '03-zapier-gmail-notification-test.png',
-      GH + '04-n8n-webhook-received-lead.png',
-      GH + '07-zapier.png',
-      GH + '08-n8n.png',
+      GH + 'leadflow2.png',
+      GH + 'leadflow3.png',
+      GH + 'leadflow4.png',
+      GH + 'leadflow5.png',
+      GH + 'leadflow6.png',
+      GH + 'leadflow7.png',
+      GH + 'leadflow8.png',
+      GH + 'leadflow9.png',
     ],
-    desc: 'Pipeline completo de captura e gestão de leads: o cliente preenche um formulário Google Forms, os dados vão automaticamente para uma planilha Google Sheets com pipeline visual (status, prioridade e próxima ação), uma automação Make + Gmail dispara aviso interno a cada novo lead, e o painel comercial mostra tudo em tempo real. Entregue com documentação completa e vídeo de uso.',
+    desc: 'Desenvolvimento de um Mini CRM automatizado para captura, organização e acompanhamento de leads usando Google Forms, Google Sheets, Make e Gmail. O projeto incluiu formulário de captura, planilha estruturada como CRM, status comerciais, campos de follow-up, destaques visuais para leads urgentes e follow-ups vencidos, dashboard simples, automação de aviso interno por e-mail e documentação de uso. A solução foi criada em no-code/low-code para ser prática, fácil de operar e utilizável no dia a dia sem depender de conhecimento técnico. As imagens usam dados fictícios/demonstrativos para preservar informações sensíveis.',
     depo: { text: '"O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."', cite: '— The Accelerator BRL' },
-    meta: 'Google Sheets + Make + Gmail · 2026'
+    meta: 'Google Forms + Google Sheets + Make + Gmail · Case real · 2026'
   },
   'm5': {
     title: 'M5 Assessoria — Simulador de Importação Fitness',
     badge: { text: 'Case Real', class: 'badge-real' },
-    tags: ['Google Sheets', 'Apps Script', 'PDF Automático', 'Google Drive'],
+    tags: ['JavaScript', 'Google Sheets', 'Apps Script', 'PDF Automático', 'Database'],
     images: [
       GH + 'Capa%20M5.png',
       GH + 'M5_2.png',
@@ -644,14 +646,14 @@ const projects = {
       GH + 'M5_4.png',
       GH + 'M5_5.png',
     ],
-    desc: 'Planilha avançada em Google Sheets com cálculos automáticos de tributos, impostos e custos de importação. Geração de PDF confidencial em 1 clique via Apps Script, catálogo de fornecedores com imagens integradas, área interna de controle e manual operacional com vídeo de uso gravado. Entregue em 4 dias — prazo original era 7.',
+    desc: 'Sistema completo de simulação comercial em Google Sheets com geração automática de PDF confidencial em 1 clique. A solução inclui cálculo automático de impostos (II, IPI, PIS, COFINS, ICMS), catálogo de fornecedores com imagens, fluxo de pagamentos estimado e menu personalizado com Apps Script. Entregue em 4 dias — prazo acordado era 7 dias úteis. Avaliação 5 estrelas pelo cliente.',
     depo: { text: '"Diogo muito prestativo e rápido!! fez um trabalho incrível."', cite: '— Matheus Cisang · M5 Assessoria de Importação Fitness' },
-    meta: 'Google Sheets + Apps Script · 2026'
+    meta: 'Google Sheets + Apps Script · Case real · 2026'
   },
   'pipeline-ia': {
     title: 'Pipeline de Imagens com IA — SaaS',
     badge: { text: 'Produto próprio', class: 'badge-prod' },
-    tags: ['Next.js', 'Supabase', 'OpenAI', 'fal.ai', 'Stripe', 'Vercel'],
+    tags: ['Next.js', 'React.js', 'JavaScript', 'Supabase', 'OpenAI', 'fal.ai', 'Vercel', 'GitHub', 'API'],
     images: [
       GH + 'capa_workana_pipeline_ia_produto.png',
       GH + 'workana_pipeline_ia_produto_02_fluxo_do_usuario.png',
@@ -661,13 +663,13 @@ const projects = {
       GH + 'workana_pipeline_ia_produto_06_exemplo_frente_costas.png',
       GH + 'portfolio_lupixa_07_github_repositorio.png',
     ],
-    desc: 'Produto SaaS completo desenvolvido do zero. Permite que usuários façam upload de uma imagem e a IA gera variações (frente/costas, diferentes ângulos) usando fal.ai + OpenAI. Sistema completo com autenticação via Supabase, painel de usuário, histórico de gerações, planos de assinatura com Stripe e deploy automatizado na Vercel.',
-    meta: 'Next.js + Supabase + OpenAI + Stripe + Vercel · 2026'
+    desc: 'Case demonstrativo baseado em um protótipo/SaaS próprio de IA para moda. A proposta era transformar imagens simples de produto — mockups, frente, costas e detalhes — em visuais comerciais para catálogo, campanha e redes sociais. O projeto tinha login, configuração de marca, upload de imagens, geração por IA, acompanhamento de jobs, entrega de variações visuais e organização do fluxo do usuário. Atuei na estruturação da solução, organização do fluxo, integração entre ferramentas, testes, versionamento e evolução do produto. Resultado: um fluxo funcional que partia de uma imagem simples e entregava imagens mais úteis para apresentação comercial de produtos de moda.',
+    meta: 'Next.js + Supabase + OpenAI + fal.ai + Vercel · 2026'
   },
   'briefing': {
     title: 'Automação de Briefing de Conteúdo com IA',
     badge: { text: 'Demonstrativo', class: 'badge-demo' },
-    tags: ['OpenAI / GPT', 'Make', 'Google Forms', 'Google Docs', 'Gmail'],
+    tags: ['API', 'Scripts & Utilities', 'Inteligência Artificial', 'Make', 'Google Forms', 'Google Docs', 'Gmail'],
     images: [
       GH + '4.png',
       GH + '01-ai-content-brief-form.png',
@@ -680,58 +682,55 @@ const projects = {
       GH + '08-ai-content-brief-gmail-notification.png',
       GH + '09-ai-content-brief-sheet-updated..png',
     ],
-    desc: 'Fluxo completo: cliente preenche formulário → dados salvos na planilha → Make aciona o GPT com contexto do negócio → IA gera um briefing estruturado → documento criado no Google Docs → notificação enviada por Gmail. Zero trabalho manual. O briefing sai em segundos, pronto para usar.',
-    meta: 'Google Forms + Make + OpenAI + Google Docs · Demo'
+    desc: 'Projeto demonstrativo de automação para criação de briefing de conteúdo com apoio de IA. O fluxo começa quando um cliente envia uma solicitação pelo Google Forms. Os dados são salvos no Google Sheets, o Make envia as informações para a OpenAI, um briefing estruturado de conteúdo é gerado, um arquivo no Google Docs é criado automaticamente e uma notificação por Gmail é enviada com o link do documento. A solução reduz o trabalho manual de organização de briefings e mantém solicitação, resultado e notificação conectados em um único processo.',
+    meta: 'Google Forms + Make + OpenAI + Google Docs + Gmail · Demo'
   },
   'qualificacao': {
     title: 'Qualificação & Roteamento de Leads',
     badge: { text: 'Demonstrativo', class: 'badge-demo' },
-    tags: ['n8n', 'Airtable', 'Score de Leads', 'Gmail'],
+    tags: ['CRM', 'API', 'Scripts & Utilities', 'Zapier', 'n8n', 'Google Sheets'],
     images: [
       GH + '3.png',
       GH + '01-ai-lead-qualification-form.png',
       GH + '02-lead-qualificationt-brief-sheet-before.png',
+      GH + '03-zapier-gmail-notification-test.png',
       GH + '04-n8n-webhook-received-lead.png',
       GH + '05-n8n-classification-logic.png',
       GH + '06-qualified-leads-output.png',
+      GH + '07-zapier.png',
+      GH + '08-n8n.png',
     ],
-    desc: 'Sistema que recebe leads pelo formulário, aplica critérios de qualificação (segmento, orçamento, urgência), atribui score automático e encaminha cada lead para o vendedor ou etapa correta do funil. Nenhum lead quente fica esperando. Nenhum lead frio ocupa tempo da equipe.',
-    meta: 'n8n + Airtable + Gmail · Demo'
+    desc: 'Projeto demonstrativo de automação para qualificar e direcionar leads conforme critérios definidos. O fluxo coleta informações iniciais de um contato, registra os dados em uma planilha, aplica uma lógica de classificação e direciona o lead conforme tipo de necessidade, prioridade ou perfil identificado. A solução pode ser adaptada para atendimento inicial, triagem comercial, separação de clientes novos e existentes, organização de demandas e melhoria do tempo de resposta. Ferramentas utilizadas: Google Forms, Google Sheets, Zapier, n8n e Gmail.',
+    meta: 'Google Forms + Zapier + n8n + Google Sheets · Demo'
   },
   'minicrm': {
     title: 'Mini CRM Automatizado para Captura de Leads',
     badge: { text: 'Demonstrativo', class: 'badge-demo' },
-    tags: ['Google Sheets', 'Apps Script', 'Google Forms', 'Dashboard'],
+    tags: ['CRM', 'Google Forms', 'Google Sheets', 'Make', 'Gmail', 'Data Entry'],
     images: [
       GH + '2.png',
-      GH + '01-proposal-tracker-demo-sheet.png',
+      GH + '01-google-form-service-inquiry.png',
+      GH + '02-lead-capture-demo-sheet.png',
+      GH + '03-make-workflow-overview.png',
+      GH + '04-gmail-new-lead-notification.png',
+      GH + '05-sheet-updated-after-notification.png',
     ],
-    desc: 'CRM leve construído inteiramente em Google Sheets com automações Apps Script. Registra contatos, mantém histórico de interações, define próxima ação e dispara alertas automáticos quando um lead fica parado. Sem mensalidade de software, sem complexidade desnecessária.',
-    meta: 'Google Sheets + Apps Script · Demo'
+    desc: 'Projeto demonstrativo de automação para captura, organização e acompanhamento de leads. O fluxo começa quando um contato preenche um formulário. As informações são registradas automaticamente em uma planilha, organizadas em formato de controle comercial e enviadas por notificação automática por e-mail. A solução ajuda empresas, profissionais e equipes comerciais a reduzir trabalho manual, evitar perda de informações e facilitar o acompanhamento de novos contatos. Ferramentas utilizadas: Google Forms, Google Sheets, Make e Gmail.',
+    meta: 'Google Forms + Google Sheets + Make + Gmail · Demo'
   },
   'followup': {
     title: 'Automação de Follow-up de Propostas',
     badge: { text: 'Demonstrativo', class: 'badge-demo' },
-    tags: ['Make', 'Gmail API', 'Google Sheets', 'Resend'],
+    tags: ['CRM', 'API', 'Scripts & Utilities', 'Google Sheets', 'Make', 'Gmail', 'Data Entry'],
     images: [
       GH + '1.png',
+      GH + '01-proposal-tracker-demo-sheet.png',
       GH + '02-make-workflow-overview.png',
       GH + '03-gmail-follow-up-reminder-email.png',
       GH + '04-sheet-updated-after-reminder.png.png',
     ],
-    desc: 'Sequência automática de follow-up para propostas enviadas. Define cadência (D+1, D+3, D+7), monitora status na planilha e dispara e-mails personalizados enquanto a proposta estiver em aberto. Quando o cliente responde, o fluxo para automaticamente. Nenhum negócio esfria por falta de contato.',
-    meta: 'Make + Gmail + Sheets · Demo'
-  },
-  'notificacao': {
-    title: 'Notificação Automática de Leads',
-    badge: { text: 'Demonstrativo', class: 'badge-demo' },
-    tags: ['Zapier', 'Gmail', 'Google Forms', 'Notificação'],
-    images: [
-      GH + '03-zapier-gmail-notification-test.png',
-      GH + '07-zapier.png',
-    ],
-    desc: 'Lead preenche formulário → Zapier detecta nova entrada → Gmail dispara aviso para a equipe em segundos com nome, e-mail, telefone e mensagem do lead. Configuração simples, zero código, e nenhum lead sem resposta rápida.',
-    meta: 'Zapier + Gmail · Demo'
+    desc: 'Projeto demonstrativo de automação para acompanhamento de propostas enviadas. O fluxo verifica uma planilha de controle de propostas, identifica quais contatos precisam de follow-up, envia um lembrete automático por e-mail e atualiza a planilha após o envio. A solução ajuda empresas, profissionais e equipes comerciais a manterem controle sobre propostas em aberto, reduzir esquecimentos e melhorar a rotina de acompanhamento comercial. Ferramentas utilizadas: Google Sheets, Make e Gmail.',
+    meta: 'Google Sheets + Make + Gmail · Demo'
   },
   'lp-barbearia': {
     title: 'Landing Page — Barbearia',
