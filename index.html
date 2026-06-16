@@ -119,31 +119,82 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: center; font-size: 12px; color: var(--subtle); font-family: 'DM Mono', monospace; }
 
 /* ── MODAL ── */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 16px; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--white); border-radius: 16px; overflow: hidden; width: 100%; max-width: 1000px; max-height: 90vh; display: flex; flex-direction: column; }
-.modal-header { padding: 20px 24px 0; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-.modal-title { font-size: 18px; font-weight: 700; letter-spacing: -0.4px; }
-.modal-close { width: 36px; height: 36px; border-radius: 99px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.15s; }
-.modal-close:hover { background: var(--border); color: var(--ink); }
-.modal-body { display: flex; flex: 1; overflow: hidden; }
-.modal-gallery { width: 55%; flex-shrink: 0; background: #0a0a0a; position: relative; display: flex; align-items: center; justify-content: center; }
-.modal-gallery img { width: 100%; height: 100%; object-fit: contain; display: block; max-height: 70vh; }
-.gallery-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 99px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; backdrop-filter: blur(4px); }
-.gallery-btn:hover { background: rgba(255,255,255,0.25); }
-.gallery-prev { left: 12px; }
-.gallery-next { right: 12px; }
-.gallery-counter { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 11px; color: rgba(255,255,255,0.6); font-family: 'DM Mono', monospace; background: rgba(0,0,0,0.5); padding: 3px 10px; border-radius: 99px; }
-.gallery-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; }
-.gallery-dot { width: 6px; height: 6px; border-radius: 99px; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.15s; }
-.gallery-dot.active { background: #fff; width: 16px; }
-.modal-info { flex: 1; padding: 24px; overflow-y: auto; }
-.modal-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 12px; }
-.modal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 16px; }
-.modal-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
-.modal-depo { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; line-height: 1.6; margin-bottom: 16px; }
+.modal { background: var(--white); border-radius: 16px; overflow: hidden; width: 100%; max-width: 1100px; max-height: 94vh; display: flex; flex-direction: column; }
+.modal-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; border-bottom: 1px solid var(--border); }
+.modal-title { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+.modal-close { width: 34px; height: 34px; border-radius: 99px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.15s; line-height: 1; }
+.modal-close:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+.modal-body { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+/* GALERIA — ocupa toda a largura, altura generosa */
+.modal-gallery {
+  width: 100%;
+  background: #111;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 58vh;
+}
+.modal-gallery img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.2s;
+}
+.modal-gallery img.zoomed {
+  cursor: zoom-out;
+  object-fit: unset;
+  max-width: unset;
+  max-height: unset;
+  width: auto;
+  height: auto;
+  min-width: 150%;
+  overflow: visible;
+}
+
+/* SETAS — grandes e bem visíveis */
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px; height: 52px;
+  border-radius: 99px;
+  background: #ffffff;
+  border: none;
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.gallery-btn:hover { background: var(--accent); color: #fff; transform: translateY(-50%) scale(1.08); }
+.gallery-prev { left: 14px; }
+.gallery-next { right: 14px; }
+
+/* DOTS */
+.gallery-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 99px; }
+.gallery-dot { width: 7px; height: 7px; border-radius: 99px; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.15s; }
+.gallery-dot.active { background: #fff; width: 20px; }
+
+/* INFO — barra horizontal abaixo da galeria */
+.modal-info { padding: 16px 24px 20px; overflow-y: auto; max-height: 36vh; border-top: 1px solid var(--border); }
+.modal-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 10px; }
+.modal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
+.modal-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+.modal-depo { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; line-height: 1.6; margin-bottom: 12px; }
 .modal-depo cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-.modal-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); padding-top: 14px; border-top: 1px solid var(--border); }
+.modal-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); padding-top: 12px; border-top: 1px solid var(--border); }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
