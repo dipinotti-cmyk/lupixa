@@ -394,39 +394,37 @@ const projects = {
     desc: 'A M5 Assessoria precisava transformar um processo manual de simulação comercial em algo claro, replicável e pronto para apresentação ao cliente final — sem desenvolver uma plataforma do zero. Entregue em 4 dias, quando o prazo acordado era 7.',
     stack: ['Google Sheets', 'Google Apps Script', 'HTML/CSS (PDF)', 'Google Drive'],
     highlights: [
-      'Cálculos automáticos de tributos: II, IPI, PIS, COFINS, ICMS',
-      'Geração de PDF confidencial em 1 clique via menu personalizado',
-      'Catálogo de fornecedores com imagens integradas ao orçamento',
-      'Itens zerados omitidos automaticamente do PDF',
-      'Manual operacional completo + vídeo de uso gravado'
+      'Planilha por cliente com fórmulas protegidas: moeda, origem, destino, impostos, frete e seguro',
+      'Tributos calculados automaticamente: II 18%, IPI 10%, PIS 2,10%, COFINS 10,25%, ICMS RJ 22%',
+      'Catálogo de fornecedores com imagens integradas — itens escolhidos vão direto ao orçamento',
+      'PDF confidencial gerado em 1 clique via menu personalizado no próprio Sheets',
+      'Checkboxes para ocultar/exibir despesas individualmente no PDF final',
+      'Itens com quantidade zero omitidos automaticamente; paginação inteligente sem cortes de imagem',
+      'PDF salvo automaticamente no Google Drive com rodapé "Documento Confidencial" em todas as páginas',
+      'Manual operacional completo + vídeo de uso gravado para operação sem suporte'
     ],
     depoimento: '"Diogo muito prestativo e rápido!! fez um trabalho incrível."',
     depoimentoAuthor: '— Matheus Cisang · M5 Assessoria de Importação Fitness',
-    pdfLink: null
+    screens: []
   },
   'leadflow': {
     title: 'LeadFlow — Mini CRM Automatizado',
     subtitle: 'The Accelerator BRL · Case real · Avaliação 5 estrelas',
     tags: ['✅ Projeto entregue · 5.0 ★', 'CRM & Leads', 'Automação', 'Case real'],
     rating: true,
-    desc: 'Leads antes dispersos passam a entrar por um canal único. Informações comerciais ficam organizadas com status, responsável e próxima ação. Novo lead gera aviso interno automático por e-mail.',
+    desc: 'Leads antes dispersos passam a entrar por um canal único. Formulário estruturado captura dados de triagem comercial. Planilha funciona como Mini CRM com status, responsável e próxima ação. Novo lead gera aviso interno automático por e-mail em até 15 minutos.',
     stack: ['Google Forms', 'Google Sheets', 'Make', 'Gmail', 'Documentação PDF'],
     highlights: [
-      'Formulário de captura estruturado com triagem comercial',
-      'Mini CRM com status: Novo, Contato Pendente, Em Conversa, Follow-up, Proposta, Convertido, Perdido',
-      'Automação Make + Gmail: aviso a cada novo lead em até 15 min',
-      'Dashboard com total de leads, conversão e follow-ups vencidos',
-      'Urgências e follow-ups vencidos destacados automaticamente'
+      'Formulário com campos: nome, e-mail, empresa, tipo de necessidade, urgência e melhor horário',
+      'Mini CRM com 7 status: Novo, Contato Pendente, Em Conversa, Follow-up, Proposta Enviada, Convertido, Perdido',
+      'Urgência alta e follow-up vencido destacados automaticamente por cor na planilha',
+      'Automação Make: Watch New Rows → Gmail Send Email (aviso interno em até 15 min)',
+      'Dashboard com total de leads, leads por status, follow-ups vencidos e taxa de conversão',
+      'Critérios de aceite testados: formulário, aviso automático, destaques e dashboard validados'
     ],
     depoimento: '"O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."',
     depoimentoAuthor: '— The Accelerator BRL',
-    screens: [
-      { src: 'Slide1.JPG', alt: 'Planilha Mini CRM com leads registrados' },
-      { src: 'Slide2.JPG', alt: 'Formulário de captura de leads' },
-      { src: 'Slide3.JPG', alt: 'CRM com status de leads' },
-      { src: 'Slide4.JPG', alt: 'Fluxo Make automatizado' },
-      { src: 'Slide5.JPG', alt: 'E-mail de notificação chegando' }
-    ]
+    screens: []
   },
   'lupixa-saas': {
     title: 'Pipeline de IA para Fotos de Produto',
@@ -457,13 +455,7 @@ const projects = {
       'Automação Make: Watch New Rows → Gmail → Update Row',
       'E-mail de notificação com todos os dados do lead formatados'
     ],
-    screens: [
-      { src: 'Slide1.JPG', alt: 'Planilha CRM com leads' },
-      { src: 'Slide2.JPG', alt: 'Formulário de captura' },
-      { src: 'Slide3.JPG', alt: 'CRM atualizado' },
-      { src: 'Slide4.JPG', alt: 'Fluxo Make' },
-      { src: 'Slide5.JPG', alt: 'E-mail de notificação' }
-    ]
+    screens: []
   },
   'briefing-ia': {
     title: 'Automação de Briefing de Conteúdo com IA',
@@ -483,6 +475,9 @@ const projects = {
       { src: '01-ai-content-brief-form.png', alt: 'Formulário de briefing' },
       { src: '02-ai-content-brief-sheet-before.png', alt: 'Planilha com respostas' },
       { src: '03-ai-content-brief-make-workflow.png', alt: 'Fluxo Make completo' },
+      { src: '04-ai-content-brief-form-submitted.png', alt: 'Formulário enviado com sucesso' },
+      { src: '05-ai-content-brief-sheet-new-row.png', alt: 'Nova linha na planilha' },
+      { src: '06-ai-content-brief-make-success.png', alt: 'Make executado com sucesso' },
       { src: '07-ai-content-brief-google-doc.png', alt: 'Documento gerado pela IA' },
       { src: '08-ai-content-brief-gmail-notification.png', alt: 'Notificação por e-mail' },
       { src: '09-ai-content-brief-sheet-updated_.png', alt: 'Planilha atualizada após execução' }
@@ -506,8 +501,10 @@ const projects = {
       { src: '01-ai-lead-qualification-form.png', alt: 'Formulário de qualificação' },
       { src: '02-lead-qualificationt-brief-sheet-before.png', alt: 'Planilha com leads raw' },
       { src: '07-zapier.png', alt: 'Zap configurado no Zapier' },
-      { src: '08-n8n.png', alt: 'Workflow n8n' },
+      { src: '03-zapier-gmail-notification-test.png', alt: 'Notificação Gmail via Zapier' },
+      { src: '08-n8n.png', alt: 'Workflow n8n completo' },
       { src: '04-n8n-webhook-received-lead.png', alt: 'Webhook recebido no n8n' },
+      { src: '05-n8n-classification-logic.png', alt: 'Lógica de classificação JavaScript no n8n' },
       { src: '06-qualified-leads-output.png', alt: 'Leads qualificados Hot/Warm/Cold' }
     ]
   },
