@@ -125,6 +125,16 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
 .modal-screen:hover { opacity: 0.9; }
 .modal-stack { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
 .stack-item { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 3px 8px; color: var(--muted); }
+
+/* CAT NAV */
+.cat-nav { max-width: 860px; margin: 0 auto; padding: 28px 32px 0; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.cat-btn { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 18px; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; text-decoration: none; transition: box-shadow 0.15s, border-color 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.cat-btn:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(26,86,219,0.1); color: var(--accent); }
+.cat-btn .cat-icon { font-size: 16px; }
+
+/* THUMB COM IMAGEM */
+.thumb-img { background: #0F1720; }
+.thumb-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
 .modal-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
 .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: white; font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 8px; text-decoration: none; }
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; background: var(--bg); color: var(--ink); border: 1px solid var(--border); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 8px; text-decoration: none; }
@@ -174,8 +184,17 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
   <div class="pill"><span class="dot"></span>Cotia, SP · Disponível agora</div>
 </div>
 
+<!-- CAT NAV -->
+<div class="cat-nav">
+  <a href="#casos-reais" class="cat-btn"><span class="cat-icon">✅</span> Cases reais</a>
+  <a href="#produto-proprio" class="cat-btn"><span class="cat-icon">🤖</span> Produto próprio</a>
+  <a href="#automacao" class="cat-btn"><span class="cat-icon">⚡</span> Automação</a>
+  <a href="#crm-leads" class="cat-btn"><span class="cat-icon">🎯</span> CRM & Leads</a>
+  <a href="#ia-aplicada" class="cat-btn"><span class="cat-icon">🧠</span> IA Aplicada</a>
+</div>
+
 <!-- CASES REAIS -->
-<div class="section" id="projetos">
+<div class="section" id="casos-reais">
   <div class="section-header">
     <span class="section-label">Projetos reais — clientes reais</span>
     <div class="section-line"></div>
@@ -201,7 +220,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
           <cite>— Matheus Cisang · M5 Assessoria de Importação Fitness</cite>
         </div>
         <div class="card-footer">
-          <span class="card-meta">Google Sheets + Apps Script · 2025</span>
+          <span class="card-meta">Google Sheets + Apps Script · 2026</span>
           <span class="card-action">Ver detalhes →</span>
         </div>
       </div>
@@ -226,7 +245,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
           <cite>— The Accelerator BRL</cite>
         </div>
         <div class="card-footer">
-          <span class="card-meta">Google Sheets + Make + Gmail · 2025</span>
+          <span class="card-meta">Google Sheets + Make + Gmail · 2026</span>
           <span class="card-action">Ver detalhes →</span>
         </div>
       </div>
@@ -236,15 +255,15 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
 </div>
 
 <!-- PRODUTO PRÓPRIO -->
-<div class="section" style="padding-top:0">
+<div class="section" id="produto-proprio" style="padding-top:0">
   <div class="section-header">
     <span class="section-label">Produto próprio construído do zero</span>
     <div class="section-line"></div>
   </div>
   <div class="grid">
     <div class="card card-destaque" onclick="openModal('lupixa-saas')">
-      <div class="card-thumb thumb-saas">
-        <span class="thumb-icon" style="opacity:0.5">🤖</span>
+      <div class="card-thumb thumb-img">
+        <img src="capa_workana_pipeline_ia_produto.png" alt="Pipeline de IA para Fotos de Produto">
         <span class="thumb-badge badge-saas">Produto próprio</span>
       </div>
       <div class="card-body">
@@ -265,7 +284,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
 </div>
 
 <!-- DEMONSTRATIVOS -->
-<div class="section" style="padding-top:0">
+<div class="section" id="automacao" style="padding-top:0">
   <div class="section-header">
     <span class="section-label">Projetos demonstrativos</span>
     <div class="section-line"></div>
@@ -289,8 +308,8 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
     </div>
 
     <div class="card" onclick="openModal('briefing-ia')">
-      <div class="card-thumb thumb-ia">
-        <span class="thumb-icon">🧠</span>
+      <div class="card-thumb thumb-img">
+        <img src="4.png" alt="Automação de Briefing com IA">
         <span class="thumb-badge badge-demo">Demo</span>
       </div>
       <div class="card-body">
@@ -321,8 +340,8 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
     </div>
 
     <div class="card" onclick="openModal('follow-up')">
-      <div class="card-thumb thumb-follow">
-        <span class="thumb-icon">🔔</span>
+      <div class="card-thumb thumb-img">
+        <img src="proposal-follow-up-automation-cover.png" alt="Follow-up de Propostas">
         <span class="thumb-badge badge-demo">Demo</span>
       </div>
       <div class="card-body">
@@ -361,7 +380,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
   </div>
 </div>
 
-<footer>Portfólio de projetos · Diogo Pinotti · 2025</footer>
+<footer>Portfólio de projetos · Diogo Pinotti · 2026</footer>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
