@@ -196,6 +196,12 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
 .modal-depo cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
 .modal-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); padding-top: 12px; border-top: 1px solid var(--border); }
 
+
+/* FULLSCREEN */
+.img-fullscreen { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:2000; align-items:center; justify-content:center; cursor:zoom-out; }
+.img-fullscreen.open { display:flex; }
+.img-fullscreen img { max-width:95vw; max-height:95vh; object-fit:contain; }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .servicos-grid { grid-template-columns: repeat(3, 1fr); }
@@ -596,7 +602,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
     </div>
     <div class="modal-body">
       <div class="modal-gallery" id="modalGallery">
-        <img id="modalImg" src="" alt="">
+        <img id="modalImg" src="" alt="" onclick="openFullscreen()" style="cursor:zoom-in">
         <button class="gallery-btn gallery-prev" onclick="prevImg()">‹</button>
         <button class="gallery-btn gallery-next" onclick="nextImg()">›</button>
         <div class="gallery-dots" id="galleryDots"></div>
@@ -835,6 +841,7 @@ function updateDots() {
 function goToImg(i) {
   currentIdx = i;
   document.getElementById('modalImg').src = currentImgs[i];
+  document.getElementById('imgFullscreenSrc').src = currentImgs[i];
   updateDots();
 }
 
@@ -850,12 +857,25 @@ function nextImg() {
   updateDots();
 }
 
+function openFullscreen() {
+  document.getElementById('imgFullscreenSrc').src = document.getElementById('modalImg').src;
+  document.getElementById('imgFullscreen').classList.add('open');
+}
+function closeFullscreen() {
+  document.getElementById('imgFullscreen').classList.remove('open');
+}
+
 document.addEventListener('keydown', e => {
   if (!document.getElementById('modalOverlay').classList.contains('open')) return;
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') { closeFullscreen(); closeModal(); }
   if (e.key === 'ArrowLeft') prevImg();
   if (e.key === 'ArrowRight') nextImg();
 });
 </script>
+
+<div class="img-fullscreen" id="imgFullscreen" onclick="closeFullscreen()">
+  <img id="imgFullscreenSrc" src="" alt="">
+</div>
+
 </body>
 </html>
