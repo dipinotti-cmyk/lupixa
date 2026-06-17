@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio · Diogo Pinotti</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #FAFAF8;
+  --ink: #0F0F0E;
+  --muted: #6B6A65;
+  --subtle: #A8A7A2;
+  --accent: #1A56DB;
+  --accent-bg: #EEF2FF;
+  --white: #FFFFFF;
+  --border: #E8E7E2;
+  --card: #FFFFFF;
+  --green: #0E7A4F;
+  --green-bg: #EDFAF3;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --gh: https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 58px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: all 0.15s; }
+.nav-links a:hover { color: var(--ink); background: var(--border); }
+
+/* HERO */
+.hero-banner { background: var(--ink); color: var(--white); padding: 56px 32px; text-align: center; }
+.hero-inner { max-width: 680px; margin: 0 auto; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 99px; padding: 5px 14px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-tag img { width: 16px; height: 16px; border-radius: 3px; object-fit: cover; }
+.hero-banner h1 { font-size: clamp(22px, 4vw, 34px); font-weight: 700; letter-spacing: -0.8px; line-height: 1.3; margin-bottom: 16px; }
+.hero-banner p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; margin: 0 auto; }
+.hero-banner p em { font-style: italic; color: rgba(255,255,255,0.8); }
+
+/* CREDENCIAIS */
+.creds { max-width: 860px; margin: 0 auto; padding: 28px 32px 0; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.cred { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 99px; padding: 7px 16px; font-size: 13px; font-weight: 500; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.cred .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+/* NAVEGAÇÃO SERVIÇOS */
+.servicos-nav { background: #1a1a2e; padding: 48px 32px; }
+.servicos-inner { max-width: 1080px; margin: 0 auto; }
+.servicos-nav h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; margin-bottom: 20px; }
+.servicos-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.servico-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 20px 12px; text-align: center; text-decoration: none; color: #fff; transition: all 0.2s; display: block; }
+.servico-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
+.servico-icon { font-size: 26px; display: block; margin-bottom: 8px; }
+.servico-label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 3px; color: #fff; }
+.servico-sub { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+/* SECTION */
+.section { max-width: 1080px; margin: 0 auto; padding: 64px 32px; }
+.section-header { margin-bottom: 32px; }
+.section-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; gap: 12px; }
+.section-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.section-title { font-size: clamp(20px, 3vw, 26px); font-weight: 800; letter-spacing: -0.6px; margin-top: 12px; }
+.section-sub { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+/* CARDS */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
+.card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-3px); }
+.thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; background: #f0efeb; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.card:hover .thumb img { transform: scale(1.03); }
+.thumb-badge { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; }
+.badge-real { background: var(--green-bg); color: var(--green); border: 1px solid #A7F3D0; }
+.badge-demo { background: #F3F4F6; color: #6B7280; border: 1px solid #E5E7EB; }
+.badge-prod { background: #F5F3FF; color: #4C1D95; border: 1px solid #DDD6FE; }
+.rating-badge { position: absolute; top: 10px; right: 10px; font-size: 11px; font-weight: 700; color: #92400E; background: #FFFBEB; border: 1px solid #FDE68A; padding: 3px 9px; border-radius: 99px; }
+.card-body { padding: 18px 20px 20px; }
+.card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.03em; text-transform: uppercase; background: #F3F4F6; color: #6B7280; }
+.card h3 { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 6px; line-height: 1.4; }
+.card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
+.card-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--subtle); }
+.card-cta { font-size: 12px; font-weight: 600; color: var(--accent); }
+
+/* card destaque */
+.card-destaque { display: flex; }
+.card-destaque .thumb { width: 42%; flex-shrink: 0; aspect-ratio: auto; border-radius: 0; }
+.card-destaque .card-body { display: flex; flex-direction: column; justify-content: center; padding: 28px; }
+.card-destaque h3 { font-size: 17px; margin-bottom: 8px; }
+.card-destaque p { margin-bottom: 14px; }
+.rating-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--green); background: var(--green-bg); border-radius: 99px; padding: 4px 12px; width: fit-content; margin-bottom: 10px; }
+.depoimento { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; line-height: 1.6; margin-bottom: 14px; }
+.depoimento cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* STACK */
+.stack-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 64px 32px; }
+.stack-inner { max-width: 1080px; margin: 0 auto; }
+.stack-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 32px; }
+.stack-item { display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 18px; font-size: 13px; font-weight: 500; color: var(--ink); transition: all 0.15s; }
+.stack-item:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.stack-item img { width: 24px; height: 24px; object-fit: contain; }
+
+/* SOBRE */
+.sobre-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.sobre-box h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.6px; margin-bottom: 14px; }
+.sobre-box p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 10px; }
+.sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stat-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 800; letter-spacing: -1px; color: var(--ink); display: block; }
+.stat-label { font-size: 11px; color: var(--subtle); font-weight: 500; margin-top: 2px; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: center; font-size: 12px; color: var(--subtle); font-family: 'DM Mono', monospace; }
+
+/* ── MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 16px; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); border-radius: 16px; overflow: hidden; width: 100%; max-width: 1100px; max-height: 94vh; display: flex; flex-direction: column; }
+.modal-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; border-bottom: 1px solid var(--border); }
+.modal-title { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+.modal-close { width: 34px; height: 34px; border-radius: 99px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.15s; line-height: 1; }
+.modal-close:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+.modal-body { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+/* GALERIA — ocupa toda a largura, altura generosa */
+.modal-gallery {
+  width: 100%;
+  background: #111;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 58vh;
+}
+.modal-gallery img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.2s;
+}
+.modal-gallery img.zoomed {
+  cursor: zoom-out;
+  object-fit: unset;
+  max-width: unset;
+  max-height: unset;
+  width: auto;
+  height: auto;
+  min-width: 150%;
+  overflow: visible;
+}
+
+/* SETAS — grandes e bem visíveis */
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px; height: 52px;
+  border-radius: 99px;
+  background: #ffffff;
+  border: none;
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.gallery-btn:hover { background: var(--accent); color: #fff; transform: translateY(-50%) scale(1.08); }
+.gallery-prev { left: 14px; }
+.gallery-next { right: 14px; }
+
+/* DOTS */
+.gallery-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 99px; }
+.gallery-dot { width: 7px; height: 7px; border-radius: 99px; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.15s; }
+.gallery-dot.active { background: #fff; width: 20px; }
+
+/* INFO — barra horizontal abaixo da galeria */
+.modal-info { padding: 16px 24px 20px; overflow-y: auto; max-height: 36vh; border-top: 1px solid var(--border); }
+.modal-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 10px; }
+.modal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
+.modal-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+.modal-depo { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; line-height: 1.6; margin-bottom: 12px; }
+.modal-depo cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.modal-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); padding-top: 12px; border-top: 1px solid var(--border); }
+
+
+/* FULLSCREEN */
+.img-fullscreen { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:2000; align-items:center; justify-content:center; cursor:zoom-out; }
+.img-fullscreen.open { display:flex; }
+.img-fullscreen img { max-width:95vw; max-height:95vh; object-fit:contain; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .servicos-grid { grid-template-columns: repeat(3, 1fr); }
+  .card-destaque { flex-direction: column; }
+  .card-destaque .thumb { width: 100%; aspect-ratio: 16/9; }
+  .modal-body { flex-direction: column; }
+  .modal-gallery { width: 100%; height: 240px; }
+  .sobre-box { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .hero-banner { padding: 40px 20px; }
+  .creds { padding: 20px 16px 0; }
+  .servicos-nav { padding: 36px 16px; }
+  .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+  .section { padding: 48px 16px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .stack-section { padding: 48px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Portfólio <span>·</span> Diogo Pinotti</a>
+  <div class="nav-links">
+    <a href="#landing">Landing Pages</a>
+    <a href="#automacao">Automação</a>
+    <a href="#crm">CRM & Leads</a>
+    <a href="#stack">Ferramentas</a>
+    <a href="#sobre">Sobre</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-banner">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/logo_workana.jpg" alt="Workana">
+      Proposta Workana
+    </div>
+    <h1>Se você chegou aqui, foi porque fiz uma proposta para o seu projeto.</h1>
+    <p>Aqui você encontra meu trabalho de verdade — <em>sem filtro, sem enrolação.</em> Tudo o que está aqui foi feito por mim.</p>
+  </div>
+</div>
+
+<!-- CREDENCIAIS -->
+<div class="creds">
+  <div class="cred">⭐ Top 1% Workana · Avaliação 5.0</div>
+  <div class="cred"><span class="dot"></span> 17 anos em operação crítica de TI</div>
+  <div class="cred"><span class="dot"></span> 100% dos projetos entregues no prazo</div>
+  <div class="cred"><span class="dot"></span> Cotia, SP · Disponível agora</div>
+</div>
+
+<!-- NAVEGAÇÃO SERVIÇOS -->
+<div class="servicos-nav">
+  <div class="servicos-inner">
+    <h2>Navegue por serviço</h2>
+    <div class="servicos-grid">
+      <a href="#landing" class="servico-card">
+        <span class="servico-icon">🏠</span>
+        <span class="servico-label">Landing Pages</span>
+        <span class="servico-sub">HTML/CSS · WordPress</span>
+      </a>
+      <a href="#automacao" class="servico-card">
+        <span class="servico-icon">⚡</span>
+        <span class="servico-label">Automação</span>
+        <span class="servico-sub">Make · n8n · Zapier</span>
+      </a>
+      <a href="#crm" class="servico-card">
+        <span class="servico-icon">🎯</span>
+        <span class="servico-label">CRM & Leads</span>
+        <span class="servico-sub">Sheets · Airtable</span>
+      </a>
+      <a href="#ia" class="servico-card">
+        <span class="servico-icon">🧠</span>
+        <span class="servico-label">IA Aplicada</span>
+        <span class="servico-sub">OpenAI · GPT</span>
+      </a>
+      <a href="#wordpress" class="servico-card">
+        <span class="servico-icon">🌐</span>
+        <span class="servico-label">WordPress</span>
+        <span class="servico-sub">Sites · Blogs</span>
+      </a>
+      <a href="#ecommerce" class="servico-card">
+        <span class="servico-icon">🛒</span>
+        <span class="servico-label">E-commerce</span>
+        <span class="servico-sub">Nuvemshop</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LANDING PAGES -->
+<section id="landing" class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Landing Pages</div>
+    <h2 class="section-title">Páginas que convertem</h2>
+    <p class="section-sub">Responsivas, rápidas e com CTA direto para WhatsApp. Do zero ao ar em até 5 dias.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card" onclick="openModal('lp-barbearia')" ondblclick="window.open('https://dipinotti-cmyk.github.io/lupixa/lp-barbearia.html','_blank')">
+      <div class="thumb" style="background:linear-gradient(135deg,#EEF2FF,#C7D7FF)">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">💈</div>
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">WhatsApp</span></div>
+        <h3>Landing Page — Barbearia</h3>
+        <p>Página de captação com galeria de serviços, agendamento via WhatsApp e depoimentos. Mobile-first.</p>
+        <div class="card-footer"><span class="card-meta">HTML/CSS · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('lp-personal')">
+      <div class="thumb" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0)">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">💪</div>
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">Responsivo</span></div>
+        <h3>Landing Page — Personal Trainer</h3>
+        <p>Tabela de planos, depoimentos reais e CTA direto para WhatsApp. Carregamento rápido.</p>
+        <div class="card-footer"><span class="card-meta">HTML/CSS · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('lp-danca')">
+      <div class="thumb" style="background:linear-gradient(135deg,#FFF7ED,#FEDDAB)">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">💃</div>
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">Conversão</span></div>
+        <h3>Landing Page — Escola de Dança</h3>
+        <p>Captação de matrículas com vídeo, grade de horários e formulário de contato integrado.</p>
+        <div class="card-footer"><span class="card-meta">HTML/CSS · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOMAÇÃO -->
+<section id="automacao" class="section" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-eyebrow">Automação</div>
+    <h2 class="section-title">Processos que rodam sozinhos</h2>
+    <p class="section-sub">Make, n8n e Zapier conectando ferramentas para eliminar trabalho manual.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card card-destaque" style="grid-column:span 2" onclick="openModal('m5')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/Capa%20M5.png" alt="M5">
+        <span class="thumb-badge badge-real">Case Real</span>
+        <span class="rating-badge">⭐ 5.0</span>
+      </div>
+      <div class="card-body">
+        <div class="rating-pill">✅ Entregue em 4 dias · Prazo era 7</div>
+        <div class="card-tags"><span class="tag">Apps Script</span><span class="tag">Google Sheets</span><span class="tag">PDF Auto</span></div>
+        <h3>M5 Assessoria — Simulador de Importação</h3>
+        <p>Planilha com cálculos automáticos de tributos, geração de PDF em 1 clique, catálogo de fornecedores integrado e manual operacional com vídeo de uso.</p>
+        <div class="depoimento">"Diogo muito prestativo e rápido!! fez um trabalho incrível."<cite>— Matheus Cisang · M5 Assessoria de Importação Fitness</cite></div>
+        <div class="card-footer"><span class="card-meta">Google Sheets + Apps Script · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('followup')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/1.png" alt="Follow-up">
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">Make</span><span class="tag">Gmail</span><span class="tag">Sheets</span></div>
+        <h3>Automação de Follow-up de Propostas</h3>
+        <p>Sequência automática de lembretes pós-proposta. Nenhum cliente esquecido, nenhum negócio esfria.</p>
+        <div class="card-footer"><span class="card-meta">Make + Gmail · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('briefing')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/03-zapier-gmail-notification-test.png" alt="Notificação">
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">Zapier</span><span class="tag">Gmail</span><span class="tag">Notificação</span></div>
+        <h3>Notificação Automática de Leads</h3>
+        <p>Lead entra pelo formulário e em segundos a equipe recebe aviso no e-mail com todos os dados.</p>
+        <div class="card-footer"><span class="card-meta">Zapier + Gmail · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRM -->
+<section id="crm" class="section" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-eyebrow">CRM & Leads</div>
+    <h2 class="section-title">Do formulário ao cliente fechado</h2>
+    <p class="section-sub">Captura, organização e acompanhamento de leads sem precisar de software caro.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card card-destaque" style="grid-column:span 2" onclick="openModal('leadflow')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/Capa%20LeadFlow.png" alt="LeadFlow">
+        <span class="thumb-badge badge-real">Case Real</span>
+        <span class="rating-badge">⭐ 5.0</span>
+      </div>
+      <div class="card-body">
+        <div class="rating-pill">✅ Projeto entregue · Avaliação 5.0</div>
+        <div class="card-tags"><span class="tag">Google Forms</span><span class="tag">Sheets</span><span class="tag">Make</span><span class="tag">Gmail</span></div>
+        <h3>LeadFlow — Mini CRM Automatizado</h3>
+        <p>Formulário de captura → planilha com pipeline visual → automação Make + Gmail → dashboard comercial completo com documentação de uso.</p>
+        <div class="depoimento">"O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."<cite>— The Accelerator BRL</cite></div>
+        <div class="card-footer"><span class="card-meta">Google Sheets + Make + Gmail · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('qualificacao')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/3.png" alt="Qualificação">
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">n8n</span><span class="tag">Airtable</span><span class="tag">Score</span></div>
+        <h3>Qualificação & Roteamento de Leads</h3>
+        <p>Sistema que classifica leads por score e os encaminha para o vendedor certo automaticamente.</p>
+        <div class="card-footer"><span class="card-meta">n8n + Airtable · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('minicrm')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/2.png" alt="Mini CRM">
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">Google Sheets</span><span class="tag">Apps Script</span></div>
+        <h3>Mini CRM Automatizado para Captura de Leads</h3>
+        <p>CRM leve com histórico de contatos, próxima ação e alertas automáticos. Sem mensalidade.</p>
+        <div class="card-footer"><span class="card-meta">Sheets + Apps Script · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IA -->
+<section id="ia" class="section" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-eyebrow">IA Aplicada</div>
+    <h2 class="section-title">IA com contexto real do negócio</h2>
+    <p class="section-sub">Não é IA genérica. É OpenAI integrada ao seu processo específico.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card" onclick="openModal('briefing')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/4.png" alt="Briefing IA">
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">OpenAI</span><span class="tag">Make</span><span class="tag">Google Docs</span></div>
+        <h3>Automação de Briefing de Conteúdo com IA</h3>
+        <p>Formulário → planilha → GPT → documento estruturado → notificação. Briefings prontos em segundos.</p>
+        <div class="card-footer"><span class="card-meta">Make + OpenAI · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('pipeline-ia')">
+      <div class="thumb">
+        <img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/capa_workana_pipeline_ia_produto.png" alt="Pipeline IA">
+        <span class="thumb-badge badge-prod">Produto próprio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">OpenAI</span><span class="tag">Stripe</span></div>
+        <h3>Pipeline de Imagens com IA — SaaS</h3>
+        <p>Produto SaaS completo com autenticação, geração de imagens via IA e pagamentos. Stack fullstack do zero.</p>
+        <div class="card-footer"><span class="card-meta">Next.js + Supabase + Stripe · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORDPRESS -->
+<section id="wordpress" class="section" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-eyebrow">WordPress</div>
+    <h2 class="section-title">Sites que funcionam de verdade</h2>
+    <p class="section-sub">Responsivos, rápidos e fáceis de atualizar.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card" onclick="openModal('wp-clinica')">
+      <div class="thumb" style="background:linear-gradient(135deg,#F5F3FF,#DDD6FE)">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">🏥</div>
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">Mobile</span></div>
+        <h3>Site Institucional — Clínica de Estética</h3>
+        <p>WordPress com Elementor, otimizado para mobile, formulário de contato e integração com WhatsApp.</p>
+        <div class="card-footer"><span class="card-meta">WordPress + Elementor · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('wp-adv')">
+      <div class="thumb" style="background:linear-gradient(135deg,#EEF2FF,#C7D7FF)">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">⚖️</div>
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">WordPress</span><span class="tag">SEO</span><span class="tag">Blog</span></div>
+        <h3>Site Profissional — Escritório de Advocacia</h3>
+        <p>Blog de artigos jurídicos, página de equipe e formulário de consulta. Rápido e seguro.</p>
+        <div class="card-footer"><span class="card-meta">WordPress · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- E-COMMERCE -->
+<section id="ecommerce" class="section" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-eyebrow">E-commerce</div>
+    <h2 class="section-title">Lojas prontas para vender</h2>
+    <p class="section-sub">Catálogo estruturado, descrições otimizadas e experiência de compra limpa.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card" onclick="openModal('ecom-natural')">
+      <div class="thumb" style="background:linear-gradient(135deg,#FFFBEB,#FDE68A)">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">🌿</div>
+        <span class="thumb-badge badge-demo">Demonstrativo</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tags"><span class="tag">Nuvemshop</span><span class="tag">Catálogo</span></div>
+        <h3>Loja Virtual — Produtos Naturais</h3>
+        <p>Catálogo estruturado, descrições otimizadas, imagens organizadas e frete configurado.</p>
+        <div class="card-footer"><span class="card-meta">Nuvemshop · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="stack-section">
+  <div class="stack-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Ferramentas</div>
+      <h2 class="section-title" style="margin-top:12px">Stack técnica</h2>
+      <p class="section-sub">O que uso no dia a dia — sem achismo, só o que já entregou resultado.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/MAKE.png" alt="Make">Make</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/N8N.png" alt="n8n">n8n</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/ZAPIER.png" alt="Zapier">Zapier</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/Google_Sheets_logo.png" alt="Google Sheets">Google Sheets</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/google_drive_logo.jpg" alt="Google Drive">Google Drive</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/EXCEL.png" alt="Excel">Excel</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/airtable_logo.png" alt="Airtable">Airtable</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/apps_scripts_logo.png" alt="Apps Script">Apps Script</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/openai_logo.webp" alt="OpenAI">OpenAI / GPT</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/supabase_logo.png" alt="Supabase">Supabase</div>
+      <div class="stack-item">▲ Vercel</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/resend_logo.png" alt="Resend">Resend</div>
+      <div class="stack-item">🌐 WordPress</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/nuvemshop_logo.png" alt="Nuvemshop">Nuvemshop</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/logo_github.png" alt="GitHub">GitHub</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/html_logo.png" alt="HTML">HTML</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/css_logo.png" alt="CSS">CSS</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/js_logo.png" alt="JavaScript">JavaScript</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Quem está por trás</div>
+  </div>
+  <div class="sobre-box">
+    <div>
+      <h2>Diogo Pinotti</h2>
+      <p>Pai de três, marido, e há 17 anos em operação crítica de TI — garantindo sistemas que não podem parar, de madrugada, enquanto o Brasil dorme.</p>
+      <p>De tarde, resolvo problemas de pequenos negócios. Cada projeto que pego é tratado como se fosse o meu próprio negócio — porque entendo o que está em jogo para quem está do outro lado.</p>
+      <p>Comecei no freelance porque queria construir algo meu. Trago para cada cliente a mesma responsabilidade que tenho com sistemas que movimentam bilhões.</p>
+      <p style="color:var(--green);font-weight:600;font-size:13px;margin-top:16px;">⭐ Top 1% Workana · Avaliação 5.0</p>
+    </div>
+    <div class="sobre-stats">
+      <div class="stat-box"><span class="stat-num">17</span><span class="stat-label">anos em TI</span></div>
+      <div class="stat-box"><span class="stat-num">5.0</span><span class="stat-label">Avaliação Workana</span></div>
+      <div class="stat-box"><span class="stat-num">Top 1%</span><span class="stat-label">Ranking Workana</span></div>
+      <div class="stat-box"><span class="stat-num">100%</span><span class="stat-label">No prazo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>Portfólio · Diogo Pinotti · 2026</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-gallery" id="modalGallery">
+        <img id="modalImg" src="" alt="" onclick="openFullscreen()" style="cursor:zoom-in">
+        <button class="gallery-btn gallery-prev" onclick="prevImg()">‹</button>
+        <button class="gallery-btn gallery-next" onclick="nextImg()">›</button>
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+      <div class="modal-info" id="modalInfo"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const GH = 'https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/';
+
+const projects = {
+  'leadflow': {
+    title: 'LeadFlow — Mini CRM Automatizado',
+    badge: { text: 'Case Real', class: 'badge-real' },
+    tags: ['CRM', 'Google Forms', 'Google Sheets', 'Make', 'Gmail API', 'Database'],
+    images: [
+      GH + 'Capa%20LeadFlow.png',
+      GH + 'leadflow2.png',
+      GH + 'leadflow3.png',
+      GH + 'leadflow4.png',
+      GH + 'leadflow5.png',
+      GH + 'leadflow6.png',
+      GH + 'leadflow7.png',
+      GH + 'leadflow8.png',
+      GH + 'leadflow9.png',
+    ],
+    desc: 'Desenvolvimento de um Mini CRM automatizado para captura, organização e acompanhamento de leads usando Google Forms, Google Sheets, Make e Gmail. O projeto incluiu formulário de captura, planilha estruturada como CRM, status comerciais, campos de follow-up, destaques visuais para leads urgentes e follow-ups vencidos, dashboard simples, automação de aviso interno por e-mail e documentação de uso. A solução foi criada em no-code/low-code para ser prática, fácil de operar e utilizável no dia a dia sem depender de conhecimento técnico. As imagens usam dados fictícios/demonstrativos para preservar informações sensíveis.',
+    depo: { text: '"O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."', cite: '— The Accelerator BRL' },
+    meta: 'Google Forms + Google Sheets + Make + Gmail · Case real · 2026'
+  },
+  'm5': {
+    title: 'M5 Assessoria — Simulador de Importação Fitness',
+    badge: { text: 'Case Real', class: 'badge-real' },
+    tags: ['JavaScript', 'Google Sheets', 'Apps Script', 'PDF Automático', 'Database'],
+    images: [
+      GH + 'Capa%20M5.png',
+      GH + 'M5_2.png',
+      GH + 'M5_3.png',
+      GH + 'M5_4.png',
+      GH + 'M5_5.png',
+    ],
+    desc: 'Sistema completo de simulação comercial em Google Sheets com geração automática de PDF confidencial em 1 clique. A solução inclui cálculo automático de impostos (II, IPI, PIS, COFINS, ICMS), catálogo de fornecedores com imagens, fluxo de pagamentos estimado e menu personalizado com Apps Script. Entregue em 4 dias — prazo acordado era 7 dias úteis. Avaliação 5 estrelas pelo cliente.',
+    depo: { text: '"Diogo muito prestativo e rápido!! fez um trabalho incrível."', cite: '— Matheus Cisang · M5 Assessoria de Importação Fitness' },
+    meta: 'Google Sheets + Apps Script · Case real · 2026'
+  },
+  'pipeline-ia': {
+    title: 'Pipeline de Imagens com IA — SaaS',
+    badge: { text: 'Produto próprio', class: 'badge-prod' },
+    tags: ['Next.js', 'React.js', 'JavaScript', 'Supabase', 'OpenAI', 'fal.ai', 'Vercel', 'GitHub', 'API'],
+    images: [
+      GH + 'capa_workana_pipeline_ia_produto.png',
+      GH + 'workana_pipeline_ia_produto_02_fluxo_do_usuario.png',
+      GH + 'workana_pipeline_ia_produto_03_o_que_a_lupixa_fazia.png',
+      GH + 'workana_pipeline_ia_produto_04_stack_e_integrações.png',
+      GH + 'workana_pipeline_ia_produto_05_tecnologias.png',
+      GH + 'workana_pipeline_ia_produto_06_exemplo_frente_costas.png',
+      GH + 'portfolio_lupixa_07_github_repositorio.png',
+    ],
+    desc: 'Case demonstrativo baseado em um protótipo/SaaS próprio de IA para moda. A proposta era transformar imagens simples de produto — mockups, frente, costas e detalhes — em visuais comerciais para catálogo, campanha e redes sociais. O projeto tinha login, configuração de marca, upload de imagens, geração por IA, acompanhamento de jobs, entrega de variações visuais e organização do fluxo do usuário. Atuei na estruturação da solução, organização do fluxo, integração entre ferramentas, testes, versionamento e evolução do produto. Resultado: um fluxo funcional que partia de uma imagem simples e entregava imagens mais úteis para apresentação comercial de produtos de moda.',
+    meta: 'Next.js + Supabase + OpenAI + fal.ai + Vercel · 2026'
+  },
+  'briefing': {
+    title: 'Automação de Briefing de Conteúdo com IA',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['API', 'Scripts & Utilities', 'Inteligência Artificial', 'Make', 'Google Forms', 'Google Docs', 'Gmail'],
+    images: [
+      GH + '4.png',
+      GH + '01-ai-content-brief-form.png',
+      GH + '02-ai-content-brief-sheet-before.png',
+      GH + '03-ai-content-brief-make-workflow.png',
+      GH + '04-ai-content-brief-form-submitted.png',
+      GH + '05-ai-content-brief-sheet-new-row.png',
+      GH + '06-ai-content-brief-make-success.png',
+      GH + '07-ai-content-brief-google-doc.png',
+      GH + '08-ai-content-brief-gmail-notification.png',
+      GH + '09-ai-content-brief-sheet-updated..png',
+    ],
+    desc: 'Projeto demonstrativo de automação para criação de briefing de conteúdo com apoio de IA. O fluxo começa quando um cliente envia uma solicitação pelo Google Forms. Os dados são salvos no Google Sheets, o Make envia as informações para a OpenAI, um briefing estruturado de conteúdo é gerado, um arquivo no Google Docs é criado automaticamente e uma notificação por Gmail é enviada com o link do documento. A solução reduz o trabalho manual de organização de briefings e mantém solicitação, resultado e notificação conectados em um único processo.',
+    meta: 'Google Forms + Make + OpenAI + Google Docs + Gmail · Demo'
+  },
+  'qualificacao': {
+    title: 'Qualificação & Roteamento de Leads',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['CRM', 'API', 'Scripts & Utilities', 'Zapier', 'n8n', 'Google Sheets'],
+    images: [
+      GH + '3.png',
+      GH + '01-ai-lead-qualification-form.png',
+      GH + '02-lead-qualificationt-brief-sheet-before.png',
+      GH + '03-zapier-gmail-notification-test.png',
+      GH + '04-n8n-webhook-received-lead.png',
+      GH + '05-n8n-classification-logic.png',
+      GH + '06-qualified-leads-output.png',
+      GH + '07-zapier.png',
+      GH + '08-n8n.png',
+    ],
+    desc: 'Projeto demonstrativo de automação para qualificar e direcionar leads conforme critérios definidos. O fluxo coleta informações iniciais de um contato, registra os dados em uma planilha, aplica uma lógica de classificação e direciona o lead conforme tipo de necessidade, prioridade ou perfil identificado. A solução pode ser adaptada para atendimento inicial, triagem comercial, separação de clientes novos e existentes, organização de demandas e melhoria do tempo de resposta. Ferramentas utilizadas: Google Forms, Google Sheets, Zapier, n8n e Gmail.',
+    meta: 'Google Forms + Zapier + n8n + Google Sheets · Demo'
+  },
+  'minicrm': {
+    title: 'Mini CRM Automatizado para Captura de Leads',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['CRM', 'Google Forms', 'Google Sheets', 'Make', 'Gmail', 'Data Entry'],
+    images: [
+      GH + '2.png',
+      GH + '01-google-form-service-inquiry.png',
+      GH + '02-lead-capture-demo-sheet.png',
+      GH + '03-make-workflow-overview.png',
+      GH + '04-gmail-new-lead-notification.png',
+      GH + '05-sheet-updated-after-notification.png',
+    ],
+    desc: 'Projeto demonstrativo de automação para captura, organização e acompanhamento de leads. O fluxo começa quando um contato preenche um formulário. As informações são registradas automaticamente em uma planilha, organizadas em formato de controle comercial e enviadas por notificação automática por e-mail. A solução ajuda empresas, profissionais e equipes comerciais a reduzir trabalho manual, evitar perda de informações e facilitar o acompanhamento de novos contatos. Ferramentas utilizadas: Google Forms, Google Sheets, Make e Gmail.',
+    meta: 'Google Forms + Google Sheets + Make + Gmail · Demo'
+  },
+  'followup': {
+    title: 'Automação de Follow-up de Propostas',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['CRM', 'API', 'Scripts & Utilities', 'Google Sheets', 'Make', 'Gmail', 'Data Entry'],
+    images: [
+      GH + '1.png',
+      GH + '01-proposal-tracker-demo-sheet.png',
+      GH + '02-make-workflow-overview.png',
+      GH + '03-gmail-follow-up-reminder-email.png',
+      GH + '04-sheet-updated-after-reminder.png.png',
+    ],
+    desc: 'Projeto demonstrativo de automação para acompanhamento de propostas enviadas. O fluxo verifica uma planilha de controle de propostas, identifica quais contatos precisam de follow-up, envia um lembrete automático por e-mail e atualiza a planilha após o envio. A solução ajuda empresas, profissionais e equipes comerciais a manterem controle sobre propostas em aberto, reduzir esquecimentos e melhorar a rotina de acompanhamento comercial. Ferramentas utilizadas: Google Sheets, Make e Gmail.',
+    meta: 'Google Sheets + Make + Gmail · Demo'
+  },
+  'lp-barbearia': {
+    title: 'Landing Page — Barbearia',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['HTML', 'CSS', 'WhatsApp', 'Mobile-first'],
+    images: [],
+    desc: 'Landing page para barbearia com galeria de serviços e preços, seção de depoimentos de clientes, botão de agendamento direto pelo WhatsApp e carregamento ultra rápido. Responsiva em todos os dispositivos. Domínio e hospedagem inclusos na entrega.',
+    link: 'https://dipinotti-cmyk.github.io/lupixa/lp-barbearia.html',
+    meta: 'HTML/CSS · Demo'
+  },
+  'lp-personal': {
+    title: 'Landing Page — Personal Trainer',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['HTML', 'CSS', 'Responsivo', 'WhatsApp'],
+    images: [],
+    desc: 'Página de captação para personal trainer com tabela de planos, resultados de alunos, depoimentos reais e CTA direto para WhatsApp. Layout limpo, hierarquia clara e carregamento rápido no celular.',
+    meta: 'HTML/CSS · Demo'
+  },
+  'lp-danca': {
+    title: 'Landing Page — Escola de Dança',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['HTML', 'CSS', 'Formulário', 'Conversão'],
+    images: [],
+    desc: 'Página para captação de matrículas com seção de modalidades, grade de horários, galeria de fotos das aulas e formulário de contato integrado. Foco total em converter o visitante em aluno.',
+    meta: 'HTML/CSS · Demo'
+  },
+  'wp-clinica': {
+    title: 'Site Institucional — Clínica de Estética',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['WordPress', 'Elementor', 'Mobile', 'WhatsApp'],
+    images: [],
+    desc: 'Site WordPress com Elementor otimizado para mobile, página de serviços com fotos, formulário de contato e botão direto para WhatsApp. SSL configurado, carregamento rápido e fácil de atualizar pelo painel.',
+    meta: 'WordPress + Elementor · Demo'
+  },
+  'wp-adv': {
+    title: 'Site — Escritório de Advocacia',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['WordPress', 'SEO', 'Blog', 'Segurança'],
+    images: [],
+    desc: 'Site profissional com blog de artigos jurídicos para SEO, página de equipe, área de prática e formulário de consulta. Layout sóbrio, seguro e adaptado para qualquer dispositivo.',
+    meta: 'WordPress · Demo'
+  },
+  'ecom-natural': {
+    title: 'Loja Virtual — Produtos Naturais',
+    badge: { text: 'Demonstrativo', class: 'badge-demo' },
+    tags: ['Nuvemshop', 'Catálogo', 'Frete', 'Mobile'],
+    images: [],
+    desc: 'Loja Nuvemshop com catálogo estruturado por categoria, descrições otimizadas para conversão, imagens organizadas e configuração completa de frete e formas de pagamento. Pronta para vender no celular.',
+    meta: 'Nuvemshop · Demo'
+  },
+};
+
+let currentImgs = [];
+let currentIdx = 0;
+
+function openModal(id) {
+  const p = projects[id];
+  if (!p) return;
+  currentImgs = p.images.length ? p.images : [];
+  currentIdx = 0;
+
+  document.getElementById('modalTitle').textContent = p.title;
+
+  // gallery
+  const gallery = document.getElementById('modalGallery');
+  const img = document.getElementById('modalImg');
+  if (currentImgs.length) {
+    img.src = currentImgs[0];
+    gallery.style.display = 'flex';
+    updateDots();
+  } else {
+    gallery.style.display = 'none';
+  }
+
+  // info
+  const tagsHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+  const depoHTML = p.depo ? `<div class="modal-depo">${p.depo.text}<cite>${p.depo.cite}</cite></div>` : '';
+  const ratingHTML = p.badge.class === 'badge-real' ? `<div class="rating-pill" style="margin-bottom:14px">✅ Case real entregue</div>` : '';
+  const linkHTML = p.link ? `<a href="${p.link}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:8px 14px;border-radius:6px;transition:all 0.15s;" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">🔗 Ver LP ao vivo →</a>` : '';
+  document.getElementById('modalInfo').innerHTML = `
+    <span class="modal-badge ${p.badge.class}">${p.badge.text}</span>
+    ${ratingHTML}
+    <div class="modal-tags">${tagsHTML}</div>
+    <p class="modal-desc">${p.desc}</p>
+    ${depoHTML}
+    ${linkHTML}
+    <div class="modal-meta" style="margin-top:${p.link ? '14px' : '0'}">${p.meta}</div>
+  `;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function updateDots() {
+  const dots = document.getElementById('galleryDots');
+  dots.innerHTML = currentImgs.map((_, i) =>
+    `<div class="gallery-dot${i === currentIdx ? ' active' : ''}" onclick="goToImg(${i})"></div>`
+  ).join('');
+}
+
+function goToImg(i) {
+  currentIdx = i;
+  document.getElementById('modalImg').src = currentImgs[i];
+  document.getElementById('imgFullscreenSrc').src = currentImgs[i];
+  updateDots();
+}
+
+function prevImg() {
+  currentIdx = (currentIdx - 1 + currentImgs.length) % currentImgs.length;
+  document.getElementById('modalImg').src = currentImgs[currentIdx];
+  updateDots();
+}
+
+function nextImg() {
+  currentIdx = (currentIdx + 1) % currentImgs.length;
+  document.getElementById('modalImg').src = currentImgs[currentIdx];
+  updateDots();
+}
+
+function openFullscreen() {
+  document.getElementById('imgFullscreenSrc').src = document.getElementById('modalImg').src;
+  document.getElementById('imgFullscreen').classList.add('open');
+}
+function closeFullscreen() {
+  document.getElementById('imgFullscreen').classList.remove('open');
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modalOverlay').classList.contains('open')) return;
+  if (e.key === 'Escape') { closeFullscreen(); closeModal(); }
+  if (e.key === 'ArrowLeft') prevImg();
+  if (e.key === 'ArrowRight') nextImg();
+});
+</script>
+
+<div class="img-fullscreen" id="imgFullscreen" onclick="closeFullscreen()">
+  <img id="imgFullscreenSrc" src="" alt="">
+</div>
+
+</body>
+</html>
