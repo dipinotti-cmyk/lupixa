@@ -9,17 +9,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 :root {
-  --bg: #FAFAF8;
-  --ink: #0F0F0E;
-  --muted: #6B6A65;
-  --subtle: #A8A7A2;
-  --accent: #1A56DB;
-  --accent-bg: #EEF2FF;
+  --bg: #0A0A0A;
+  --ink: #F5F5F5;
+  --muted: rgba(255,255,255,0.66);
+  --subtle: rgba(255,255,255,0.45);
+  --accent: #FACC15;
+  --accent-bg: rgba(250,204,21,0.12);
   --white: #FFFFFF;
-  --border: #E8E7E2;
-  --card: #FFFFFF;
-  --green: #0E7A4F;
-  --green-bg: #EDFAF3;
+  --border: rgba(255,255,255,0.08);
+  --card: #1A1A1A;
+  --green: #34D399;
+  --green-bg: rgba(52,211,153,0.12);
   --radius: 14px;
   --radius-sm: 8px;
   --gh: https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/;
@@ -27,15 +27,15 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
 /* NAV */
-nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 58px; display: flex; align-items: center; justify-content: space-between; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 58px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; color: var(--ink); text-decoration: none; }
 .nav-logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 4px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: all 0.15s; }
-.nav-links a:hover { color: var(--ink); background: var(--border); }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: all 0.15s; }
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
 
 /* HERO */
-.hero-banner { background: var(--ink); color: var(--white); padding: 56px 32px; text-align: center; }
+.hero-banner { background: #0A0A0A; color: var(--white); padding: 56px 32px; text-align: center; }
 .hero-inner { max-width: 680px; margin: 0 auto; }
 .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 99px; padding: 5px 14px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.06em; }
 .hero-tag img { width: 16px; height: 16px; border-radius: 3px; object-fit: cover; }
@@ -79,7 +79,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 .aurora-light { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100vw; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
 .aurora-light::before { content: ""; position: absolute; inset: -25%;
   background-image:
-    repeating-linear-gradient(100deg, #FAFAF8 0%, #FAFAF8 7%, transparent 10%, transparent 12%, #FAFAF8 16%),
+    repeating-linear-gradient(100deg, #0A0A0A 0%, #0A0A0A 7%, transparent 10%, transparent 12%, #0A0A0A 16%),
     repeating-linear-gradient(100deg, #1A56DB 10%, #6366F1 15%, #60A5FA 20%, #A78BFA 25%, #3B82F6 30%);
   background-size: 300% 200%, 200% 100%; background-position: 50% 50%, 50% 50%;
   filter: blur(34px); opacity: 0.32;
@@ -97,15 +97,15 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 
 /* MICRO-INTERAÇÕES */
 #como .work-step { transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-#como .work-step:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.06); border-color: #D7DCEA; }
+#como .work-step:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.2); }
 
 /* CREDENCIAIS */
 .creds { max-width: 860px; margin: 0 auto; padding: 28px 32px 0; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-.cred { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 99px; padding: 7px 16px; font-size: 13px; font-weight: 500; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.cred { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 99px; padding: 7px 16px; font-size: 13px; font-weight: 500; color: #fff; }
 .cred .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
 
 /* NAVEGAÇÃO SERVIÇOS */
-.servicos-nav { background: #1a1a2e; padding: 48px 32px; }
+.servicos-nav { background: #111; padding: 48px 32px; }
 .servicos-inner { max-width: 1080px; margin: 0 auto; }
 .servicos-nav h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; margin-bottom: 20px; }
 .servicos-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
@@ -118,16 +118,16 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 /* SECTION */
 .section { max-width: 1080px; margin: 0 auto; padding: 64px 32px; }
 .section-header { margin-bottom: 32px; }
-.section-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; gap: 12px; }
-.section-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.section-title { font-size: clamp(20px, 3vw, 26px); font-weight: 800; letter-spacing: -0.6px; margin-top: 12px; }
+.section-eyebrow { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 14px; }
+.section-eyebrow::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(250,204,21,0.45), rgba(255,255,255,0.06)); }
+.section-title { font-size: clamp(24px, 3.6vw, 31px); font-weight: 900; letter-spacing: -0.8px; color: #fff; margin-top: 12px; }
 .section-sub { font-size: 14px; color: var(--muted); margin-top: 6px; }
 
 /* CARDS */
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; align-items: start; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
 .card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-3px); }
-.thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; background: #f0efeb; }
+.thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; background: #111; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
 .card:hover .thumb img { transform: scale(1.03); }
 .thumb-badge { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; }
@@ -144,11 +144,11 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 .thumb-dot.active { background: #fff; width: 15px; border-radius: 3px; }
 .card-body { padding: 18px 20px 20px; }
 .card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
-.tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.03em; text-transform: uppercase; background: #F3F4F6; color: #6B7280; }
+.tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.03em; text-transform: uppercase; background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.32); color: #FACC15; }
 .card h3 { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 6px; line-height: 1.4; }
 .card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
 .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
-.card-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--subtle); }
+.card-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.6); }
 .card-cta { font-size: 12px; font-weight: 600; color: var(--accent); }
 
 /* card destaque */
@@ -158,8 +158,8 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 .card-destaque h3 { font-size: 17px; margin-bottom: 8px; }
 .card-destaque p { margin-bottom: 14px; }
 .rating-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--green); background: var(--green-bg); border-radius: 99px; padding: 4px 12px; width: fit-content; margin-bottom: 10px; }
-.depoimento { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; line-height: 1.6; margin-bottom: 14px; }
-.depoimento cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.depoimento { font-size: 13px; font-style: italic; color: rgba(255,255,255,0.82); background: rgba(250,204,21,0.05); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 12px 16px; line-height: 1.6; margin-bottom: 14px; }
+.depoimento cite { display: block; font-style: normal; font-size: 11px; font-weight: 700; color: var(--accent); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
 
 /* STACK */
 .stack-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 64px 32px; }
@@ -192,12 +192,13 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.94)
 .stat-label { font-size: 11px; color: var(--subtle); font-weight: 500; margin-top: 2px; }
 
 /* FOOTER */
-footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: center; font-size: 12px; color: var(--subtle); font-family: 'DM Mono', monospace; }
+footer { border-top: 1px solid var(--border); background: #0A0A0A; padding: 24px 32px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; }
+#fechamento > div { background: #141414 !important; border: 1px solid rgba(255,255,255,0.08); }
 
 /* ── MODAL ── */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 16px; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--white); border-radius: 16px; overflow: hidden; width: 100%; max-width: 1100px; max-height: 94vh; display: flex; flex-direction: column; }
+.modal { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; width: 100%; max-width: 1100px; max-height: 94vh; display: flex; flex-direction: column; }
 .modal-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; border-bottom: 1px solid var(--border); }
 .modal-title { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
 .modal-close { width: 34px; height: 34px; border-radius: 99px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.15s; line-height: 1; }
@@ -268,8 +269,8 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
 .modal-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; margin-bottom: 10px; }
 .modal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
 .modal-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
-.modal-depo { font-size: 13px; font-style: italic; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; line-height: 1.6; margin-bottom: 12px; }
-.modal-depo cite { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--subtle); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.modal-depo { font-size: 13px; font-style: italic; color: rgba(255,255,255,0.82); background: rgba(250,204,21,0.05); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 12px 16px; line-height: 1.6; margin-bottom: 12px; }
+.modal-depo cite { display: block; font-style: normal; font-size: 11px; font-weight: 700; color: var(--accent); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
 .modal-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); padding-top: 12px; border-top: 1px solid var(--border); }
 
 
@@ -535,24 +536,24 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; text-align: ce
       <p class="section-sub">O que uso no dia a dia — sem achismo, só o que já entregou resultado.</p>
     </div>
     <div class="stack-grid">
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/MAKE.png" alt="Make">Make</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/N8N.png" alt="n8n">n8n</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/ZAPIER.png" alt="Zapier">Zapier</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/make_logo.png" alt="Make">Make</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/n8n_logo.png" alt="n8n">n8n</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/zapier_logo.png" alt="Zapier">Zapier</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/Google_Sheets_logo.png" alt="Google Sheets">Google Sheets</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/google_drive_logo.jpg" alt="Google Drive">Google Drive</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/drive_logo.png" alt="Google Drive">Google Drive</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/EXCEL.png" alt="Excel">Excel</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/airtable_logo.png" alt="Airtable">Airtable</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/apps_scripts_logo.png" alt="Apps Script">Apps Script</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/openai_logo.webp" alt="OpenAI">OpenAI / GPT</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/openai_logo.png" alt="OpenAI">OpenAI / GPT</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/supabase_logo.png" alt="Supabase">Supabase</div>
       <div class="stack-item">▲ Vercel</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/resend_logo.png" alt="Resend">Resend</div>
       <div class="stack-item">🌐 WordPress</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/nuvemshop_logo.png" alt="Nuvemshop">Nuvemshop</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/logo_github.png" alt="GitHub">GitHub</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/github_logo.png" alt="GitHub">GitHub</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/html_logo.png" alt="HTML">HTML</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/css_logo.png" alt="CSS">CSS</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/js_logo.png" alt="JavaScript">JavaScript</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/javascript_logo.png" alt="JavaScript">JavaScript</div>
     </div>
   </div>
 </section>
