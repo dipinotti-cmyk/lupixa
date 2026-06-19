@@ -456,24 +456,24 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
     <h2 class="stack-title">Ferramentas que uso para construir soluções reais</h2>
     <p class="stack-sub">O que uso no dia a dia — sem achismo, só o que já entregou resultado.</p>
     <div class="stack-grid">
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/MAKE.png" alt="Make">Make</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/N8N.png" alt="n8n">n8n</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/ZAPIER.png" alt="Zapier">Zapier</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/GOGGLE%20SHEETS.png" alt="Google Sheets">Google Sheets</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/DRIVE.png" alt="Google Drive">Google Drive</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/EXCEL.png" alt="Excel">Excel</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/AIRTABLE.png" alt="Airtable">Airtable</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/make_logo.png" alt="Make">Make</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/n8n_logo.png" alt="n8n">n8n</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/zapier_logo.png" alt="Zapier">Zapier</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/Google_Sheets_logo.png" alt="Google Sheets">Google Sheets</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/drive_logo.png" alt="Google Drive">Google Drive</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/logo-microsoft-excel.png" alt="Excel">Excel</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/airtable_logo.png" alt="Airtable">Airtable</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/apps_scripts_logo.png" alt="Apps Script">Apps Script</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/openai_logo.webp" alt="OpenAI">OpenAI / GPT</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/openai_logo.png" alt="OpenAI">OpenAI / GPT</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/supabase_logo.png" alt="Supabase">Supabase</div>
-      <div class="stack-item">▲ Vercel</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/vercel.png" alt="Vercel">Vercel</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/resend_logo.png" alt="Resend">Resend</div>
-      <div class="stack-item">🌐 WordPress</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/nuvemshop_logo.png" alt="Nuvemshop">Nuvemshop</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/logo_github.png" alt="GitHub">GitHub</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/wordpress-logo.png" alt="WordPress">WordPress</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/nuvemshop.png" alt="Nuvemshop">Nuvemshop</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/github_logo.png" alt="GitHub">GitHub</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/html_logo.png" alt="HTML">HTML</div>
       <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/css_logo.png" alt="CSS">CSS</div>
-      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/js_logo.png" alt="JavaScript">JavaScript</div>
+      <div class="stack-item"><img src="https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/javascript_logo.png" alt="JavaScript">JavaScript</div>
     </div>
   </div>
 </section>
@@ -562,7 +562,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 <script>
 const GH = 'https://raw.githubusercontent.com/dipinotti-cmyk/lupixa/main/';
 
-/* ===== HERO TABS ===== */
+/* ===== HERO TABS com autoplay ===== */
 const heroHeadlines = [
   {
     h: 'Se você chegou aqui, foi porque fiz uma proposta para o <span class="hl">seu projeto.</span>',
@@ -586,21 +586,34 @@ const headlineEl = document.getElementById('heroHeadline');
 const subEl = document.getElementById('heroSub');
 const tabs = document.querySelectorAll('.hero-tab');
 let currentTab = 0;
+let heroTimer = null;
 
-function setTab(i) {
+function setTab(i, manual) {
   currentTab = i;
-  tabs.forEach((t, idx) => t.classList.toggle('active', idx === i));
+  tabs.forEach(function(t, idx) { t.classList.toggle('active', idx === i); });
   headlineEl.style.opacity = '0';
   setTimeout(function() {
     headlineEl.innerHTML = heroHeadlines[i].h;
     subEl.innerHTML = heroHeadlines[i].p;
     headlineEl.style.opacity = '1';
   }, 200);
+  if (manual) {
+    // ao clicar manualmente, reinicia o timer
+    clearInterval(heroTimer);
+    heroTimer = setInterval(function() {
+      setTab((currentTab + 1) % heroHeadlines.length, false);
+    }, 4500);
+  }
 }
 
 tabs.forEach(function(tab) {
-  tab.addEventListener('click', function() { setTab(parseInt(tab.dataset.i)); });
+  tab.addEventListener('click', function() { setTab(parseInt(tab.dataset.i), true); });
 });
+
+// autoplay do carrossel da hero
+heroTimer = setInterval(function() {
+  setTab((currentTab + 1) % heroHeadlines.length, false);
+}, 4500);
 
 /* ===== ACCORDION ===== */
 function toggleServico(key) {
@@ -641,8 +654,17 @@ function toggleServico(key) {
 
 /* ===== GSAP REVEALS + NÚMEROS ANIMADOS ===== */
 window.addEventListener('load', function() {
-  if (!window.gsap || !window.ScrollTrigger) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // só anima números, sem reveals
+    animateCounters();
+    animateTop1();
+    return;
+  }
+  if (!window.gsap || !window.ScrollTrigger) {
+    animateCounters();
+    animateTop1();
+    return;
+  }
   gsap.registerPlugin(ScrollTrigger);
 
   // Creds
@@ -665,27 +687,6 @@ window.addEventListener('load', function() {
   // Fechamento
   gsap.from('.fechamento-box', { opacity: 0, y: 28, scale: 0.987, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: '.fechamento-box', start: 'top 88%' }});
 
-  // Números animados
-  gsap.utils.toArray('.stat-num[data-target]').forEach(function(el) {
-    var end = parseFloat(el.dataset.target);
-    var suffix = el.dataset.suffix || '';
-    var isDecimal = el.dataset.target.indexOf('.') > -1;
-    var obj = { v: 0 };
-    gsap.to(obj, {
-      v: end, duration: 1.6, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
-      onUpdate: function() { el.textContent = (isDecimal ? obj.v.toFixed(1) : Math.round(obj.v)) + suffix; }
-    });
-  });
-
-  // Top 1% letra por letra
-  var top1el = document.querySelector('.stat-num[data-top1]');
-  if (top1el) {
-    var raw = 'Top 1%';
-    top1el.innerHTML = raw.split('').map(function(ch) { return '<span style="opacity:0;display:inline-block">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>'; }).join('');
-    gsap.to(top1el.querySelectorAll('span'), { opacity: 1, duration: 0.4, stagger: 0.07, ease: 'power1.out', scrollTrigger: { trigger: top1el, start: 'top 92%', once: true }});
-  }
-
   // Fade in nos cards quando accordion abre
   document.querySelectorAll('.servico-header').forEach(function(header) {
     header.addEventListener('click', function() {
@@ -703,6 +704,57 @@ window.addEventListener('load', function() {
     if (!img.complete) img.addEventListener('load', function() { ScrollTrigger.refresh(); }, { once: true });
   });
 });
+
+/* ===== NÚMEROS ANIMADOS (mobile + desktop) ===== */
+function animateCounters() {
+  document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
+    var end = parseFloat(el.dataset.target);
+    var suffix = el.dataset.suffix || '';
+    var isDecimal = el.dataset.target.indexOf('.') > -1;
+    if (window.gsap && window.ScrollTrigger) {
+      var obj = { v: 0 };
+      gsap.to(obj, {
+        v: end, duration: 1.6, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 95%', once: true },
+        onUpdate: function() { el.textContent = (isDecimal ? obj.v.toFixed(1) : Math.round(obj.v)) + suffix; }
+      });
+    } else {
+      var obs = new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting) return;
+        obs.disconnect();
+        var start = performance.now(), dur = 1400;
+        function step(now) {
+          var p = Math.min((now - start) / dur, 1), val = end * p;
+          el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, { threshold: 0.1 });
+      obs.observe(el);
+    }
+  });
+}
+
+function animateTop1() {
+  var el = document.querySelector('.stat-num[data-top1]');
+  if (!el) return;
+  var raw = 'Top 1%';
+  el.innerHTML = raw.split('').map(function(ch) {
+    return '<span style="opacity:0;display:inline-block">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>';
+  }).join('');
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.to(el.querySelectorAll('span'), { opacity: 1, duration: 0.4, stagger: 0.07, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 95%', once: true }});
+  } else {
+    var obs = new IntersectionObserver(function(entries) {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+      el.querySelectorAll('span').forEach(function(s, i) {
+        setTimeout(function() { s.style.opacity = '1'; s.style.transition = 'opacity 0.3s'; }, i * 70);
+      });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  }
+}
 
 /* ===== PROJETOS (MODAL) ===== */
 const projects = {
