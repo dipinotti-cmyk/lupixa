@@ -653,85 +653,85 @@ function toggleServico(key) {
 })();
 
 /* ===== GSAP REVEALS + NÚMEROS ANIMADOS ===== */
-window.addEventListener('load', function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // só anima números, sem reveals
-    animateCounters();
-    animateTop1();
-    return;
-  }
-  if (!window.gsap || !window.ScrollTrigger) {
-    animateCounters();
-    animateTop1();
-    return;
-  }
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Creds
-  gsap.from('.cred', { opacity: 0, y: 12, duration: 0.5, stagger: 0.06, ease: 'power2.out', scrollTrigger: { trigger: '.creds', start: 'top 94%' }});
-
-  // Serviço headers
-  gsap.utils.toArray('.servico-header').forEach(function(el) {
-    gsap.from(el, { opacity: 0, y: 16, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%' }});
-  });
-
-  // Stack items
-  gsap.from('.stack-item', { opacity: 0, y: 14, duration: 0.4, ease: 'power2.out', stagger: 0.025, scrollTrigger: { trigger: '.stack-grid', start: 'top 90%' }});
-
-  // Sobre
-  gsap.from('.sobre-box', { opacity: 0, y: 28, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: '.sobre-box', start: 'top 86%' }});
-
-  // Método steps
-  gsap.from('.work-step', { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out', stagger: 0.1, scrollTrigger: { trigger: '.metodo-grid', start: 'top 86%' }});
-
-  // Fechamento
-  gsap.from('.fechamento-box', { opacity: 0, y: 28, scale: 0.987, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: '.fechamento-box', start: 'top 88%' }});
-
-  // Fade in nos cards quando accordion abre
-  document.querySelectorAll('.servico-header').forEach(function(header) {
-    header.addEventListener('click', function() {
-      var item = header.parentElement;
-      if (!item.classList.contains('open')) return;
-      setTimeout(function() {
-        var cards = item.querySelectorAll('.card');
-        gsap.fromTo(cards, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.08 });
-      }, 50);
-    });
-  });
-
-  setTimeout(function() { ScrollTrigger.refresh(); }, 500);
-  document.querySelectorAll('img').forEach(function(img) {
-    if (!img.complete) img.addEventListener('load', function() { ScrollTrigger.refresh(); }, { once: true });
+// Fade in nos cards quando accordion abre — funciona sem GSAP também
+document.querySelectorAll('.servico-header').forEach(function(header) {
+  header.addEventListener('click', function() {
+    var item = header.parentElement;
+    if (!item.classList.contains('open')) return;
+    setTimeout(function() {
+      var cards = item.querySelectorAll('.card');
+      if (window.gsap) {
+        gsap.fromTo(cards, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.07 });
+      } else {
+        cards.forEach(function(c, i) {
+          c.style.opacity = '0';
+          setTimeout(function() { c.style.transition = 'opacity 0.35s ease'; c.style.opacity = '1'; }, i * 70);
+        });
+      }
+    }, 50);
   });
 });
 
-/* ===== NÚMEROS ANIMADOS (mobile + desktop) ===== */
+window.addEventListener('load', function() {
+  // Números e Top 1% — sempre rodam, independente de GSAP/mobile
+  animateCounters();
+  animateTop1();
+
+  // Reveals com scroll — só desktop com GSAP, sem afetar visibilidade no mobile
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced && window.gsap && window.ScrollTrigger && window.innerWidth > 768) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.cred', { opacity: 0, y: 12, duration: 0.5, stagger: 0.06, ease: 'power2.out',
+      scrollTrigger: { trigger: '.creds', start: 'top 96%' }});
+
+    gsap.utils.toArray('.servico-header').forEach(function(el) {
+      gsap.from(el, { opacity: 0, y: 14, duration: 0.45, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 94%' }});
+    });
+
+    // Stack: só translateY, mantém opacidade — logo nunca some
+    gsap.from('.stack-item', { y: 12, duration: 0.4, ease: 'power2.out', stagger: 0.02,
+      scrollTrigger: { trigger: '.stack-grid', start: 'top 92%' }});
+
+    gsap.from('.sobre-box', { opacity: 0, y: 24, duration: 0.65, ease: 'power2.out',
+      scrollTrigger: { trigger: '.sobre-box', start: 'top 88%' }});
+
+    gsap.from('.work-step', { opacity: 0, y: 18, duration: 0.5, ease: 'power2.out', stagger: 0.1,
+      scrollTrigger: { trigger: '.metodo-grid', start: 'top 88%' }});
+
+    gsap.from('.fechamento-box', { opacity: 0, y: 24, scale: 0.988, duration: 0.65, ease: 'power2.out',
+      scrollTrigger: { trigger: '.fechamento-box', start: 'top 90%' }});
+
+    setTimeout(function() { ScrollTrigger.refresh(); }, 600);
+  }
+});
+
+/* ===== NÚMEROS ANIMADOS — IntersectionObserver puro, funciona em qualquer device ===== */
 function animateCounters() {
   document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
     var end = parseFloat(el.dataset.target);
     var suffix = el.dataset.suffix || '';
     var isDecimal = el.dataset.target.indexOf('.') > -1;
-    if (window.gsap && window.ScrollTrigger) {
-      var obj = { v: 0 };
-      gsap.to(obj, {
-        v: end, duration: 1.6, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 95%', once: true },
-        onUpdate: function() { el.textContent = (isDecimal ? obj.v.toFixed(1) : Math.round(obj.v)) + suffix; }
-      });
-    } else {
-      var obs = new IntersectionObserver(function(entries) {
-        if (!entries[0].isIntersecting) return;
-        obs.disconnect();
-        var start = performance.now(), dur = 1400;
-        function step(now) {
-          var p = Math.min((now - start) / dur, 1), val = end * p;
-          el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }, { threshold: 0.1 });
-      obs.observe(el);
-    }
+    var done = false;
+    var obs = new IntersectionObserver(function(entries) {
+      if (!entries[0].isIntersecting || done) return;
+      done = true;
+      obs.disconnect();
+      var startTime = performance.now();
+      var dur = 1400;
+      function step(now) {
+        var p = Math.min((now - startTime) / dur, 1);
+        // easeOutCubic
+        var ep = 1 - Math.pow(1 - p, 3);
+        var val = end * ep;
+        el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = (isDecimal ? end.toFixed(1) : end) + suffix;
+      }
+      requestAnimationFrame(step);
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    obs.observe(el);
   });
 }
 
@@ -740,20 +740,19 @@ function animateTop1() {
   if (!el) return;
   var raw = 'Top 1%';
   el.innerHTML = raw.split('').map(function(ch) {
-    return '<span style="opacity:0;display:inline-block">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>';
+    return '<span style="opacity:0;display:inline-block;transition:opacity 0.3s ease">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>';
   }).join('');
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.to(el.querySelectorAll('span'), { opacity: 1, duration: 0.4, stagger: 0.07, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 95%', once: true }});
-  } else {
-    var obs = new IntersectionObserver(function(entries) {
-      if (!entries[0].isIntersecting) return;
-      obs.disconnect();
-      el.querySelectorAll('span').forEach(function(s, i) {
-        setTimeout(function() { s.style.opacity = '1'; s.style.transition = 'opacity 0.3s'; }, i * 70);
-      });
-    }, { threshold: 0.1 });
-    obs.observe(el);
-  }
+  var spans = el.querySelectorAll('span');
+  var done = false;
+  var obs = new IntersectionObserver(function(entries) {
+    if (!entries[0].isIntersecting || done) return;
+    done = true;
+    obs.disconnect();
+    spans.forEach(function(s, i) {
+      setTimeout(function() { s.style.opacity = '1'; }, i * 70);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  obs.observe(el);
 }
 
 /* ===== PROJETOS (MODAL) ===== */
