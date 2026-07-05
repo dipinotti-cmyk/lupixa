@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfólio · Diogo Pinotti</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<script defer src="/_vercel/insights/script.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -448,6 +447,37 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
     </div>
   </div>
 
+  <!-- WORDPRESS -->
+  <div class="servico-item" data-key="wordpress">
+    <div class="servico-header" onclick="toggleServico('wordpress')">
+      <div class="servico-header-left">
+        <span class="servico-icon">🌐</span>
+        <div>
+          <div class="servico-name">WordPress</div>
+          <div class="servico-sub">Sites institucionais rápidos, bonitos e que o cliente opera sozinho</div>
+        </div>
+      </div>
+      <span class="servico-chevron">↓</span>
+    </div>
+    <div class="servico-body">
+      <div class="servico-body-inner">
+        <div class="cards-grid">
+          <div class="card" onclick="openModal('vilma')" style="grid-column:span 2">
+            <div class="card-body">
+              <span class="card-badge badge-real">REAL</span>
+              <div class="rating-pill">✅ Projeto entregue · vilmadias.com.br</div>
+              <div class="card-tags"><span class="tag">WordPress</span><span class="tag">HTML/CSS</span><span class="tag">REST API</span><span class="tag">WhatsApp</span><span class="tag">Google Maps</span></div>
+              <h3>Site institucional para psicóloga — design acolhedor e depoimentos autogerenciáveis</h3>
+              <p>Presença digital travada virou site no ar em dias: 6 páginas, identidade visual turquesa e laranja, carrossel de avaliações reais do Google e sistema onde a cliente adiciona depoimentos sozinha — sem mexer em código, sem plugin pago.</p>
+              <div class="depoimento">"Está ficando muito bom, bem organizado e fluido. As cores fizeram diferença — ficou mais acolhedor. As pessoas elogiaram muito o site."<cite>— Vilma Dias · Psicóloga Clínica e Escolar</cite></div>
+              <div class="card-footer"><span class="card-meta">WordPress + Gutenberg + REST API · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div><!-- fim servicos-wrap -->
 
 <!-- STACK -->
@@ -848,6 +878,21 @@ const projects = {
     ],
     desc: 'Projeto demonstrativo de automação para acompanhamento de propostas enviadas. O fluxo verifica uma planilha de controle de propostas, identifica quais contatos precisam de follow-up, envia um lembrete automático por e-mail e atualiza a planilha após o envio.',
     meta: 'Google Sheets + Make + Gmail · Demo'
+  },
+  'vilma': {
+    title: 'Site Institucional — Psicóloga Clínica e Escolar',
+    badge: { text: 'REAL', class: 'badge-real' },
+    tags: ['WordPress', 'Gutenberg Nativo', 'HTML/CSS', 'JavaScript', 'REST API', 'Google Maps', 'WhatsApp'],
+    images: [
+      GH + 'Vilma-1.png', GH + 'Vilma-2.png', GH + 'Vilma-3.png', GH + 'Vilma-4.png',
+      GH + 'Vilma-5.png', GH + 'Vilma-6.png', GH + 'Vilma-7.png', GH + 'Vilma-8.png',
+      GH + 'Vilma-site-1.png', GH + 'Vilma-site-2.png', GH + 'Vilma-site-3.png',
+      GH + 'Vilma-site-4.png', GH + 'Vilma-site-5.png',
+    ],
+    desc: 'A cliente tinha um WordPress com 4 páginas criadas, sem layout, sem identidade visual e os textos parados fora do ar. Dependia só de indicação boca a boca. Em vez de instalar page builder pesado, trabalhei com Gutenberg nativo e blocos HTML customizados — site leve, rápido e com controle total do design. A identidade foi construída com variáveis CSS centralizadas: paleta turquesa e laranja com degradês, fugindo da estética fria comum em sites de saúde. O diferencial foi o sistema de depoimentos autogerenciável: o carrossel busca as avaliações automaticamente de uma categoria exclusiva via REST API do WordPress. A cliente cria um post, marca a categoria, publica — e aparece no site na hora, com layout e estrelas intactos, sem me chamar. Outras entregas: botão WhatsApp flutuante com mensagens contextuais por página, blog com 4 artigos e cards alimentados pela REST API, página teaser de pré-lançamento de livros com lista de espera integrada ao WhatsApp, e site 100% responsivo. Todo o conteúdo veio do material escrito pela própria cliente — voz preservada, zero texto genérico.',
+    depo: { text: '"Está ficando muito bom, bem organizado e fluido como pedi. As cores fizeram diferença. Ficou mais acolhedor e agradável aos olhos. As pessoas elogiaram muito o site."', cite: '— Vilma Dias · Psicóloga Clínica e Escolar · vilmadias.com.br' },
+    link: 'https://vilmadias.com.br',
+    meta: 'WordPress + Gutenberg + HTML/CSS + JavaScript + REST API · Case real · 2026'
   },
   'lp-barbearia': {
     title: 'Landing Page — Barbearia',
