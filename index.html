@@ -424,6 +424,16 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
     <div class="servico-body">
       <div class="servico-body-inner">
         <div class="cards-grid">
+          <div class="card" onclick="openModal('gestao-comercial')" style="grid-column:span 2">
+            <div class="card-body">
+              <span class="card-badge badge-real">REAL</span>
+              <div class="rating-pill">⚙️ Em produção na operação da Lupixa</div>
+              <div class="card-tags"><span class="tag">OpenAI</span><span class="tag">Vercel API</span><span class="tag">Supabase</span><span class="tag">CRM</span></div>
+              <h3>Sistema de gestão comercial com IA — da demanda ao fechamento</h3>
+              <p>Análise de viabilidade, precificação em 3 cenários, documentos comerciais publicados com 1 clique e CRM com follow-up inteligente. Construído pela Lupixa para a própria operação — a gente usa o que vende.</p>
+              <div class="card-footer"><span class="card-meta">JavaScript + OpenAI + Vercel + Supabase · 2026</span><span class="card-cta">Ver case completo →</span></div>
+            </div>
+          </div>
           <div class="card" onclick="openModal('briefing')">
             <div class="card-body">
               <span class="card-badge badge-demo">DEMO</span>
@@ -893,6 +903,15 @@ const projects = {
     depo: { text: '"Está ficando muito bom, bem organizado e fluido como pedi. As cores fizeram diferença. Ficou mais acolhedor e agradável aos olhos. As pessoas elogiaram muito o site."', cite: '— Vilma Dias · Psicóloga Clínica e Escolar · vilmadias.com.br' },
     link: 'https://vilmadias.com.br',
     meta: 'WordPress + Gutenberg + HTML/CSS + JavaScript + REST API · Case real · 2026'
+  },
+  'gestao-comercial': {
+    title: 'Sistema de Gestão Comercial com IA',
+    badge: { text: 'REAL', class: 'badge-real' },
+    tags: ['JavaScript', 'OpenAI GPT-4o', 'Vercel Edge Functions', 'Vercel API', 'Supabase', 'CRM', 'Automação'],
+    images: [],
+    desc: 'Sistema construído pela Lupixa para a própria operação comercial, em produção diária. Cobre o ciclo completo: a demanda entra, a IA analisa complexidade, risco e chance comercial e recomenda seguir ou pular (detectando até orçamento-âncora irreal); a precificação vem assistida em 3 cenários (piso, competitivo, alto) com decisão final sempre humana; os documentos comerciais são gerados sob medida — acima de um valor definido, viram página web visual adaptada ao nicho do cliente, publicada no ar com 1 clique via integração direta com a API do Vercel, com o link já inserido no texto; e o CRM integrado (Supabase) acompanha cada contato com status, follow-up cobrado na data certa com texto que agrega valor em vez de só cobrar resposta, e dashboard de conversão. Resultado: da demanda à proposta pronta em minutos, página comercial no ar em segundos, zero follow-ups esquecidos. É o mesmo tipo de sistema que a Lupixa constrói sob medida para clientes — com a diferença de que este roda na nossa operação todos os dias.',
+    link: 'https://lupixa.com/case-gestao-comercial.html',
+    meta: 'JavaScript + OpenAI + Vercel + Supabase · Case real · Em produção · 2026'
   },
   'lp-barbearia': {
     title: 'Landing Page — Barbearia',

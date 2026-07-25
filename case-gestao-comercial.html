@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case · Sistema de Gestão Comercial com IA — Lupixa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0A0A0A;
+  --ink: #F5F5F5;
+  --muted: rgba(255,255,255,0.6);
+  --subtle: rgba(255,255,255,0.38);
+  --accent: #FACC15;
+  --accent-bg: rgba(250,204,21,0.10);
+  --green: #34D399;
+  --green-bg: rgba(52,211,153,0.10);
+  --card: #141414;
+  --border: rgba(255,255,255,0.07);
+  --radius: 14px;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 11px; border-radius: 6px; transition: all 0.15s; }
+.nav-back:hover { color: #fff; background: rgba(255,255,255,0.07); }
+
+.hero { text-align: center; padding: 64px 0 48px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--green); background: var(--green-bg); border: 1px solid rgba(52,211,153,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
+.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+h1 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 16px; color: #fff; }
+h1 .hl { color: var(--accent); font-style: italic; }
+.hero p { font-size: 15px; color: var(--muted); max-width: 560px; margin: 0 auto; }
+
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.eyebrow::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(250,204,21,0.4), rgba(255,255,255,0.05)); }
+section { padding: 36px 0; }
+section p { color: var(--muted); font-size: 14.5px; line-height: 1.75; margin-bottom: 12px; max-width: 700px; }
+section p strong { color: var(--ink); }
+
+.mod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.mod { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform 0.2s, border-color 0.2s; }
+.mod:hover { transform: translateY(-3px); border-color: rgba(250,204,21,0.3); }
+.mod-icon { font-size: 20px; margin-bottom: 10px; }
+.mod h3 { font-size: 14.5px; font-weight: 700; color: #fff; margin-bottom: 6px; letter-spacing: -0.2px; }
+.mod p { font-size: 13px; margin-bottom: 0; }
+
+/* MOCKUPS DA INTERFACE */
+.mock-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.mock { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.mock-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.mock-bar .c { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+.mock-bar .label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--subtle); margin-left: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
+.mock-body { padding: 16px; }
+.m-line { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
+.m-line:last-child { border-bottom: 0; }
+.m-label { color: var(--muted); }
+.stars { color: var(--accent); letter-spacing: 1.5px; font-size: 12px; }
+.m-rec { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 99px; background: var(--green-bg); color: var(--green); border: 1px solid rgba(52,211,153,0.3); }
+.preco-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 4px; }
+.preco-cell { text-align: center; border: 1px solid var(--border); border-radius: 8px; padding: 10px 4px; }
+.preco-cell .t { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.06em; }
+.preco-cell .v { font-size: 13.5px; font-weight: 800; color: var(--muted); margin-top: 2px; }
+.preco-cell.mid { border-color: rgba(250,204,21,0.45); background: var(--accent-bg); }
+.preco-cell.mid .v { color: var(--accent); }
+.crm-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); font-size: 12.5px; }
+.crm-item:last-child { border-bottom: 0; }
+.crm-status { font-size: 10px; font-weight: 700; padding: 2.5px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; }
+.st-env { background: rgba(96,165,250,0.12); color: #60A5FA; border: 1px solid rgba(96,165,250,0.3); }
+.st-fu { background: var(--accent-bg); color: var(--accent); border: 1px solid rgba(250,204,21,0.3); }
+.st-fech { background: var(--green-bg); color: var(--green); border: 1px solid rgba(52,211,153,0.3); }
+.pub-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.pub-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; padding: 7px 11px; white-space: nowrap; }
+.pub-arrow { color: var(--subtle); }
+.pub-step.final { border-color: rgba(52,211,153,0.4); color: var(--green); font-weight: 600; }
+.pub-btn { display: inline-block; background: var(--accent); color: #0A0A0A; font-size: 12px; font-weight: 800; padding: 8px 16px; border-radius: 8px; margin-bottom: 12px; }
+
+/* RESULTADOS */
+.result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.result { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; text-align: center; }
+.result .big { font-size: 26px; font-weight: 900; color: var(--accent); letter-spacing: -0.5px; }
+.result .small { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* STACK */
+.stack-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.stack-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 15px; font-size: 13px; font-weight: 500; color: var(--ink); transition: all 0.15s; }
+.stack-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.note { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 22px; font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-top: 28px; }
+.note strong { color: var(--ink); }
+
+footer { border-top: 1px solid var(--border); padding: 32px; text-align: center; margin-top: 40px; }
+footer .f-name { font-size: 14px; font-weight: 700; color: #fff; }
+footer .f-name span { color: var(--accent); }
+footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
+
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 640px) {
+  .mod-grid, .mock-row, .result-grid { grid-template-columns: 1fr; }
+  .wrap { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">lupixa<span>.</span></a>
+  <a class="nav-back" href="index.html">← Voltar ao portfólio</a>
+</nav>
+
+<div class="hero wrap">
+  <div class="hero-badge"><span class="dot"></span>Case real · Em produção</div>
+  <h1>Sistema de gestão comercial <span class="hl">com IA</span></h1>
+  <p>Ferramenta construída pela Lupixa para a própria operação: análise de demandas, precificação assistida, documentos comerciais e acompanhamento de clientes — do primeiro contato ao fechamento, num só lugar.</p>
+</div>
+
+<div class="wrap">
+
+  <section class="rv">
+    <div class="eyebrow">O problema</div>
+    <p>Toda operação comercial pequena vive o mesmo ciclo: chega uma demanda, alguém precisa <strong>avaliar se vale a pena</strong>, definir <strong>quanto cobrar</strong>, escrever uma <strong>apresentação decente</strong> e depois <strong>lembrar de acompanhar</strong> quem não respondeu. Feito à mão, isso consome horas por semana — e o acompanhamento é sempre o primeiro a ser esquecido.</p>
+    <p>A Lupixa vivia exatamente isso. Em vez de contratar um software genérico, construímos a ferramenta sob medida.</p>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">A solução — 5 módulos integrados</div>
+    <div class="mod-grid">
+      <div class="mod"><div class="mod-icon">🔍</div><h3>Análise de viabilidade com IA</h3><p>A demanda entra, a IA avalia complexidade, risco e chance comercial, e recomenda: seguir, cautela ou pular. Detecta até orçamento-âncora irreal.</p></div>
+      <div class="mod"><div class="mod-icon">💰</div><h3>Precificação assistida</h3><p>Três cenários de valor (piso, competitivo, alto) calculados a partir do escopo real — a decisão final é sempre humana, mas informada.</p></div>
+      <div class="mod"><div class="mod-icon">📄</div><h3>Documentos comerciais</h3><p>Apresentação e proposta geradas sob medida pra cada demanda. Acima de um valor definido, vira página web visual adaptada ao nicho do cliente.</p></div>
+      <div class="mod"><div class="mod-icon">🚀</div><h3>Publicação com 1 clique</h3><p>Integração com a API do Vercel: a página da proposta vai ao ar em segundos, com link limpo, sem nenhum passo manual de infraestrutura.</p></div>
+      <div class="mod"><div class="mod-icon">🎯</div><h3>CRM com follow-up inteligente</h3><p>Cada contato registrado com status e data de retorno. O sistema cobra o follow-up na hora certa — e o texto de retorno agrega valor em vez de só cobrar resposta.</p></div>
+      <div class="mod"><div class="mod-icon">📊</div><h3>Dashboard de conversão</h3><p>Taxa de fechamento, propostas em aberto, follow-ups pendentes e o efeito do follow-up nas vendas — números reais da operação, sempre à vista.</p></div>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Como funciona na prática</div>
+    <div class="mock-row">
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Análise da demanda</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Complexidade</span><span class="stars">★★★☆☆</span></div>
+          <div class="m-line"><span class="m-label">Risco</span><span class="stars">★★☆☆☆</span></div>
+          <div class="m-line"><span class="m-label">Chance comercial</span><span class="stars">★★★★☆</span></div>
+          <div class="m-line"><span class="m-label">Recomendação</span><span class="m-rec">✅ ENVIAR</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Cenários de preço</span></div>
+        <div class="mock-body">
+          <div class="preco-3">
+            <div class="preco-cell"><div class="t">Piso</div><div class="v">R$ 900</div></div>
+            <div class="preco-cell mid"><div class="t">Competitivo</div><div class="v">R$ 1.400</div></div>
+            <div class="preco-cell"><div class="t">Alto</div><div class="v">R$ 2.200</div></div>
+          </div>
+          <div class="m-line" style="margin-top:10px"><span class="m-label">Decisão</span><span style="color:#fff;font-weight:700">sempre humana</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">CRM · acompanhamento</span></div>
+        <div class="mock-body">
+          <div class="crm-item"><span>Cliente A · Loja virtual</span><span class="crm-status st-env">Enviada</span></div>
+          <div class="crm-item"><span>Cliente B · Automação</span><span class="crm-status st-fu">Follow-up hoje</span></div>
+          <div class="crm-item"><span>Cliente C · Site</span><span class="crm-status st-fech">Fechada ✓</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Publicação</span></div>
+        <div class="mock-body">
+          <span class="pub-btn">🚀 Publicar</span>
+          <div class="pub-flow">
+            <span class="pub-step">Gera a página</span><span class="pub-arrow">→</span>
+            <span class="pub-step">Deploy via API</span><span class="pub-arrow">→</span>
+            <span class="pub-step final">Link no ar em segundos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:14px; font-size:12.5px; color:var(--subtle)">Representações da interface real, com dados ilustrativos.</p>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Resultados na operação</div>
+    <div class="result-grid">
+      <div class="result"><div class="big">minutos</div><div class="small">da demanda recebida à proposta pronta — antes eram horas de trabalho manual</div></div>
+      <div class="result"><div class="big">1 clique</div><div class="small">pra página comercial no ar, com link limpo, via integração direta com a API do Vercel</div></div>
+      <div class="result"><div class="big">zero</div><div class="small">follow-ups esquecidos — o sistema cobra o retorno na data certa, com texto pronto</div></div>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Stack</div>
+    <div class="stack-grid">
+      <span class="stack-item">JavaScript</span>
+      <span class="stack-item">OpenAI GPT-4o</span>
+      <span class="stack-item">Vercel Edge Functions</span>
+      <span class="stack-item">Vercel API (deploy programático)</span>
+      <span class="stack-item">Supabase</span>
+      <span class="stack-item">HTML/CSS</span>
+      <span class="stack-item">GitHub</span>
+    </div>
+    <div class="note"><strong>Por que este case importa pro seu negócio:</strong> este é o mesmo tipo de sistema que a Lupixa constrói sob medida — análise com IA, documentos automáticos, CRM leve e integrações que eliminam trabalho manual. A diferença é que este roda na nossa própria operação todos os dias, o que significa uma coisa: a gente usa o que vende.</div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="f-name">lupixa<span>.</span></div>
+  <p>Sistema construído e mantido pela Lupixa · Em produção desde 2026 · Diogo Pinotti</p>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rv').forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>
