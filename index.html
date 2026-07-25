@@ -126,6 +126,18 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); b
 .depoimento { font-size: 13px; font-style: italic; color: rgba(255,255,255,0.8); background: rgba(250,204,21,0.04); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 11px 14px; line-height: 1.6; margin-bottom: 13px; }
 .depoimento cite { display: block; font-style: normal; font-size: 10.5px; font-weight: 700; color: var(--accent); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.04em; }
 
+
+/* PORTFÓLIO — ABAS */
+.pf-tabs { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px; }
+.pf-tab { cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; padding: 8px 15px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.55); transition: all 0.2s ease; }
+.pf-tab:hover { border-color: rgba(255,255,255,0.26); color: rgba(255,255,255,0.85); }
+.pf-tab.active { border-color: transparent; background: var(--accent); color: #0A0A0A; box-shadow: 0 6px 18px -6px rgba(250,204,21,0.55); }
+.pf-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; font-size: 11.5px; color: var(--subtle); margin-bottom: 22px; }
+.pf-legend > span { display: inline-flex; align-items: center; gap: 6px; }
+.pf-legend .card-badge { margin-bottom: 0; }
+a.pf-card { display: block; text-decoration: none; color: inherit; }
+.pf-card.pf-hide { display: none; }
+
 /* STACK */
 .stack-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 32px; }
 .stack-inner { max-width: 900px; margin: 0 auto; }
@@ -286,208 +298,115 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
   <div class="cred"><span class="dot"></span> Cotia/SP · disponível para execução imediata</div>
 </div>
 
-<!-- SERVIÇOS (ACCORDION) -->
-<div class="servicos-label" id="servicos">Escolha o tipo de solução que você precisa</div>
+<!-- PORTFÓLIO (ABAS + PÁGINAS POR CASE) -->
+<div class="servicos-label" id="servicos">Todos os projetos — clique para abrir o case completo</div>
 
-<div class="servicos-wrap">
-
-  <!-- LANDING PAGES -->
-  <div class="servico-item" data-key="landing">
-    <div class="servico-header" onclick="toggleServico('landing')">
-      <div class="servico-header-left">
-        <span class="servico-icon">🏠</span>
-        <div>
-          <div class="servico-name">Landing Pages</div>
-          <div class="servico-sub">Páginas que convertem — do zero ao ar em até 5 dias</div>
-        </div>
-      </div>
-      <span class="servico-chevron">↓</span>
-    </div>
-    <div class="servico-body">
-      <div class="servico-body-inner">
-        <div class="cards-grid">
-          <div class="card" onclick="openModal('lp-barbearia')" ondblclick="window.open('https://dipinotti-cmyk.github.io/lupixa/lp-barbearia.html','_blank')">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">WhatsApp</span></div>
-              <h3>Captação de clientes via WhatsApp para barbearia local</h3>
-              <p>Landing page otimizada para transformar visitas em agendamentos reais — galeria de serviços, preços e botão direto pro WhatsApp.</p>
-              <div class="card-footer"><span class="card-meta">HTML/CSS · Demo</span><span class="card-cta">Ver detalhes →</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="servicos-wrap" id="portfolio">
+  <div class="pf-tabs">
+    <button class="pf-tab active" data-filter="todos">Todos</button>
+    <button class="pf-tab" data-filter="landing">Landing Pages</button>
+    <button class="pf-tab" data-filter="sites">Sites</button>
+    <button class="pf-tab" data-filter="crm">CRM &amp; Leads</button>
+    <button class="pf-tab" data-filter="automacao">Automação</button>
+    <button class="pf-tab" data-filter="ia">IA Aplicada</button>
   </div>
-
-  <!-- AUTOMAÇÃO -->
-  <div class="servico-item" data-key="automacao">
-    <div class="servico-header" onclick="toggleServico('automacao')">
-      <div class="servico-header-left">
-        <span class="servico-icon">⚡</span>
-        <div>
-          <div class="servico-name">Automação</div>
-          <div class="servico-sub">Processos que rodam sozinhos — Make, n8n e Zapier</div>
-        </div>
-      </div>
-      <span class="servico-chevron">↓</span>
-    </div>
-    <div class="servico-body">
-      <div class="servico-body-inner">
-        <div class="cards-grid">
-          <div class="card" onclick="openModal('m5')" style="grid-column:span 2">
+  <div class="pf-legend">
+    <span><span class="card-badge badge-real">REAL</span> entregue e avaliado por cliente</span>
+    <span><span class="card-badge badge-demo">DEMO</span> demonstrativo do método</span>
+    <span><span class="card-badge badge-prod">CONCEITO</span> produto próprio / protótipo</span>
+  </div>
+  <div class="cards-grid" id="pfGrid">
+          <a class="card pf-card" data-cat="ia" href="case-gestao-comercial.html" style="grid-column:span 2">
             <div class="card-body">
               <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">✅ Entregue em 4 dias · Prazo era 7</div>
-              <div class="card-tags"><span class="tag">Apps Script</span><span class="tag">Google Sheets</span><span class="tag">PDF Auto</span></div>
-              <h3>Simulador de importação que calcula tributos e gera PDF em 1 clique</h3>
-              <p>Acabou com a cotação manual em planilha: cálculo automático de impostos, catálogo de fornecedores integrado e proposta em PDF gerada na hora.</p>
-              <div class="depoimento">"Diogo muito prestativo e rápido!! fez um trabalho incrível."<cite>— Matheus Cisang · M5 Assessoria de Importação Fitness</cite></div>
-              <div class="card-footer"><span class="card-meta">Google Sheets + Apps Script · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+              <div class="rating-pill">⚙️ Em produção na operação da Lupixa</div><div class="card-tags"><span class="tag">JavaScript</span><span class="tag">OpenAI GPT-4o</span><span class="tag">Vercel Edge Functions</span><span class="tag">Vercel API</span></div>
+              <h3>Sistema de gestão comercial com IA — da demanda ao fechamento</h3>
+              <p>Análise de viabilidade, precificação em 3 cenários, documentos publicados com 1 clique e CRM com follow-up inteligente. A gente usa o que vende.</p>
+              <div class="card-footer"><span class="card-meta">JavaScript + OpenAI + Vercel + Supabase · Real</span><span class="card-cta">Ver case completo →</span></div>
             </div>
-          </div>
-          <div class="card" onclick="openModal('followup')">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">Make</span><span class="tag">Gmail</span><span class="tag">Sheets</span></div>
-              <h3>Acompanhamento automático de propostas enviadas</h3>
-              <p>Lembretes disparados sozinhos para que nenhuma proposta esfrie sem resposta — nenhum cliente esquecido.</p>
-              <div class="card-footer"><span class="card-meta">Make + Gmail · Demo</span><span class="card-cta">Ver detalhes →</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CRM & LEADS -->
-  <div class="servico-item" data-key="crm">
-    <div class="servico-header" onclick="toggleServico('crm')">
-      <div class="servico-header-left">
-        <span class="servico-icon">🎯</span>
-        <div>
-          <div class="servico-name">CRM &amp; Leads</div>
-          <div class="servico-sub">Do formulário ao cliente fechado — sem software caro</div>
-        </div>
-      </div>
-      <span class="servico-chevron">↓</span>
-    </div>
-    <div class="servico-body">
-      <div class="servico-body-inner">
-        <div class="cards-grid">
-          <div class="card" onclick="openModal('leadflow')" style="grid-column:span 2">
+          </a>
+          <a class="card pf-card" data-cat="crm" href="case-leadflow.html" style="grid-column:span 2">
             <div class="card-body">
               <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">✅ Projeto entregue · Avaliação 5.0</div>
-              <div class="card-tags"><span class="tag">Google Forms</span><span class="tag">Sheets</span><span class="tag">Make</span><span class="tag">Gmail</span></div>
+              <div class="rating-pill">✅ Projeto entregue · Avaliação 5.0</div><div class="card-tags"><span class="tag">CRM</span><span class="tag">Google Forms</span><span class="tag">Google Sheets</span><span class="tag">Make</span></div>
               <h3>Mini CRM que organiza e acompanha leads automaticamente</h3>
               <p>Do formulário ao fechamento: pipeline visual, follow-up e avisos por e-mail rodando sozinhos — sem perder lead em planilha manual.</p>
-              <div class="depoimento">"O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."<cite>— The Accelerator BRL</cite></div>
-              <div class="card-footer"><span class="card-meta">Google Sheets + Make + Gmail · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+              <div class="card-footer"><span class="card-meta">Google Forms + Google Sheets + Make + Gmail · Real</span><span class="card-cta">Ver case completo →</span></div>
             </div>
-          </div>
-          <div class="card" onclick="openModal('qualificacao')">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">n8n</span><span class="tag">Airtable</span><span class="tag">Score</span></div>
-              <h3>Triagem automática que envia cada lead ao vendedor certo</h3>
-              <p>Classifica os contatos por prioridade e encaminha na hora — acaba com lead parado na fila e resposta lenta.</p>
-              <div class="card-footer"><span class="card-meta">n8n + Airtable · Demo</span><span class="card-cta">Ver detalhes →</span></div>
-            </div>
-          </div>
-          <div class="card" onclick="openModal('minicrm')">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">Google Sheets</span><span class="tag">Apps Script</span></div>
-              <h3>Captura e controle de leads sem mensalidade de software</h3>
-              <p>Histórico de contatos, próxima ação e alertas automáticos rodando dentro de uma planilha — organização comercial sem custo fixo.</p>
-              <div class="card-footer"><span class="card-meta">Sheets + Apps Script · Demo</span><span class="card-cta">Ver detalhes →</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- IA APLICADA -->
-  <div class="servico-item" data-key="ia">
-    <div class="servico-header" onclick="toggleServico('ia')">
-      <div class="servico-header-left">
-        <span class="servico-icon">🧠</span>
-        <div>
-          <div class="servico-name">IA Aplicada</div>
-          <div class="servico-sub">OpenAI integrada ao seu processo específico</div>
-        </div>
-      </div>
-      <span class="servico-chevron">↓</span>
-    </div>
-    <div class="servico-body">
-      <div class="servico-body-inner">
-        <div class="cards-grid">
-          <div class="card" onclick="openModal('gestao-comercial')" style="grid-column:span 2">
+          </a>
+          <a class="card pf-card" data-cat="automacao" href="case-m5.html" style="grid-column:span 2">
             <div class="card-body">
               <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">⚙️ Em produção na operação da Lupixa</div>
-              <div class="card-tags"><span class="tag">OpenAI</span><span class="tag">Vercel API</span><span class="tag">Supabase</span><span class="tag">CRM</span></div>
-              <h3>Sistema de gestão comercial com IA — da demanda ao fechamento</h3>
-              <p>Análise de viabilidade, precificação em 3 cenários, documentos comerciais publicados com 1 clique e CRM com follow-up inteligente. Construído pela Lupixa para a própria operação — a gente usa o que vende.</p>
-              <div class="card-footer"><span class="card-meta">JavaScript + OpenAI + Vercel + Supabase · 2026</span><span class="card-cta">Ver case completo →</span></div>
+              <div class="rating-pill">✅ Entregue em 4 dias · Prazo era 7</div><div class="card-tags"><span class="tag">JavaScript</span><span class="tag">Google Sheets</span><span class="tag">Apps Script</span><span class="tag">PDF Automático</span></div>
+              <h3>Simulador de importação que calcula tributos e gera PDF em 1 clique</h3>
+              <p>Acabou com a cotação manual: cálculo automático de impostos, catálogo de fornecedores integrado e proposta em PDF gerada na hora.</p>
+              <div class="card-footer"><span class="card-meta">Google Sheets + Apps Script · Real</span><span class="card-cta">Ver case completo →</span></div>
             </div>
-          </div>
-          <div class="card" onclick="openModal('briefing')">
+          </a>
+          <a class="card pf-card" data-cat="sites" href="case-vilma.html" style="grid-column:span 2">
             <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">OpenAI</span><span class="tag">Make</span><span class="tag">Google Docs</span></div>
-              <h3>Briefings de conteúdo gerados por IA em segundos</h3>
-              <p>Do formulário ao documento pronto: a IA estrutura o briefing, cria o arquivo e avisa o time — sem digitação manual.</p>
-              <div class="card-footer"><span class="card-meta">Make + OpenAI · Demo</span><span class="card-cta">Ver detalhes →</span></div>
+              <span class="card-badge badge-real">REAL</span>
+              <div class="rating-pill">✅ No ar em vilmadias.com.br</div><div class="card-tags"><span class="tag">WordPress</span><span class="tag">Gutenberg Nativo</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
+              <h3>Site institucional para psicóloga — design acolhedor e depoimentos autogerenciáveis</h3>
+              <p>WordPress com Gutenberg nativo, identidade visual própria e carrossel de depoimentos que a cliente atualiza sozinha via REST API.</p>
+              <div class="card-footer"><span class="card-meta">WordPress + Gutenberg + HTML/CSS + JavaScript + REST API · Real</span><span class="card-cta">Ver case completo →</span></div>
             </div>
-          </div>
-          <div class="card" onclick="openModal('pipeline-ia')">
+          </a>
+          <a class="card pf-card" data-cat="ia" href="case-pipeline-ia.html">
             <div class="card-body">
               <span class="card-badge badge-prod">CONCEITO</span>
-              <div class="card-tags"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">OpenAI</span><span class="tag">Stripe</span></div>
+              <div class="card-tags"><span class="tag">Next.js</span><span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">Supabase</span></div>
               <h3>SaaS que transforma fotos simples de produto em imagens de catálogo</h3>
               <p>Login, geração por IA e pagamento integrado — produto fullstack construído do zero para validar a ideia ponta a ponta.</p>
-              <div class="card-footer"><span class="card-meta">Next.js + Supabase + Stripe · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+              <div class="card-footer"><span class="card-meta">Next.js + Supabase + OpenAI + fal.ai + Vercel · Conceito</span><span class="card-cta">Ver case completo →</span></div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WORDPRESS -->
-  <div class="servico-item" data-key="wordpress">
-    <div class="servico-header" onclick="toggleServico('wordpress')">
-      <div class="servico-header-left">
-        <span class="servico-icon">🌐</span>
-        <div>
-          <div class="servico-name">WordPress</div>
-          <div class="servico-sub">Sites institucionais rápidos, bonitos e que o cliente opera sozinho</div>
-        </div>
-      </div>
-      <span class="servico-chevron">↓</span>
-    </div>
-    <div class="servico-body">
-      <div class="servico-body-inner">
-        <div class="cards-grid">
-          <div class="card" onclick="openModal('vilma')" style="grid-column:span 2">
+          </a>
+          <a class="card pf-card" data-cat="landing" href="case-lp-barbearia.html">
             <div class="card-body">
-              <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">✅ Projeto entregue · vilmadias.com.br</div>
-              <div class="card-tags"><span class="tag">WordPress</span><span class="tag">HTML/CSS</span><span class="tag">REST API</span><span class="tag">WhatsApp</span><span class="tag">Google Maps</span></div>
-              <h3>Site institucional para psicóloga — design acolhedor e depoimentos autogerenciáveis</h3>
-              <p>Presença digital travada virou site no ar em dias: 6 páginas, identidade visual turquesa e laranja, carrossel de avaliações reais do Google e sistema onde a cliente adiciona depoimentos sozinha — sem mexer em código, sem plugin pago.</p>
-              <div class="depoimento">"Está ficando muito bom, bem organizado e fluido. As cores fizeram diferença — ficou mais acolhedor. As pessoas elogiaram muito o site."<cite>— Vilma Dias · Psicóloga Clínica e Escolar</cite></div>
-              <div class="card-footer"><span class="card-meta">WordPress + Gutenberg + REST API · 2026</span><span class="card-cta">Ver detalhes →</span></div>
+              <span class="card-badge badge-demo">DEMO</span>
+              <div class="card-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">WhatsApp</span><span class="tag">Mobile-first</span></div>
+              <h3>Captação de clientes via WhatsApp para barbearia local</h3>
+              <p>Landing page otimizada para transformar visitas em agendamentos reais — serviços, preços e botão direto pro WhatsApp.</p>
+              <div class="card-footer"><span class="card-meta">HTML/CSS · Demo</span><span class="card-cta">Ver case completo →</span></div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </a>
+          <a class="card pf-card" data-cat="ia" href="case-briefing.html">
+            <div class="card-body">
+              <span class="card-badge badge-demo">DEMO</span>
+              <div class="card-tags"><span class="tag">API</span><span class="tag">Scripts &amp; Utilities</span><span class="tag">Inteligência Artificial</span><span class="tag">Make</span></div>
+              <h3>Briefings de conteúdo gerados por IA em segundos</h3>
+              <p>Do formulário ao documento pronto: a IA estrutura o briefing, cria o arquivo e avisa o time — sem digitação manual.</p>
+              <div class="card-footer"><span class="card-meta">Google Forms + Make + OpenAI + Google Docs + Gmail · Demo</span><span class="card-cta">Ver case completo →</span></div>
+            </div>
+          </a>
+          <a class="card pf-card" data-cat="crm" href="case-qualificacao.html">
+            <div class="card-body">
+              <span class="card-badge badge-demo">DEMO</span>
+              <div class="card-tags"><span class="tag">CRM</span><span class="tag">API</span><span class="tag">Scripts &amp; Utilities</span><span class="tag">Zapier</span></div>
+              <h3>Triagem automática que envia cada lead ao vendedor certo</h3>
+              <p>Classifica os contatos por prioridade e encaminha na hora — acaba com lead parado na fila e resposta lenta.</p>
+              <div class="card-footer"><span class="card-meta">Google Forms + Zapier + n8n + Google Sheets · Demo</span><span class="card-cta">Ver case completo →</span></div>
+            </div>
+          </a>
+          <a class="card pf-card" data-cat="crm" href="case-minicrm.html">
+            <div class="card-body">
+              <span class="card-badge badge-demo">DEMO</span>
+              <div class="card-tags"><span class="tag">CRM</span><span class="tag">Google Forms</span><span class="tag">Google Sheets</span><span class="tag">Make</span></div>
+              <h3>Captura e controle de leads sem mensalidade de software</h3>
+              <p>Histórico de contatos, próxima ação e alertas automáticos dentro de uma planilha — organização comercial sem custo fixo.</p>
+              <div class="card-footer"><span class="card-meta">Google Forms + Google Sheets + Make + Gmail · Demo</span><span class="card-cta">Ver case completo →</span></div>
+            </div>
+          </a>
+          <a class="card pf-card" data-cat="automacao" href="case-followup.html">
+            <div class="card-body">
+              <span class="card-badge badge-demo">DEMO</span>
+              <div class="card-tags"><span class="tag">CRM</span><span class="tag">API</span><span class="tag">Scripts &amp; Utilities</span><span class="tag">Google Sheets</span></div>
+              <h3>Acompanhamento automático de propostas enviadas</h3>
+              <p>Lembretes disparados sozinhos para que nenhuma proposta esfrie sem resposta — nenhum cliente esquecido.</p>
+              <div class="card-footer"><span class="card-meta">Google Sheets + Make + Gmail · Demo</span><span class="card-cta">Ver case completo →</span></div>
+            </div>
+          </a>
   </div>
-
 </div><!-- fim servicos-wrap -->
 
 <!-- STACK -->
@@ -575,28 +494,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 <!-- FOOTER -->
 <footer>Portfólio · Diogo Pinotti · 2026</footer>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <div class="modal-title" id="modalTitle"></div>
-      <button class="modal-close" onclick="closeModal()">×</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-gallery" id="modalGallery">
-        <img id="modalImg" alt="" onclick="openFullscreen()" style="cursor:zoom-in">
-        <button class="gallery-btn gallery-prev" onclick="prevImg()">‹</button>
-        <button class="gallery-btn gallery-next" onclick="nextImg()">›</button>
-        <div class="gallery-dots" id="galleryDots"></div>
-      </div>
-      <div class="modal-info" id="modalInfo"></div>
-    </div>
-  </div>
-</div>
 
-<div class="img-fullscreen" id="imgFullscreen" onclick="closeFullscreen()">
-  <img id="imgFullscreenSrc" alt="">
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -656,21 +554,6 @@ heroTimer = setInterval(function() {
   setTab((currentTab + 1) % heroHeadlines.length, false);
 }, 4500);
 
-/* ===== ACCORDION ===== */
-function toggleServico(key) {
-  var item = document.querySelector('[data-key="' + key + '"]');
-  var body = item.querySelector('.servico-body');
-  var isOpen = item.classList.contains('open');
-  // fecha todos
-  document.querySelectorAll('.servico-item').forEach(function(el) {
-    el.classList.remove('open');
-    el.querySelector('.servico-body').style.maxHeight = '0';
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    body.style.maxHeight = body.scrollHeight + 200 + 'px';
-  }
-}
 
 /* ===== BARRA DE PROGRESSO + SCROLL CUE ===== */
 (function() {
@@ -694,24 +577,6 @@ function toggleServico(key) {
 })();
 
 /* ===== GSAP REVEALS + NÚMEROS ANIMADOS ===== */
-// Fade in nos cards quando accordion abre — funciona sem GSAP também
-document.querySelectorAll('.servico-header').forEach(function(header) {
-  header.addEventListener('click', function() {
-    var item = header.parentElement;
-    if (!item.classList.contains('open')) return;
-    setTimeout(function() {
-      var cards = item.querySelectorAll('.card');
-      if (window.gsap) {
-        gsap.fromTo(cards, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.07 });
-      } else {
-        cards.forEach(function(c, i) {
-          c.style.opacity = '0';
-          setTimeout(function() { c.style.transition = 'opacity 0.35s ease'; c.style.opacity = '1'; }, i * 70);
-        });
-      }
-    }, 50);
-  });
-});
 
 window.addEventListener('load', function() {
   // Números e Top 1% — sempre rodam, independente de GSAP/mobile
@@ -726,7 +591,7 @@ window.addEventListener('load', function() {
     gsap.from('.cred', { opacity: 0, y: 12, duration: 0.5, stagger: 0.06, ease: 'power2.out',
       scrollTrigger: { trigger: '.creds', start: 'top 96%' }});
 
-    gsap.utils.toArray('.servico-header').forEach(function(el) {
+    gsap.utils.toArray('.pf-card').forEach(function(el) {
       gsap.from(el, { opacity: 0, y: 14, duration: 0.45, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top 94%' }});
     });
@@ -796,213 +661,19 @@ function animateTop1() {
   obs.observe(el);
 }
 
-/* ===== PROJETOS (MODAL) ===== */
-const projects = {
-  'leadflow': {
-    title: 'LeadFlow — Mini CRM Automatizado',
-    badge: { text: 'REAL', class: 'badge-real' },
-    tags: ['CRM', 'Google Forms', 'Google Sheets', 'Make', 'Gmail API', 'Database'],
-    images: [
-      GH + 'Capa%20LeadFlow.png',
-      GH + 'leadflow2.png', GH + 'leadflow3.png', GH + 'leadflow4.png',
-      GH + 'leadflow5.png', GH + 'leadflow6.png', GH + 'leadflow7.png',
-      GH + 'leadflow8.png', GH + 'leadflow9.png',
-    ],
-    desc: 'Desenvolvimento de um Mini CRM automatizado para captura, organização e acompanhamento de leads usando Google Forms, Google Sheets, Make e Gmail. O projeto incluiu formulário de captura, planilha estruturada como CRM, status comerciais, campos de follow-up, destaques visuais para leads urgentes e follow-ups vencidos, dashboard simples, automação de aviso interno por e-mail e documentação de uso. A solução foi criada em no-code/low-code para ser prática, fácil de operar e utilizável no dia a dia sem depender de conhecimento técnico. As imagens usam dados fictícios/demonstrativos para preservar informações sensíveis.',
-    depo: { text: '"O projeto superou nossas expectativas. Recomendamos sinceramente o seu trabalho."', cite: '— The Accelerator BRL' },
-    meta: 'Google Forms + Google Sheets + Make + Gmail · Case real · 2026'
-  },
-  'm5': {
-    title: 'M5 Assessoria — Simulador de Importação Fitness',
-    badge: { text: 'REAL', class: 'badge-real' },
-    tags: ['JavaScript', 'Google Sheets', 'Apps Script', 'PDF Automático', 'Database'],
-    images: [
-      GH + 'Capa%20M5.png', GH + 'M5_2.png', GH + 'M5_3.png', GH + 'M5_4.png', GH + 'M5_5.png',
-    ],
-    desc: 'Sistema completo de simulação comercial em Google Sheets com geração automática de PDF confidencial em 1 clique. A solução inclui cálculo automático de impostos (II, IPI, PIS, COFINS, ICMS), catálogo de fornecedores com imagens, fluxo de pagamentos estimado e menu personalizado com Apps Script. Entregue em 4 dias — prazo acordado era 7 dias úteis. Avaliação 5 estrelas pelo cliente.',
-    depo: { text: '"Diogo muito prestativo e rápido!! fez um trabalho incrível."', cite: '— Matheus Cisang · M5 Assessoria de Importação Fitness' },
-    meta: 'Google Sheets + Apps Script · Case real · 2026'
-  },
-  'pipeline-ia': {
-    title: 'Pipeline de Imagens com IA — SaaS',
-    badge: { text: 'CONCEITO', class: 'badge-prod' },
-    tags: ['Next.js', 'React.js', 'JavaScript', 'Supabase', 'OpenAI', 'fal.ai', 'Vercel', 'GitHub', 'API'],
-    images: [
-      GH + 'capa_workana_pipeline_ia_produto.png',
-      GH + 'workana_pipeline_ia_produto_02_fluxo_do_usuario.png',
-      GH + 'workana_pipeline_ia_produto_03_o_que_a_lupixa_fazia.png',
-      GH + 'workana_pipeline_ia_produto_04_stack_e_integrações.png',
-      GH + 'workana_pipeline_ia_produto_05_tecnologias.png',
-      GH + 'workana_pipeline_ia_produto_06_exemplo_frente_costas.png',
-      GH + 'portfolio_lupixa_07_github_repositorio.png',
-    ],
-    desc: 'Case demonstrativo baseado em um protótipo/SaaS próprio de IA para moda. A proposta era transformar imagens simples de produto — mockups, frente, costas e detalhes — em visuais comerciais para catálogo, campanha e redes sociais. O projeto tinha login, configuração de marca, upload de imagens, geração por IA, acompanhamento de jobs, entrega de variações visuais e organização do fluxo do usuário. Atuei na estruturação da solução, organização do fluxo, integração entre ferramentas, testes, versionamento e evolução do produto.',
-    meta: 'Next.js + Supabase + OpenAI + fal.ai + Vercel · 2026'
-  },
-  'briefing': {
-    title: 'Automação de Briefing de Conteúdo com IA',
-    badge: { text: 'DEMO', class: 'badge-demo' },
-    tags: ['API', 'Scripts & Utilities', 'Inteligência Artificial', 'Make', 'Google Forms', 'Google Docs', 'Gmail'],
-    images: [
-      GH + '4.png', GH + '01-ai-content-brief-form.png', GH + '02-ai-content-brief-sheet-before.png',
-      GH + '03-ai-content-brief-make-workflow.png', GH + '04-ai-content-brief-form-submitted.png',
-      GH + '05-ai-content-brief-sheet-new-row.png', GH + '06-ai-content-brief-make-success.png',
-      GH + '07-ai-content-brief-google-doc.png', GH + '08-ai-content-brief-gmail-notification.png',
-      GH + '09-ai-content-brief-sheet-updated..png',
-    ],
-    desc: 'Projeto demonstrativo de automação para criação de briefing de conteúdo com apoio de IA. O fluxo começa quando um cliente envia uma solicitação pelo Google Forms. Os dados são salvos no Google Sheets, o Make envia as informações para a OpenAI, um briefing estruturado de conteúdo é gerado, um arquivo no Google Docs é criado automaticamente e uma notificação por Gmail é enviada com o link do documento.',
-    meta: 'Google Forms + Make + OpenAI + Google Docs + Gmail · Demo'
-  },
-  'qualificacao': {
-    title: 'Qualificação & Roteamento de Leads',
-    badge: { text: 'DEMO', class: 'badge-demo' },
-    tags: ['CRM', 'API', 'Scripts & Utilities', 'Zapier', 'n8n', 'Google Sheets'],
-    images: [
-      GH + '3.png', GH + '01-ai-lead-qualification-form.png', GH + '02-lead-qualificationt-brief-sheet-before.png',
-      GH + '03-zapier-gmail-notification-test.png', GH + '04-n8n-webhook-received-lead.png',
-      GH + '05-n8n-classification-logic.png', GH + '06-qualified-leads-output.png',
-      GH + '07-zapier.png', GH + '08-n8n.png',
-    ],
-    desc: 'Projeto demonstrativo de automação para qualificar e direcionar leads conforme critérios definidos. O fluxo coleta informações iniciais de um contato, registra os dados em uma planilha, aplica uma lógica de classificação e direciona o lead conforme tipo de necessidade, prioridade ou perfil identificado.',
-    meta: 'Google Forms + Zapier + n8n + Google Sheets · Demo'
-  },
-  'minicrm': {
-    title: 'Mini CRM Automatizado para Captura de Leads',
-    badge: { text: 'DEMO', class: 'badge-demo' },
-    tags: ['CRM', 'Google Forms', 'Google Sheets', 'Make', 'Gmail', 'Data Entry'],
-    images: [
-      GH + '2.png', GH + '01-google-form-service-inquiry.png', GH + '02-lead-capture-demo-sheet.png',
-      GH + '03-make-workflow-overview.png', GH + '04-gmail-new-lead-notification.png',
-      GH + '05-sheet-updated-after-notification.png',
-    ],
-    desc: 'Projeto demonstrativo de automação para captura, organização e acompanhamento de leads. O fluxo começa quando um contato preenche um formulário. As informações são registradas automaticamente em uma planilha, organizadas em formato de controle comercial e enviadas por notificação automática por e-mail.',
-    meta: 'Google Forms + Google Sheets + Make + Gmail · Demo'
-  },
-  'followup': {
-    title: 'Automação de Follow-up de Propostas',
-    badge: { text: 'DEMO', class: 'badge-demo' },
-    tags: ['CRM', 'API', 'Scripts & Utilities', 'Google Sheets', 'Make', 'Gmail', 'Data Entry'],
-    images: [
-      GH + '1.png', GH + '01-proposal-tracker-demo-sheet.png', GH + '02-make-workflow-overview.png',
-      GH + '03-gmail-follow-up-reminder-email.png', GH + '04-sheet-updated-after-reminder.png.png',
-    ],
-    desc: 'Projeto demonstrativo de automação para acompanhamento de propostas enviadas. O fluxo verifica uma planilha de controle de propostas, identifica quais contatos precisam de follow-up, envia um lembrete automático por e-mail e atualiza a planilha após o envio.',
-    meta: 'Google Sheets + Make + Gmail · Demo'
-  },
-  'vilma': {
-    title: 'Site Institucional — Psicóloga Clínica e Escolar',
-    badge: { text: 'REAL', class: 'badge-real' },
-    tags: ['WordPress', 'Gutenberg Nativo', 'HTML/CSS', 'JavaScript', 'REST API', 'Google Maps', 'WhatsApp'],
-    images: [
-      GH + 'Vilma-1.png', GH + 'Vilma-2.png', GH + 'Vilma-3.png', GH + 'Vilma-4.png',
-      GH + 'Vilma-5.png', GH + 'Vilma-6.png', GH + 'Vilma-7.png', GH + 'Vilma-8.png',
-      GH + 'Vilma-site-1.png', GH + 'Vilma-site-2.png', GH + 'Vilma-site-3.png',
-      GH + 'Vilma-site-4.png', GH + 'Vilma-site-5.png',
-    ],
-    desc: 'A cliente tinha um WordPress com 4 páginas criadas, sem layout, sem identidade visual e os textos parados fora do ar. Dependia só de indicação boca a boca. Em vez de instalar page builder pesado, trabalhei com Gutenberg nativo e blocos HTML customizados — site leve, rápido e com controle total do design. A identidade foi construída com variáveis CSS centralizadas: paleta turquesa e laranja com degradês, fugindo da estética fria comum em sites de saúde. O diferencial foi o sistema de depoimentos autogerenciável: o carrossel busca as avaliações automaticamente de uma categoria exclusiva via REST API do WordPress. A cliente cria um post, marca a categoria, publica — e aparece no site na hora, com layout e estrelas intactos, sem me chamar. Outras entregas: botão WhatsApp flutuante com mensagens contextuais por página, blog com 4 artigos e cards alimentados pela REST API, página teaser de pré-lançamento de livros com lista de espera integrada ao WhatsApp, e site 100% responsivo. Todo o conteúdo veio do material escrito pela própria cliente — voz preservada, zero texto genérico.',
-    depo: { text: '"Está ficando muito bom, bem organizado e fluido como pedi. As cores fizeram diferença. Ficou mais acolhedor e agradável aos olhos. As pessoas elogiaram muito o site."', cite: '— Vilma Dias · Psicóloga Clínica e Escolar · vilmadias.com.br' },
-    link: 'https://vilmadias.com.br',
-    meta: 'WordPress + Gutenberg + HTML/CSS + JavaScript + REST API · Case real · 2026'
-  },
-  'gestao-comercial': {
-    title: 'Sistema de Gestão Comercial com IA',
-    badge: { text: 'REAL', class: 'badge-real' },
-    tags: ['JavaScript', 'OpenAI GPT-4o', 'Vercel Edge Functions', 'Vercel API', 'Supabase', 'CRM', 'Automação'],
-    images: [],
-    desc: 'Sistema construído pela Lupixa para a própria operação comercial, em produção diária. Cobre o ciclo completo: a demanda entra, a IA analisa complexidade, risco e chance comercial e recomenda seguir ou pular (detectando até orçamento-âncora irreal); a precificação vem assistida em 3 cenários (piso, competitivo, alto) com decisão final sempre humana; os documentos comerciais são gerados sob medida — acima de um valor definido, viram página web visual adaptada ao nicho do cliente, publicada no ar com 1 clique via integração direta com a API do Vercel, com o link já inserido no texto; e o CRM integrado (Supabase) acompanha cada contato com status, follow-up cobrado na data certa com texto que agrega valor em vez de só cobrar resposta, e dashboard de conversão. Resultado: da demanda à proposta pronta em minutos, página comercial no ar em segundos, zero follow-ups esquecidos. É o mesmo tipo de sistema que a Lupixa constrói sob medida para clientes — com a diferença de que este roda na nossa operação todos os dias.',
-    link: 'https://lupixa.com/case-gestao-comercial.html',
-    meta: 'JavaScript + OpenAI + Vercel + Supabase · Case real · Em produção · 2026'
-  },
-  'lp-barbearia': {
-    title: 'Landing Page — Barbearia',
-    badge: { text: 'DEMO', class: 'badge-demo' },
-    tags: ['HTML', 'CSS', 'WhatsApp', 'Mobile-first'],
-    images: [],
-    desc: 'Landing page de barbearia construída para um objetivo claro: transformar a visita em agendamento real. Galeria de serviços e preços, depoimentos e botão direto pro WhatsApp — carregando rápido no celular. Projeto demonstrativo; versão ao vivo no link abaixo.',
-    link: 'https://dipinotti-cmyk.github.io/lupixa/lp-barbearia.html',
-    meta: 'HTML/CSS · Demo'
-  }
-};
-
-/* ===== MODAL ===== */
-var currentImgs = [], currentIdx = 0, autoTimer = null;
-
-function setModalImg(src) {
-  var img = document.getElementById('modalImg');
-  if (!img) return;
-  img.style.opacity = '0';
-  var reveal = function() {
-    img.src = src;
-    requestAnimationFrame(function() { requestAnimationFrame(function() { img.style.opacity = '1'; }); });
-  };
-  var pre = new Image(); pre.onload = reveal; pre.onerror = reveal; pre.src = src;
-  if (pre.complete) reveal();
-}
-
-function openModal(id) {
-  var p = projects[id]; if (!p) return;
-  currentImgs = p.images.length ? p.images : [];
-  currentIdx = 0;
-  document.getElementById('modalTitle').textContent = p.title;
-  var gallery = document.getElementById('modalGallery');
-  if (currentImgs.length) {
-    setModalImg(currentImgs[0]);
-    gallery.style.display = 'flex';
-    updateDots();
-    startAutoPlay();
-  } else {
-    gallery.style.display = 'none';
-  }
-  var tagsHTML = p.tags.map(function(t) { return '<span class="tag">' + t + '</span>'; }).join('');
-  var depoHTML = p.depo ? '<div class="modal-depo">' + p.depo.text + '<cite>' + p.depo.cite + '</cite></div>' : '';
-  var ratingHTML = p.badge.class === 'badge-real' ? '<div class="rating-pill" style="margin-bottom:12px">✅ Case real entregue</div>' : '';
-  var linkHTML = p.link ? '<a href="' + p.link + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:7px 13px;border-radius:6px;transition:all 0.15s;" onmouseover="this.style.background=\'var(--accent)\';this.style.color=\'#000\'" onmouseout="this.style.background=\'transparent\';this.style.color=\'var(--accent)\'">🔗 Ver LP ao vivo →</a>' : '';
-  document.getElementById('modalInfo').innerHTML =
-    '<span class="modal-badge ' + p.badge.class + '">' + p.badge.text + '</span>' +
-    ratingHTML +
-    '<div class="modal-tags">' + tagsHTML + '</div>' +
-    '<p class="modal-desc">' + p.desc + '</p>' +
-    depoHTML + linkHTML +
-    '<div class="modal-meta" style="margin-top:12px">' + p.meta + '</div>';
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  stopAutoPlay();
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-
-function updateDots() {
-  document.getElementById('galleryDots').innerHTML = currentImgs.map(function(_, i) {
-    return '<div class="gallery-dot' + (i === currentIdx ? ' active' : '') + '" onclick="goToImg(' + i + ')"></div>';
-  }).join('');
-}
-
-function goToImg(i) {
-  currentIdx = i; setModalImg(currentImgs[i]); updateDots(); restartAutoPlay();
-}
-function prevImg() { currentIdx = (currentIdx - 1 + currentImgs.length) % currentImgs.length; setModalImg(currentImgs[currentIdx]); updateDots(); restartAutoPlay(); }
-function nextImg() { currentIdx = (currentIdx + 1) % currentImgs.length; setModalImg(currentImgs[currentIdx]); updateDots(); restartAutoPlay(); }
-
-function startAutoPlay() { stopAutoPlay(); if (currentImgs.length < 2) return; autoTimer = setInterval(function() { nextImg(); }, 3000); }
-function stopAutoPlay() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
-function restartAutoPlay() { stopAutoPlay(); startAutoPlay(); }
-
-function openFullscreen() {
-  document.getElementById('imgFullscreenSrc').src = document.getElementById('modalImg').src;
-  document.getElementById('imgFullscreen').classList.add('open');
-}
-function closeFullscreen() { document.getElementById('imgFullscreen').classList.remove('open'); }
-
-document.addEventListener('keydown', function(e) {
-  if (!document.getElementById('modalOverlay').classList.contains('open')) return;
-  if (e.key === 'Escape') { closeFullscreen(); closeModal(); }
-  if (e.key === 'ArrowLeft') prevImg();
-  if (e.key === 'ArrowRight') nextImg();
+/* ===== FILTRO DO PORTFÓLIO ===== */
+document.querySelectorAll('.pf-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.pf-tab').forEach(function(t) { t.classList.remove('active'); });
+    tab.classList.add('active');
+    var f = tab.dataset.filter;
+    document.querySelectorAll('.pf-card').forEach(function(c) {
+      c.classList.toggle('pf-hide', f !== 'todos' && c.dataset.cat !== f);
+    });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  });
 });
+
 </script>
 </body>
 </html>
