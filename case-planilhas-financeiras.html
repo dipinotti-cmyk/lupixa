@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case · Planilhas Financeiras com Dashboard — Lupixa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#0A0A0A; --ink:#F5F5F5; --muted:rgba(255,255,255,0.6); --subtle:rgba(255,255,255,0.38); --accent:#FACC15; --accent-bg:rgba(250,204,21,0.10); --green:#34D399; --green-bg:rgba(52,211,153,0.10); --card:#141414; --border:rgba(255,255,255,0.07); --radius:14px; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:860px; margin:0 auto; padding:0 32px; }
+nav { position:sticky; top:0; z-index:100; background:rgba(10,10,10,0.95); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; height:56px; display:flex; align-items:center; justify-content:space-between; }
+.nav-logo { font-size:14px; font-weight:700; color:var(--ink); text-decoration:none; }
+.nav-logo span { color:var(--accent); }
+.nav-back { font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; padding:6px 11px; border-radius:6px; transition:all 0.15s; }
+.nav-back:hover { color:#fff; background:rgba(255,255,255,0.07); }
+.head { padding:52px 0 28px; }
+.badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:4px 11px; border-radius:99px; margin-bottom:16px; }
+.badge-real { background:var(--green-bg); color:var(--green); border:1px solid rgba(52,211,153,0.3); }
+.badge-note { font-size:12px; color:var(--subtle); margin-left:10px; }
+h1 { font-family:'Newsreader',Georgia,serif; font-weight:600; font-size:clamp(26px,4.5vw,40px); line-height:1.14; letter-spacing:-0.02em; color:#fff; margin-bottom:14px; }
+.tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.tag { font-size:10px; font-weight:600; padding:3px 9px; border-radius:4px; letter-spacing:0.03em; text-transform:uppercase; background:var(--accent-bg); border:1px solid rgba(250,204,21,0.25); color:var(--accent); }
+section { padding:28px 0; }
+.eyebrow { font-family:'DM Mono',monospace; font-size:11px; font-weight:500; color:var(--accent); text-transform:uppercase; letter-spacing:0.12em; display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.eyebrow::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(250,204,21,0.4),rgba(255,255,255,0.05)); }
+section p { color:var(--muted); font-size:14.5px; line-height:1.8; margin-bottom:12px; }
+.feat { border-left:3px solid var(--accent); background:rgba(250,204,21,0.04); border-radius:0 10px 10px 0; padding:14px 20px; margin:10px 0; }
+.feat b { color:#fff; font-size:14px; display:block; margin-bottom:4px; }
+.feat span { font-size:13.5px; color:var(--muted); line-height:1.7; }
+.meta { font-family:'DM Mono',monospace; font-size:11px; color:var(--subtle); margin-top:20px; }
+.next-nav { display:flex; justify-content:space-between; gap:12px; border-top:1px solid var(--border); margin-top:32px; padding:24px 0 8px; }
+.next-nav a { font-size:13px; font-weight:600; color:var(--muted); text-decoration:none; transition:color 0.15s; }
+.next-nav a:hover { color:var(--accent); }
+footer { border-top:1px solid var(--border); padding:30px 32px; text-align:center; margin-top:44px; }
+footer .f-name { font-size:14px; font-weight:700; color:#fff; }
+footer .f-name span { color:var(--accent); }
+footer p { font-size:12px; color:var(--subtle); margin-top:4px; }
+@media (max-width:640px) { .wrap { padding:0 20px; } }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">lupixa<span>.</span></a>
+  <a class="nav-back" href="index.html#portfolio">← Voltar ao portfólio</a>
+</nav>
+<div class="wrap">
+  <div class="head">
+    <div><span class="badge badge-real">REAL</span><span class="badge-note">Projeto entregue a cliente · Avaliação 5.0</span></div>
+    <h1>Planilhas Financeiras com Dashboard — Fluxo de Caixa e Precificação</h1>
+    <div class="tags"><span class="tag">Excel</span><span class="tag">Dashboard</span><span class="tag">Fórmulas avançadas</span><span class="tag">DRE</span></div>
+  </div>
+
+  <section>
+    <div class="eyebrow">Sobre o projeto</div>
+    <p>Sistema financeiro completo em duas planilhas integradas, entregue a cliente e avaliado com nota máxima. Não é modelo de internet: cada aba foi construída pro fluxo real do negócio, com navegação interna entre painéis, instruções de uso na própria planilha e fórmulas que se atualizam sozinhas conforme os lançamentos entram.</p>
+    <div class="feat">
+      <b>Fluxo de Caixa</b>
+      <span>24 meses de lançamentos (dois anos completos), categorias configuráveis, resumo mensal com saldo acumulado e índice de liquidez, visão horizontal por categoria, fluxo diário do mês selecionado e dashboard com 5 gráficos.</span>
+    </div>
+    <div class="feat">
+      <b>Precificação de Produtos e Serviços</b>
+      <span>Despesas fixas, folha de pagamento com encargos, cadastro de produtos, três módulos de preço (serviços por hora técnica, comércio e indústria), DRE mensal, simulação de cenários pessimista/base/otimista e dashboard de margens.</span>
+    </div>
+    <p>O objetivo era o dono do negócio responder três perguntas sem contador e sem sistema pago: quanto entra e sai, quanto custa cada produto de verdade, e por quanto precisa vender pra ter lucro.</p>
+    <div class="meta">Excel · Fórmulas SUMIFS/DRE/cenários · Dashboards nativos · Entrega via Workana</div>
+  </section>
+  <div class="next-nav">
+    <a href="servicos-automacao.html">← Automação</a>
+    <a href="case-gestao-comercial.html">Case em destaque: Gestão Comercial com IA →</a>
+  </div>
+</div>
+<footer>
+  <div class="f-name">lupixa<span>.</span></div>
+  <p>Portfólio · Diogo Pinotti · 2026</p>
+</footer>
+
+</body>
+</html>
