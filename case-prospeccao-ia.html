@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case · Motor de Prospecção Outbound com IA — Lupixa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0A0A0A;
+  --ink: #F5F5F5;
+  --muted: rgba(255,255,255,0.6);
+  --subtle: rgba(255,255,255,0.38);
+  --accent: #FACC15;
+  --accent-bg: rgba(250,204,21,0.10);
+  --green: #34D399;
+  --green-bg: rgba(52,211,153,0.10);
+  --blue: #60A5FA;
+  --blue-bg: rgba(96,165,250,0.12);
+  --card: #141414;
+  --border: rgba(255,255,255,0.07);
+  --radius: 14px;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 11px; border-radius: 6px; transition: all 0.15s; }
+.nav-back:hover { color: #fff; background: rgba(255,255,255,0.07); }
+
+.hero { text-align: center; padding: 64px 0 48px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--green); background: var(--green-bg); border: 1px solid rgba(52,211,153,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
+.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+h1 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 16px; color: #fff; }
+h1 .hl { color: var(--accent); font-style: italic; }
+.hero p { font-size: 15px; color: var(--muted); max-width: 560px; margin: 0 auto; }
+
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.eyebrow::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(250,204,21,0.4), rgba(255,255,255,0.05)); }
+section { padding: 36px 0; }
+section p { color: var(--muted); font-size: 14.5px; line-height: 1.75; margin-bottom: 12px; max-width: 700px; }
+section p strong { color: var(--ink); }
+
+.mod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.mod { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform 0.2s, border-color 0.2s; }
+.mod:hover { transform: translateY(-3px); border-color: rgba(250,204,21,0.3); }
+.mod-icon { font-size: 20px; margin-bottom: 10px; }
+.mod h3 { font-size: 14.5px; font-weight: 700; color: #fff; margin-bottom: 6px; letter-spacing: -0.2px; }
+.mod p { font-size: 13px; margin-bottom: 0; }
+
+/* MOCKUPS DA INTERFACE */
+.mock-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.mock { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.mock-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.mock-bar .c { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+.mock-bar .label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--subtle); margin-left: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
+.mock-body { padding: 16px; }
+.m-line { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
+.m-line:last-child { border-bottom: 0; }
+.m-label { color: var(--muted); }
+.m-val { color: #fff; font-weight: 700; }
+.m-val.pos { color: var(--green); }
+
+.wa-bubble { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; font-size: 12px; color: var(--muted); line-height: 1.6; }
+.wa-tag { display: inline-flex; gap: 6px; align-items: center; font-family: 'DM Mono', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); margin-bottom: 10px; }
+
+.crm-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); font-size: 12.5px; }
+.crm-item:last-child { border-bottom: 0; }
+.crm-status { font-size: 10px; font-weight: 700; padding: 2.5px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+.st-nov { background: rgba(255,255,255,0.06); color: var(--subtle); border: 1px solid var(--border); }
+.st-env { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(96,165,250,0.3); }
+.st-neg { background: var(--accent-bg); color: var(--accent); border: 1px solid rgba(250,204,21,0.3); }
+.st-fech { background: var(--green-bg); color: var(--green); border: 1px solid rgba(52,211,153,0.3); }
+
+.funil-bar { height: 8px; border-radius: 99px; background: rgba(255,255,255,0.06); overflow: hidden; margin: 4px 0 2px; }
+.funil-fill { height: 100%; background: var(--accent); border-radius: 99px; }
+
+/* RESULTADOS */
+.result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.result { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; text-align: center; }
+.result .big { font-size: 26px; font-weight: 900; color: var(--accent); letter-spacing: -0.5px; }
+.result .small { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* STACK */
+.stack-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.stack-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 15px; font-size: 13px; font-weight: 500; color: var(--ink); transition: all 0.15s; }
+.stack-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.note { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 22px; font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-top: 28px; }
+.note strong { color: var(--ink); }
+
+footer { border-top: 1px solid var(--border); padding: 32px; text-align: center; margin-top: 40px; }
+footer .f-name { font-size: 14px; font-weight: 700; color: #fff; }
+footer .f-name span { color: var(--accent); }
+footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
+
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 640px) {
+  .mod-grid, .mock-row, .result-grid { grid-template-columns: 1fr; }
+  .wrap { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">lupixa<span>.</span></a>
+  <a class="nav-back" href="index.html">← Voltar ao portfólio</a>
+</nav>
+
+<div class="hero wrap">
+  <div class="hero-badge"><span class="dot"></span>Case real · Em produção</div>
+  <h1>Motor de prospecção outbound <span class="hl">com IA</span></h1>
+  <p>Ferramenta construída pela Lupixa para a própria operação: encontra negócios locais sem presença digital decente, escreve uma abordagem única pra cada um e acompanha a conversa até o fechamento — sozinha.</p>
+</div>
+
+<div class="wrap">
+
+  <section class="rv">
+    <div class="eyebrow">O problema</div>
+    <p>Prospecção fria funciona, mas escala mal quando é feita à mão: procurar negócio por negócio, escrever mensagem uma a uma, lembrar quem já foi contatado e quem ainda não respondeu. O resultado de fazer isso apressado é sempre o mesmo — mensagem genérica, número arriscando bloqueio por excesso de envio, e lead esquecido no meio do caminho.</p>
+    <p>Em vez de terceirizar essa etapa ou contratar uma lista pronta de leads, a Lupixa construiu o próprio motor de prospecção.</p>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">A solução — 6 módulos integrados</div>
+    <div class="mod-grid">
+      <div class="mod"><div class="mod-icon">🔎</div><h3>Descoberta automática de leads</h3><p>Escolhe nicho e cidade, e o sistema varre estabelecimentos reais, filtrando quem ainda não tem página própria com agendamento — só entra na lista quem tem essa lacuna de verdade.</p></div>
+      <div class="mod"><div class="mod-icon">✍️</div><h3>Mensagem única por lead, via IA</h3><p>Nada de copy genérica disparada em massa: a IA lê nome, avaliação e nota do negócio e escreve uma abordagem citando esses dados — uma mensagem redigida por lead.</p></div>
+      <div class="mod"><div class="mod-icon">📤</div><h3>Disparo multicanal com proteção de número</h3><p>WhatsApp e e-mail, com limite diário de envio configurável — o sistema avisa quando o volume do dia começa a colocar o número pessoal em risco.</p></div>
+      <div class="mod"><div class="mod-icon">🔁</div><h3>Pipeline de acompanhamento</h3><p>Cada lead percorre os estágios Novo → Enviado → Aguardando resposta → Negociação → Fechado, sem precisar de planilha paralela pra saber quem falta seguir.</p></div>
+      <div class="mod"><div class="mod-icon">📊</div><h3>Dashboard de conversão</h3><p>Funil completo — enviadas, responderam, fecharam — com quebra por cidade e por canal, sempre à vista pra saber onde a prospecção está rendendo.</p></div>
+      <div class="mod"><div class="mod-icon">💸</div><h3>Controle de custo por rodada</h3><p>Cada busca soma o custo real de descoberta de leads e geração de mensagem por IA, dando visão clara de quanto custa gerar cada lote de oportunidades.</p></div>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Como funciona na prática</div>
+    <div class="mock-row">
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Descoberta de leads</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Nicho</span><span class="m-val">Manicure e Cílios</span></div>
+          <div class="m-line"><span class="m-label">Cidade</span><span class="m-val">São Paulo, SP</span></div>
+          <div class="m-line"><span class="m-label">Encontrados</span><span class="m-val">23</span></div>
+          <div class="m-line"><span class="m-label">Novos na lista</span><span class="m-val pos">1</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Mensagem gerada</span></div>
+        <div class="mock-body">
+          <div class="wa-tag">💬 WhatsApp · rascunho da IA</div>
+          <div class="wa-bubble">"Oi, aqui é o Diogo! Adorei ver a nota 4.9 e as avaliações incríveis do seu espaço. Já pensou em ter uma página própria com agendamento integrado, onde suas clientes marcam horário sozinhas?"</div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Pipeline · acompanhamento</span></div>
+        <div class="mock-body">
+          <div class="crm-item"><span>Studio A · Manicure</span><span class="crm-status st-nov">Novo</span></div>
+          <div class="crm-item"><span>Studio B · Salão</span><span class="crm-status st-env">Enviado</span></div>
+          <div class="crm-item"><span>Studio C · Estética</span><span class="crm-status st-neg">Negociação</span></div>
+          <div class="crm-item"><span>Studio D · Nail design</span><span class="crm-status st-fech">Fechado ✓</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Dashboard · funil</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Enviadas</span><span class="m-val">64</span></div>
+          <div class="funil-bar"><div class="funil-fill" style="width:100%"></div></div>
+          <div class="m-line" style="margin-top:10px"><span class="m-label">Responderam</span><span class="m-val">6%</span></div>
+          <div class="funil-bar"><div class="funil-fill" style="width:6%"></div></div>
+          <div class="m-line" style="margin-top:10px"><span class="m-label">Custo da rodada</span><span class="m-val">US$ 2,91</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:14px; font-size:12.5px; color:var(--subtle)">Representações da interface real, com dados ilustrativos.</p>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Resultados na operação</div>
+    <div class="result-grid">
+      <div class="result"><div class="big">1 clique</div><div class="small">de nicho + cidade escolhidos a um lote de mensagens únicas prontas pra disparar</div></div>
+      <div class="result"><div class="big">centavos</div><div class="small">é o custo real por rodada de descoberta + geração de mensagem — visível antes de cada disparo</div></div>
+      <div class="result"><div class="big">zero</div><div class="small">mensagem genérica — cada abordagem cita um dado real do negócio contatado</div></div>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Stack</div>
+    <div class="stack-grid">
+      <span class="stack-item">Next.js</span>
+      <span class="stack-item">JavaScript</span>
+      <span class="stack-item">OpenAI GPT-4o</span>
+      <span class="stack-item">Apify (coleta de dados)</span>
+      <span class="stack-item">WhatsApp</span>
+      <span class="stack-item">Vercel</span>
+    </div>
+    <div class="note"><strong>Por que este case importa pro seu negócio:</strong> este é o mesmo motor que gera oportunidades reais pra própria Lupixa, todos os dias — não é uma demonstração isolada. Se sua operação depende de prospecção ativa, esse é o tipo de sistema que tira a parte repetitiva da sua mão e deixa você só na conversa que já chegou quente.</div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="f-name">lupixa<span>.</span></div>
+  <p>Sistema construído e mantido pela Lupixa · Em produção desde 2026 · Diogo Pinotti</p>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rv').forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>
