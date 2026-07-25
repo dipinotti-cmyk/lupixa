@@ -127,16 +127,24 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); b
 .depoimento cite { display: block; font-style: normal; font-size: 10.5px; font-weight: 700; color: var(--accent); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.04em; }
 
 
-/* PORTFÓLIO — ABAS */
-.pf-tabs { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px; }
-.pf-tab { cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; padding: 8px 15px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.55); transition: all 0.2s ease; }
-.pf-tab:hover { border-color: rgba(255,255,255,0.26); color: rgba(255,255,255,0.85); }
-.pf-tab.active { border-color: transparent; background: var(--accent); color: #0A0A0A; box-shadow: 0 6px 18px -6px rgba(250,204,21,0.55); }
-.pf-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; font-size: 11.5px; color: var(--subtle); margin-bottom: 22px; }
-.pf-legend > span { display: inline-flex; align-items: center; gap: 6px; }
-.pf-legend .card-badge { margin-bottom: 0; }
-a.pf-card { display: block; text-decoration: none; color: inherit; }
-.pf-card.pf-hide { display: none; }
+/* PORTFÓLIO — CARDS DE SERVIÇO (entrada por categoria) */
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.cat-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+.cat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.3); transform: translateY(-3px); border-color: rgba(255,255,255,0.16); }
+.cat-icon { font-size: 24px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--accent-bg); border-radius: 12px; margin-bottom: 14px; }
+.cat-card h3 { font-size: 15.5px; font-weight: 700; letter-spacing: -0.25px; color: #fff; margin-bottom: 6px; }
+.cat-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-bottom: 16px; flex: 1; }
+.cat-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); font-size: 11.5px; }
+.cat-count { font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.45); }
+.cat-cta { font-weight: 600; color: var(--accent); }
+.cat-card.cat-card-all { background: linear-gradient(145deg, rgba(250,204,21,0.08), var(--card)); border-color: rgba(250,204,21,0.22); }
+.cat-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; font-size: 11.5px; color: var(--subtle); margin: 18px 0 0; }
+.cat-legend > span { display: inline-flex; align-items: center; gap: 6px; }
+.cat-legend .card-badge { margin-bottom: 0; }
+.card-badge { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; }
+.badge-real { background: var(--green-bg); color: var(--green); border: 1px solid rgba(52,211,153,0.3); }
+.badge-demo { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.1); }
+.badge-prod { background: rgba(139,92,246,0.1); color: #A78BFA; border: 1px solid rgba(139,92,246,0.3); }
 
 /* STACK */
 .stack-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 32px; }
@@ -235,7 +243,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
   .hero { padding: 52px 20px 48px; }
   .creds { padding: 16px 16px 0; }
   .servicos-wrap { padding: 0 16px 48px; }
-  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid, .cat-grid { grid-template-columns: 1fr; }
   .stack-section { padding: 48px 16px; }
   .sobre-section, .metodo-section, .fechamento-section { padding-left: 16px; padding-right: 16px; }
   .metodo-grid { grid-template-columns: 1fr; }
@@ -280,12 +288,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 
     <p id="heroSub">Este espaço reúne projetos reais e demonstrações práticas de soluções em automação, sites e integrações. O objetivo aqui é simples: <em>você entender com clareza como posso executar o seu projeto.</em></p>
 
-    <a href="#servicos" class="hero-cta">Ver projetos <span class="hero-cta-arrow">→</span></a>
-
-    <a href="#servicos" class="hero-scroll" id="heroScroll" aria-label="Rolar para projetos">
-      <span>Role para baixo</span>
-      <span class="hero-scroll-arrow">↓</span>
-    </a>
+    <a href="#portfolio" class="hero-cta">Ver projetos <span class="hero-cta-arrow">→</span></a>
 
   </div>
 </div>
@@ -298,114 +301,52 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
   <div class="cred"><span class="dot"></span> Cotia/SP · disponível para execução imediata</div>
 </div>
 
-<!-- PORTFÓLIO (ABAS + PÁGINAS POR CASE) -->
-<div class="servicos-label" id="servicos">Todos os projetos — clique para abrir o case completo</div>
+<!-- PORTFÓLIO (CARDS DE SERVIÇO → CADA UM ABRE UMA PÁGINA) -->
+<div class="servicos-label" id="servicos">Escolha a área e veja os projetos</div>
 
 <div class="servicos-wrap" id="portfolio">
-  <div class="pf-tabs">
-    <button class="pf-tab active" data-filter="todos">Todos</button>
-    <button class="pf-tab" data-filter="landing">Landing Pages</button>
-    <button class="pf-tab" data-filter="sites">Sites</button>
-    <button class="pf-tab" data-filter="crm">CRM &amp; Leads</button>
-    <button class="pf-tab" data-filter="automacao">Automação</button>
-    <button class="pf-tab" data-filter="ia">IA Aplicada</button>
+  <div class="cat-grid">
+    <a class="cat-card" href="servicos-sites.html">
+      <div class="cat-icon">🌐</div>
+      <h3>Sites</h3>
+      <p>Institucional, portfólio e presença digital completa, fácil de manter sozinho.</p>
+      <div class="cat-meta"><span class="cat-count">1 projeto</span><span class="cat-cta">Ver →</span></div>
+    </a>
+    <a class="cat-card" href="servicos-landing-pages.html">
+      <div class="cat-icon">🚀</div>
+      <h3>Landing Pages</h3>
+      <p>Página focada em converter visita em contato, direto e mobile-first.</p>
+      <div class="cat-meta"><span class="cat-count">1 projeto</span><span class="cat-cta">Ver →</span></div>
+    </a>
+    <a class="cat-card" href="servicos-crm-leads.html">
+      <div class="cat-icon">📋</div>
+      <h3>CRM &amp; Leads</h3>
+      <p>Pipeline, follow-up e avisos automáticos — sem lead perdido em planilha.</p>
+      <div class="cat-meta"><span class="cat-count">3 projetos</span><span class="cat-cta">Ver →</span></div>
+    </a>
+    <a class="cat-card" href="servicos-automacao.html">
+      <div class="cat-icon">⚙️</div>
+      <h3>Automação</h3>
+      <p>Cálculo, documento e aviso rodando sozinhos, sem tarefa manual repetitiva.</p>
+      <div class="cat-meta"><span class="cat-count">2 projetos</span><span class="cat-cta">Ver →</span></div>
+    </a>
+    <a class="cat-card" href="servicos-ia-aplicada.html">
+      <div class="cat-icon">🤖</div>
+      <h3>IA Aplicada</h3>
+      <p>Inteligência artificial resolvendo um problema real de negócio.</p>
+      <div class="cat-meta"><span class="cat-count">3 projetos</span><span class="cat-cta">Ver →</span></div>
+    </a>
+    <a class="cat-card cat-card-all" href="todos-os-projetos.html">
+      <div class="cat-icon">📂</div>
+      <h3>Todos os projetos</h3>
+      <p>Catálogo completo, reais e demonstrativos, em uma página só.</p>
+      <div class="cat-meta"><span class="cat-count">10 projetos</span><span class="cat-cta">Ver tudo →</span></div>
+    </a>
   </div>
-  <div class="pf-legend">
+  <div class="cat-legend">
     <span><span class="card-badge badge-real">REAL</span> entregue e avaliado por cliente</span>
     <span><span class="card-badge badge-demo">DEMO</span> demonstrativo do método</span>
     <span><span class="card-badge badge-prod">CONCEITO</span> produto próprio / protótipo</span>
-  </div>
-  <div class="cards-grid" id="pfGrid">
-          <a class="card pf-card" data-cat="ia" href="case-gestao-comercial.html" style="grid-column:span 2">
-            <div class="card-body">
-              <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">⚙️ Em produção na operação da Lupixa</div><div class="card-tags"><span class="tag">JavaScript</span><span class="tag">OpenAI GPT-4o</span><span class="tag">Vercel Edge Functions</span><span class="tag">Vercel API</span></div>
-              <h3>Sistema de gestão comercial com IA — da demanda ao fechamento</h3>
-              <p>Análise de viabilidade, precificação em 3 cenários, documentos publicados com 1 clique e CRM com follow-up inteligente. A gente usa o que vende.</p>
-              <div class="card-footer"><span class="card-meta">JavaScript + OpenAI + Vercel + Supabase · Real</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="crm" href="case-leadflow.html" style="grid-column:span 2">
-            <div class="card-body">
-              <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">✅ Projeto entregue · Avaliação 5.0</div><div class="card-tags"><span class="tag">CRM</span><span class="tag">Google Forms</span><span class="tag">Google Sheets</span><span class="tag">Make</span></div>
-              <h3>Mini CRM que organiza e acompanha leads automaticamente</h3>
-              <p>Do formulário ao fechamento: pipeline visual, follow-up e avisos por e-mail rodando sozinhos — sem perder lead em planilha manual.</p>
-              <div class="card-footer"><span class="card-meta">Google Forms + Google Sheets + Make + Gmail · Real</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="automacao" href="case-m5.html" style="grid-column:span 2">
-            <div class="card-body">
-              <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">✅ Entregue em 4 dias · Prazo era 7</div><div class="card-tags"><span class="tag">JavaScript</span><span class="tag">Google Sheets</span><span class="tag">Apps Script</span><span class="tag">PDF Automático</span></div>
-              <h3>Simulador de importação que calcula tributos e gera PDF em 1 clique</h3>
-              <p>Acabou com a cotação manual: cálculo automático de impostos, catálogo de fornecedores integrado e proposta em PDF gerada na hora.</p>
-              <div class="card-footer"><span class="card-meta">Google Sheets + Apps Script · Real</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="sites" href="case-vilma.html" style="grid-column:span 2">
-            <div class="card-body">
-              <span class="card-badge badge-real">REAL</span>
-              <div class="rating-pill">✅ No ar em vilmadias.com.br</div><div class="card-tags"><span class="tag">WordPress</span><span class="tag">Gutenberg Nativo</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
-              <h3>Site institucional para psicóloga — design acolhedor e depoimentos autogerenciáveis</h3>
-              <p>WordPress com Gutenberg nativo, identidade visual própria e carrossel de depoimentos que a cliente atualiza sozinha via REST API.</p>
-              <div class="card-footer"><span class="card-meta">WordPress + Gutenberg + HTML/CSS + JavaScript + REST API · Real</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="ia" href="case-pipeline-ia.html">
-            <div class="card-body">
-              <span class="card-badge badge-prod">CONCEITO</span>
-              <div class="card-tags"><span class="tag">Next.js</span><span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">Supabase</span></div>
-              <h3>SaaS que transforma fotos simples de produto em imagens de catálogo</h3>
-              <p>Login, geração por IA e pagamento integrado — produto fullstack construído do zero para validar a ideia ponta a ponta.</p>
-              <div class="card-footer"><span class="card-meta">Next.js + Supabase + OpenAI + fal.ai + Vercel · Conceito</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="landing" href="case-lp-barbearia.html">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">WhatsApp</span><span class="tag">Mobile-first</span></div>
-              <h3>Captação de clientes via WhatsApp para barbearia local</h3>
-              <p>Landing page otimizada para transformar visitas em agendamentos reais — serviços, preços e botão direto pro WhatsApp.</p>
-              <div class="card-footer"><span class="card-meta">HTML/CSS · Demo</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="ia" href="case-briefing.html">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">API</span><span class="tag">Scripts &amp; Utilities</span><span class="tag">Inteligência Artificial</span><span class="tag">Make</span></div>
-              <h3>Briefings de conteúdo gerados por IA em segundos</h3>
-              <p>Do formulário ao documento pronto: a IA estrutura o briefing, cria o arquivo e avisa o time — sem digitação manual.</p>
-              <div class="card-footer"><span class="card-meta">Google Forms + Make + OpenAI + Google Docs + Gmail · Demo</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="crm" href="case-qualificacao.html">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">CRM</span><span class="tag">API</span><span class="tag">Scripts &amp; Utilities</span><span class="tag">Zapier</span></div>
-              <h3>Triagem automática que envia cada lead ao vendedor certo</h3>
-              <p>Classifica os contatos por prioridade e encaminha na hora — acaba com lead parado na fila e resposta lenta.</p>
-              <div class="card-footer"><span class="card-meta">Google Forms + Zapier + n8n + Google Sheets · Demo</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="crm" href="case-minicrm.html">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">CRM</span><span class="tag">Google Forms</span><span class="tag">Google Sheets</span><span class="tag">Make</span></div>
-              <h3>Captura e controle de leads sem mensalidade de software</h3>
-              <p>Histórico de contatos, próxima ação e alertas automáticos dentro de uma planilha — organização comercial sem custo fixo.</p>
-              <div class="card-footer"><span class="card-meta">Google Forms + Google Sheets + Make + Gmail · Demo</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
-          <a class="card pf-card" data-cat="automacao" href="case-followup.html">
-            <div class="card-body">
-              <span class="card-badge badge-demo">DEMO</span>
-              <div class="card-tags"><span class="tag">CRM</span><span class="tag">API</span><span class="tag">Scripts &amp; Utilities</span><span class="tag">Google Sheets</span></div>
-              <h3>Acompanhamento automático de propostas enviadas</h3>
-              <p>Lembretes disparados sozinhos para que nenhuma proposta esfrie sem resposta — nenhum cliente esquecido.</p>
-              <div class="card-footer"><span class="card-meta">Google Sheets + Make + Gmail · Demo</span><span class="card-cta">Ver case completo →</span></div>
-            </div>
-          </a>
   </div>
 </div><!-- fim servicos-wrap -->
 
@@ -555,21 +496,14 @@ heroTimer = setInterval(function() {
 }, 4500);
 
 
-/* ===== BARRA DE PROGRESSO + SCROLL CUE ===== */
+/* ===== BARRA DE PROGRESSO ===== */
 (function() {
   var bar = document.getElementById('readProgress');
-  var cue = document.getElementById('heroScroll');
   function onScroll() {
     var h = document.documentElement;
     var scrolled = h.scrollTop || document.body.scrollTop;
     var max = (h.scrollHeight - h.clientHeight) || 1;
     bar.style.width = Math.min(100, Math.max(0, (scrolled / max) * 100)) + '%';
-    if (cue) {
-      var hide = scrolled > 60;
-      cue.style.opacity = hide ? '0' : '';
-      cue.style.transform = hide ? 'translateY(10px)' : '';
-      cue.style.pointerEvents = hide ? 'none' : '';
-    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
@@ -591,10 +525,8 @@ window.addEventListener('load', function() {
     gsap.from('.cred', { opacity: 0, y: 12, duration: 0.5, stagger: 0.06, ease: 'power2.out',
       scrollTrigger: { trigger: '.creds', start: 'top 96%' }});
 
-    gsap.utils.toArray('.pf-card').forEach(function(el) {
-      gsap.from(el, { opacity: 0, y: 14, duration: 0.45, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 94%' }});
-    });
+    gsap.from('.cat-card', { opacity: 0, y: 12, duration: 0.4, stagger: 0.05, ease: 'power2.out',
+      scrollTrigger: { trigger: '.cat-grid', start: 'top 94%', once: true }});
 
     // Stack: só translateY, mantém opacidade — logo nunca some
     gsap.from('.stack-item', { y: 12, duration: 0.4, ease: 'power2.out', stagger: 0.02,
@@ -660,19 +592,6 @@ function animateTop1() {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   obs.observe(el);
 }
-
-/* ===== FILTRO DO PORTFÓLIO ===== */
-document.querySelectorAll('.pf-tab').forEach(function(tab) {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.pf-tab').forEach(function(t) { t.classList.remove('active'); });
-    tab.classList.add('active');
-    var f = tab.dataset.filter;
-    document.querySelectorAll('.pf-card').forEach(function(c) {
-      c.classList.toggle('pf-hide', f !== 'todos' && c.dataset.cat !== f);
-    });
-    if (window.ScrollTrigger) ScrollTrigger.refresh();
-  });
-});
 
 </script>
 </body>
