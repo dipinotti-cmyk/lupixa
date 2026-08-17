@@ -26,6 +26,8 @@ html { scroll-behavior: smooth; }
   --accent-bg: rgba(250,204,21,0.10);
   --green: #34D399;
   --green-bg: rgba(52,211,153,0.10);
+  --purple: #A78BFA;
+  --purple-bg: rgba(167,139,250,0.12);
   --blue: #60A5FA;
   --blue-bg: rgba(96,165,250,0.12);
   --card: #141414;
@@ -42,12 +44,23 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); b
 .nav-back:hover { color: #fff; background: rgba(255,255,255,0.07); }
 
 .hero { text-align: center; padding: 64px 0 48px; }
-.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--green); background: var(--green-bg); border: 1px solid rgba(52,211,153,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
-.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--purple); background: var(--purple-bg); border: 1px solid rgba(167,139,250,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
+.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); }
 h1 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 16px; color: #fff; }
 h1 .hl { color: var(--accent); font-style: italic; }
 .hero p { font-size: 15px; color: var(--muted); max-width: 560px; margin: 0 auto; }
+
+.gal { margin: 0 0 8px; }
+.gal-main { position: relative; background: #000; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.gal-main img { display: block; width: 100%; max-height: 560px; object-fit: contain; background: #000; transition: opacity 0.25s; }
+.gal-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.14); color: #fff; width: 38px; height: 38px; border-radius: 99px; cursor: pointer; font-size: 19px; display: flex; align-items: center; justify-content: center; }
+.gal-btn:hover { background: rgba(0,0,0,0.85); }
+.gal-prev { left: 12px; } .gal-next { right: 12px; }
+.gal-thumbs { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 6px; }
+.gal-thumb { width: 76px; height: 52px; flex-shrink: 0; border-radius: 8px; border: 2px solid transparent; object-fit: cover; cursor: pointer; opacity: 0.55; transition: all 0.15s; background: #000; }
+.gal-thumb.on { border-color: var(--accent); opacity: 1; }
+.gal-thumb:hover { opacity: 1; }
+.gal-caption { font-size: 12.5px; color: var(--subtle); margin-top: 10px; text-align: center; }
 
 .eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .eyebrow::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(250,204,21,0.4), rgba(255,255,255,0.05)); }
@@ -125,12 +138,28 @@ footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
 </nav>
 
 <div class="hero wrap">
-  <div class="hero-badge"><span class="dot"></span>Case real · Em produção</div>
+  <div class="hero-badge"><span class="dot"></span>Produto próprio · Em produção</div>
   <h1>Motor de prospecção outbound <span class="hl">com IA</span></h1>
   <p>Ferramenta construída pela Lupixa para a própria operação: encontra negócios locais sem presença digital decente, escreve uma abordagem única pra cada um e acompanha a conversa até o fechamento — sozinha.</p>
 </div>
 
 <div class="wrap">
+
+  <div class="gal rv">
+    <div class="gal-main">
+      <img id="galMain" src="prospeccao-1.webp" alt="Tela inicial da Prospecção Gratuita em desktop, com contador de envios do dia, seletor de nicho e cidade e histórico da última rodada">
+      <button class="gal-btn gal-prev" onclick="show(idx-1)">&#8249;</button>
+      <button class="gal-btn gal-next" onclick="show(idx+1)">&#8250;</button>
+    </div>
+    <div class="gal-thumbs">
+      <img class="gal-thumb on" src="prospeccao-1.webp" alt="" loading="lazy" decoding="async">
+      <img class="gal-thumb" src="prospeccao-2.webp" alt="" loading="lazy" decoding="async">
+      <img class="gal-thumb" src="prospeccao-3.webp" alt="" loading="lazy" decoding="async">
+      <img class="gal-thumb" src="prospeccao-4.webp" alt="" loading="lazy" decoding="async">
+      <img class="gal-thumb" src="prospeccao-5.webp" alt="" loading="lazy" decoding="async">
+    </div>
+    <p class="gal-caption">Capturas da ferramenta ao vivo em prospeccao-gratuita-v2.vercel.app, feitas em 17/08/2026 — telas sem dado de terceiro (nenhum nome ou telefone de lead prospectado).</p>
+  </div>
 
   <section class="rv">
     <div class="eyebrow">O problema</div>
@@ -228,6 +257,18 @@ footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
 </footer>
 
 <script>
+var imgs = ["prospeccao-1.webp", "prospeccao-2.webp", "prospeccao-3.webp", "prospeccao-4.webp", "prospeccao-5.webp"], idx = 0;
+var main = document.getElementById('galMain');
+function show(i) {
+  idx = (i + imgs.length) % imgs.length;
+  main.style.opacity = '0';
+  var pre = new Image();
+  pre.onload = pre.onerror = function() { main.src = imgs[idx]; main.style.opacity = '1'; };
+  pre.src = imgs[idx];
+  document.querySelectorAll('.gal-thumb').forEach(function(t, j) { t.classList.toggle('on', j === idx); });
+}
+document.querySelectorAll('.gal-thumb').forEach(function(t, j) { t.addEventListener('click', function() { show(j); }); });
+
 var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
 }, { threshold: 0.12 });

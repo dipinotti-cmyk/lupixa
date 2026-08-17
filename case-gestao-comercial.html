@@ -26,6 +26,8 @@ html { scroll-behavior: smooth; }
   --accent-bg: rgba(250,204,21,0.10);
   --green: #34D399;
   --green-bg: rgba(52,211,153,0.10);
+  --purple: #A78BFA;
+  --purple-bg: rgba(167,139,250,0.12);
   --card: #141414;
   --border: rgba(255,255,255,0.07);
   --radius: 14px;
@@ -40,9 +42,8 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); b
 .nav-back:hover { color: #fff; background: rgba(255,255,255,0.07); }
 
 .hero { text-align: center; padding: 64px 0 48px; }
-.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--green); background: var(--green-bg); border: 1px solid rgba(52,211,153,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
-.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--purple); background: var(--purple-bg); border: 1px solid rgba(167,139,250,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
+.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); }
 h1 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 16px; color: #fff; }
 h1 .hl { color: var(--accent); font-style: italic; }
 .hero p { font-size: 15px; color: var(--muted); max-width: 560px; margin: 0 auto; }
@@ -126,7 +127,7 @@ footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
 </nav>
 
 <div class="hero wrap">
-  <div class="hero-badge"><span class="dot"></span>Case real · Em produção</div>
+  <div class="hero-badge"><span class="dot"></span>Produto próprio · Em produção</div>
   <h1>Sistema de gestão comercial <span class="hl">com IA</span></h1>
   <p>Ferramenta construída pela Lupixa para a própria operação: análise de demandas, precificação assistida, documentos comerciais e acompanhamento de clientes — do primeiro contato ao fechamento, num só lugar.</p>
 </div>
@@ -140,14 +141,17 @@ footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
   </section>
 
   <section class="rv">
-    <div class="eyebrow">A solução — 5 módulos integrados</div>
+    <div class="eyebrow">A solução — 9 módulos integrados</div>
     <div class="mod-grid">
       <div class="mod"><div class="mod-icon">🔍</div><h3>Análise de viabilidade com IA</h3><p>A demanda entra, a IA avalia complexidade, risco e chance comercial, e recomenda: seguir, cautela ou pular. Detecta até orçamento-âncora irreal.</p></div>
+      <div class="mod"><div class="mod-icon">🧭</div><h3>Contexto opcional da oportunidade</h3><p>Campos opcionais como número de propostas concorrentes, faixa de preço da concorrência e taxa de contratação do cliente mudam o posicionamento sugerido — a análise usa o mercado da oportunidade, não só o texto dela.</p></div>
       <div class="mod"><div class="mod-icon">💰</div><h3>Precificação assistida</h3><p>Três cenários de valor (piso, competitivo, alto) calculados a partir do escopo real — a decisão final é sempre humana, mas informada.</p></div>
       <div class="mod"><div class="mod-icon">📄</div><h3>Documentos comerciais</h3><p>Apresentação e proposta geradas sob medida pra cada demanda. Acima de um valor definido, vira página web visual adaptada ao nicho do cliente.</p></div>
       <div class="mod"><div class="mod-icon">🚀</div><h3>Publicação com 1 clique</h3><p>Integração com a API do Vercel: a página da proposta vai ao ar em segundos, com link limpo, sem nenhum passo manual de infraestrutura.</p></div>
       <div class="mod"><div class="mod-icon">🎯</div><h3>CRM com follow-up inteligente</h3><p>Cada contato registrado com status e data de retorno. O sistema cobra o follow-up na hora certa — e o texto de retorno agrega valor em vez de só cobrar resposta.</p></div>
-      <div class="mod"><div class="mod-icon">📊</div><h3>Dashboard de conversão</h3><p>Taxa de fechamento, propostas em aberto, follow-ups pendentes e o efeito do follow-up nas vendas — números reais da operação, sempre à vista.</p></div>
+      <div class="mod"><div class="mod-icon">🔔</div><h3>Rastreio de abertura da proposta</h3><p>O sistema sabe se o cliente abriu a proposta ou não. Não abriu é problema de mensagem; abriu e não respondeu é problema de preço — a métrica separa as duas causas de perda em vez de misturar tudo em "não respondeu".</p></div>
+      <div class="mod"><div class="mod-icon">🤝</div><h3>Fluxo de parceria recorrente</h3><p>Caminho separado pra cliente que volta com demanda contínua, distinto do fluxo de proposta pra projeto único — o texto e o enquadramento comercial mudam conforme o tipo de relação.</p></div>
+      <div class="mod"><div class="mod-icon">📊</div><h3>Dashboard de conversão</h3><p>Funil de conversão, propostas em aberto, follow-ups pendentes e evolução mensal — números reais da operação, sempre à vista.</p></div>
     </div>
   </section>
 
