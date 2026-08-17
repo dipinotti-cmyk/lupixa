@@ -196,7 +196,7 @@ footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
       <span class="stack-item">Supabase</span>
       <span class="stack-item">Resend</span>
     </div>
-    <div class="note"><strong>Sobre o estágio atual:</strong> o sistema está no ar e a segurança foi auditada linha a linha — 1.021 linhas em 6 arquivos, zero segredo hardcoded, tudo por variável de ambiente. Ele ainda não tem nenhum atendimento registrado no painel; a instrumentação de captação está em verificação antes de virar canal ativo. Por isso este case documenta arquitetura e decisão técnica, não volume de atendimento.</div>
+    <div class="note"><strong>Sobre o estágio atual:</strong> o sistema está no ar e a segurança foi auditada linha a linha — 1.021 linhas em 6 arquivos, zero segredo hardcoded, tudo por variável de ambiente. O fluxo completo foi verificado ponta a ponta em teste técnico: o bot conduz a conversa, captura assunto e ramo do negócio, registra o atendimento no painel e dispara o encaminhamento por e-mail pra um humano assumir. Um dos testes expôs uma falha de interpretação no menu de opções, corrigida e reverificada no mesmo dia. Os registros que existem hoje no painel são desses testes — ainda não há atendimento de cliente real passando pelo canal. Por isso este case documenta arquitetura, decisão técnica e verificação de fluxo, não volume de atendimento.</div>
   </section>
 
 </div>
