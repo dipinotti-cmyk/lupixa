@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TM5EEZMVF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TM5EEZMVF7');
+</script>
+<title>Case · Atendimento Automático no WhatsApp com IA — Lupixa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0A0A0A;
+  --ink: #F5F5F5;
+  --muted: rgba(255,255,255,0.6);
+  --subtle: rgba(255,255,255,0.38);
+  --accent: #FACC15;
+  --accent-bg: rgba(250,204,21,0.10);
+  --green: #34D399;
+  --green-bg: rgba(52,211,153,0.10);
+  --purple: #A78BFA;
+  --purple-bg: rgba(167,139,250,0.12);
+  --card: #141414;
+  --border: rgba(255,255,255,0.07);
+  --radius: 14px;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 11px; border-radius: 6px; transition: all 0.15s; }
+.nav-back:hover { color: #fff; background: rgba(255,255,255,0.07); }
+
+.hero { text-align: center; padding: 64px 0 48px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--purple); background: var(--purple-bg); border: 1px solid rgba(167,139,250,0.3); border-radius: 99px; padding: 5px 13px; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 0.07em; }
+.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); }
+h1 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 16px; color: #fff; }
+h1 .hl { color: var(--accent); font-style: italic; }
+.hero p { font-size: 15px; color: var(--muted); max-width: 580px; margin: 0 auto; }
+
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.eyebrow::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(250,204,21,0.4), rgba(255,255,255,0.05)); }
+section { padding: 36px 0; }
+section p { color: var(--muted); font-size: 14.5px; line-height: 1.75; margin-bottom: 12px; max-width: 700px; }
+section p strong { color: var(--ink); }
+
+.mod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.mod { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform 0.2s, border-color 0.2s; }
+.mod:hover { transform: translateY(-3px); border-color: rgba(250,204,21,0.3); }
+.mod-icon { font-size: 20px; margin-bottom: 10px; }
+.mod h3 { font-size: 14.5px; font-weight: 700; color: #fff; margin-bottom: 6px; letter-spacing: -0.2px; }
+.mod p { font-size: 13px; margin-bottom: 0; }
+
+/* MOCKUPS TÉCNICOS */
+.mock-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.mock { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.mock-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.mock-bar .c { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+.mock-bar .label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--subtle); margin-left: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
+.mock-body { padding: 16px; }
+.m-line { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); gap: 10px; }
+.m-line:last-child { border-bottom: 0; }
+.m-label { color: var(--muted); }
+.m-val { color: #fff; font-weight: 700; font-family: 'DM Mono', monospace; font-size: 11.5px; text-align: right; }
+.m-val.bad { color: #F87171; }
+.m-val.ok { color: var(--green); }
+.m-val.skip { color: var(--subtle); }
+
+/* RESULTADOS VERIFICADOS */
+.result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.result { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; text-align: center; }
+.result .big { font-size: 26px; font-weight: 900; color: var(--accent); letter-spacing: -0.5px; font-family: 'DM Mono', monospace; }
+.result .small { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* STACK */
+.stack-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.stack-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 15px; font-size: 13px; font-weight: 500; color: var(--ink); transition: all 0.15s; }
+.stack-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.note { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--purple); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 22px; font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-top: 28px; }
+.note strong { color: var(--ink); }
+
+footer { border-top: 1px solid var(--border); padding: 32px; text-align: center; margin-top: 40px; }
+footer .f-name { font-size: 14px; font-weight: 700; color: #fff; }
+footer .f-name span { color: var(--accent); }
+footer p { font-size: 12px; color: var(--subtle); margin-top: 4px; }
+
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 640px) {
+  .mod-grid, .mock-row, .result-grid { grid-template-columns: 1fr; }
+  .wrap { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">lupixa<span>.</span></a>
+  <a class="nav-back" href="index.html">← Voltar ao portfólio</a>
+</nav>
+
+<div class="hero wrap">
+  <div class="hero-badge"><span class="dot"></span>Produto próprio · No ar</div>
+  <h1>Atendimento automático no WhatsApp <span class="hl">com IA</span></h1>
+  <p>Sistema construído pela Lupixa: recebe mensagem pela API oficial da Meta, decide a resposta com um modelo de linguagem em cascata e registra o atendimento num painel administrativo protegido por senha. Este case documenta a arquitetura e as decisões de segurança — não um resultado de atendimento.</p>
+</div>
+
+<div class="wrap">
+
+  <section class="rv">
+    <div class="eyebrow">O problema</div>
+    <p>Atendimento de primeiro contato no WhatsApp costuma virar gargalo manual: alguém precisa estar disponível pra responder rápido, triar o assunto e só então encaminhar quem já pode negociar. Terceirizar isso pra uma ferramenta de terceiro tira o controle sobre segurança do webhook, formato de resposta e o que acontece quando o provedor de IA muda de política sem aviso — o que já aconteceu uma vez durante a construção deste sistema.</p>
+    <p>Em vez de depender de uma plataforma fechada, a Lupixa construiu o próprio webhook, com controle total sobre validação, fallback e dado guardado.</p>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Decisões técnicas</div>
+    <div class="mod-grid">
+      <div class="mod"><div class="mod-icon">🔌</div><h3>API oficial da Meta</h3><p>Integração via WhatsApp Cloud API — o canal oficial da própria Meta, não biblioteca não-oficial. Formato de mensagem e limites seguem o que a plataforma suporta e mantém.</p></div>
+      <div class="mod"><div class="mod-icon">🛡️</div><h3>Assinatura validada com comparação timing-safe</h3><p>Todo webhook chega assinado. A checagem usa comparação a tempo constante, que não vaza informação pelo tempo de resposta — defesa padrão contra ataque de força bruta na validação.</p></div>
+      <div class="mod"><div class="mod-icon">🔁</div><h3>Idempotência por id de mensagem</h3><p>Cada mensagem recebida tem um id único registrado antes de responder. Se a Meta reenviar a mesma notificação — comportamento normal de webhook — o sistema não responde duas vezes.</p></div>
+      <div class="mod"><div class="mod-icon">🧠</div><h3>Cascata de modelos com fallback</h3><p>Se a chamada ao modelo de IA devolve 404, 400 ou resposta vazia, o sistema tenta automaticamente o próximo modelo da fila. Foi escrito depois de um modelo ser aposentado pelo provedor antes da data anunciada.</p></div>
+      <div class="mod"><div class="mod-icon">🔀</div><h3>Troca de provedor sem reescrever a lógica</h3><p>A migração de OpenAI pra Gemini usou a camada de compatibilidade OpenAI do Google: mesmo formato de chamada, só o valor de uma variável muda. A aplicação não precisa saber qual provedor está respondendo.</p></div>
+      <div class="mod"><div class="mod-icon">📋</div><h3>Painel administrativo protegido</h3><p>Acompanhamento do atendimento por status — novo, precisa de humano, em negociação, fechado — atrás de senha, sem expor o endpoint do webhook.</p></div>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Como funciona na prática</div>
+    <div class="mock-row">
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Verificação de assinatura</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Token do handshake</span><span class="m-val bad">incorreto</span></div>
+          <div class="m-line"><span class="m-label">Resposta do servidor</span><span class="m-val">403 Forbidden</span></div>
+          <div class="m-line"><span class="m-label">Assinatura inválida</span><span class="m-val ok">rejeitada</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Cascata de modelos</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Modelo 1</span><span class="m-val skip">404 → pula</span></div>
+          <div class="m-line"><span class="m-label">Modelo 2</span><span class="m-val skip">vazio → pula</span></div>
+          <div class="m-line"><span class="m-label">Modelo 3</span><span class="m-val ok">200 → responde</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Idempotência</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Id da mensagem</span><span class="m-val">já tratado</span></div>
+          <div class="m-line"><span class="m-label">Reenvio da Meta</span><span class="m-val skip">ignorado</span></div>
+          <div class="m-line"><span class="m-label">Resposta duplicada</span><span class="m-val ok">nunca envia</span></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><span class="c"></span><span class="c"></span><span class="c"></span><span class="label">Troca de provedor</span></div>
+        <div class="mock-body">
+          <div class="m-line"><span class="m-label">Antes</span><span class="m-val">OpenAI</span></div>
+          <div class="m-line"><span class="m-label">Depois</span><span class="m-val">Gemini</span></div>
+          <div class="m-line"><span class="m-label">Linhas de lógica reescritas</span><span class="m-val ok">zero</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:14px; font-size:12.5px; color:var(--subtle)">Representações do comportamento real do sistema, verificadas em teste técnico — não capturas de tela do painel.</p>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Estado verificado em produção — 17/08/2026</div>
+    <div class="result-grid">
+      <div class="result"><div class="big">200</div><div class="small">painel administrativo responde e está no ar</div></div>
+      <div class="result"><div class="big">403</div><div class="small">handshake do webhook com token errado — validação de assinatura funcionando</div></div>
+      <div class="result"><div class="big">401</div><div class="small">endpoint de dados exige autenticação — nada fica público</div></div>
+    </div>
+  </section>
+
+  <section class="rv">
+    <div class="eyebrow">Stack</div>
+    <div class="stack-grid">
+      <span class="stack-item">WhatsApp Cloud API (Meta oficial)</span>
+      <span class="stack-item">Gemini (camada de compatibilidade OpenAI)</span>
+      <span class="stack-item">OpenAI (fallback)</span>
+      <span class="stack-item">Node.js</span>
+      <span class="stack-item">Vercel</span>
+      <span class="stack-item">Supabase</span>
+      <span class="stack-item">Resend</span>
+    </div>
+    <div class="note"><strong>Sobre o estágio atual:</strong> o sistema está no ar e a segurança foi auditada linha a linha — 1.021 linhas em 6 arquivos, zero segredo hardcoded, tudo por variável de ambiente. Ele ainda não tem nenhum atendimento registrado no painel; a instrumentação de captação está em verificação antes de virar canal ativo. Por isso este case documenta arquitetura e decisão técnica, não volume de atendimento.</div>
+  </section>
+
+</div>
+
+<div class="case-cta-wrap" style="max-width:860px;margin:8px auto 0;padding:0 32px;box-sizing:border-box;">
+  <div style="background:#101010;border:1px solid var(--border);border-radius:14px;padding:36px 28px;text-align:center;">
+    <p style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:clamp(18px,2.6vw,22px);color:#fff;max-width:480px;margin:0 auto 14px;line-height:1.35;">Se você recebeu minha proposta, este case complementa a análise do seu projeto.</p>
+    <a href="https://www.workana.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0A0A0A;font-size:13.5px;font-weight:700;text-decoration:none;padding:12px 24px;border-radius:99px;">Responder proposta ↩ <span style="opacity:.55;font-weight:600;">(voltar para Workana)</span></a>
+  </div>
+</div>
+<footer>
+  <div class="f-name">lupixa<span>.</span></div>
+  <p>Sistema construído e mantido pela Lupixa · No ar desde julho de 2026 · Diogo Pinotti</p>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rv').forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>

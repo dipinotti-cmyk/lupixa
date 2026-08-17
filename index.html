@@ -118,6 +118,12 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); b
 .destaque-stack { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--subtle); }
 .destaque-cta { font-size: 12.5px; font-weight: 600; color: var(--ink); margin-top: 4px; }
 .destaque-card:hover .destaque-cta { color: var(--accent); }
+.destaque-wide { grid-column: 1 / -1; }
+@media (min-width: 901px) {
+  .destaque-wide { flex-direction: row; }
+  .destaque-wide .destaque-img { flex: 0 0 42%; }
+  .destaque-wide .destaque-body { flex: 1; justify-content: center; }
+}
 
 /* CARROSSEL — base compartilhada (cases e depoimentos) */
 .carousel-section { max-width: 1040px; margin: 0 auto; padding: 0 32px 8px; }
@@ -292,7 +298,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 
     <p>Este espaço reúne projetos reais, com print, cliente e resultado — não só descrição. O objetivo é simples: você ver como executo antes de decidir.</p>
 
-    <a href="#cases" class="hero-cta">Ver os 16 projetos reais <span class="hero-cta-arrow">→</span></a>
+    <a href="#cases" class="hero-cta">Ver os 17 projetos reais <span class="hero-cta-arrow">→</span></a>
 
     <div class="hero-shots" aria-label="Amostra de projetos reais entregues">
       <a class="hero-shot" href="case-gold.html">
@@ -325,14 +331,14 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
   <ul class="creds-line">
     <li>⭐ Top 1% Workana · 5.0</li>
     <li>17 anos em operação crítica de TI</li>
-    <li>16 projetos reais entregues e no ar em 2026</li>
+    <li>17 projetos reais entregues e no ar em 2026</li>
     <li>Cotia/SP — disponível para execução imediata</li>
   </ul>
 </div>
 
 <!-- 2 · FAIXA DE ENTREGAS REAIS -->
 <div class="section-label" id="entregas">Isso é real</div>
-<h2 class="section-title">13 entregas no ar hoje, com o cliente e o link</h2>
+<h2 class="section-title">14 entregas no ar hoje, com o cliente e o link</h2>
 <div class="faixa-wrap">
   <ul class="faixa-list">
     <li class="faixa-item">
@@ -402,6 +408,12 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
       <a class="faixa-case" href="case-settima.html">ver o case →</a>
     </li>
     <li class="faixa-item">
+      <span class="faixa-cliente">Cerâmica Reserva</span>
+      <span class="faixa-seg">Cerâmica artesanal (Nuvemshop)</span>
+      <a class="faixa-live" href="https://www.ceramicareserva.com.br/" target="_blank" rel="noopener noreferrer">no ar em ceramicareserva.com.br ↗</a>
+      <a class="faixa-case" href="case-ceramica-reserva.html">ver o case →</a>
+    </li>
+    <li class="faixa-item">
       <span class="faixa-cliente">GrafiMold</span>
       <span class="faixa-seg">Indústria de componentes</span>
       <a class="faixa-live" href="https://grafimold.com.br/" target="_blank" rel="noopener noreferrer">no ar em grafimold.com.br ↗</a>
@@ -418,7 +430,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 
 <!-- 3 · CASES EM DESTAQUE -->
 <div class="section-label" id="cases">Um por tipo de trabalho</div>
-<h2 class="section-title">4 cases, cobrindo as categorias que aparecem na Workana</h2>
+<h2 class="section-title">5 cases, cobrindo as categorias que aparecem na Workana</h2>
 <div class="destaque-wrap">
   <div class="destaque-grid">
     <a class="destaque-card" href="case-gold.html">
@@ -458,6 +470,16 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
         <h3>M5 Assessoria — simulador de importação</h3>
         <p class="destaque-decisao">Simulador de importação com cálculo automático e PDF gerado via Apps Script, direto dentro do Google Sheets.</p>
         <div class="destaque-stack">JavaScript · Google Sheets · Apps Script · PDF automático</div>
+        <span class="destaque-cta">Ver o case →</span>
+      </div>
+    </a>
+    <a class="destaque-card destaque-wide" href="case-atestamed.html">
+      <div class="destaque-img"><img src="home-atestamed-destaque.webp" width="720" height="450" alt="Página institucional da plataforma de gestão de atestados médicos AtestaMED" loading="lazy" decoding="async"></div>
+      <div class="destaque-body">
+        <span class="destaque-cat">IA aplicada / Plataforma</span>
+        <h3>AtestaMED — gestão de atestados médicos</h3>
+        <p class="destaque-decisao">Validação automática de CRM médico, cruzamento de CID com CNAE/NTEP e alertas de recorrência — regras de negócio da área de saúde ocupacional traduzidas em interface.</p>
+        <div class="destaque-stack">HTML · CSS · JavaScript · Saúde ocupacional</div>
         <span class="destaque-cta">Ver o case →</span>
       </div>
     </a>
@@ -536,12 +558,12 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
       </a>
     </li>
     <li class="trilho-item">
-      <a class="case-card" href="case-atestamed.html">
-        <div class="case-card-img"><img src="home-atestamed-card.webp" width="480" height="300" alt="Página institucional da plataforma de gestão de atestados AtestaMED" loading="lazy" decoding="async"></div>
+      <a class="case-card" href="case-ceramica-reserva.html">
+        <div class="case-card-img"><img src="home-ceramica-reserva-card.webp" width="480" height="300" alt="Loja virtual Cerâmica Reserva na Nuvemshop depois da migração do Odoo" loading="lazy" decoding="async"></div>
         <div class="case-card-body">
           <span class="case-card-badge"><i class="dot dot-real"></i>REAL</span>
-          <h3>AtestaMED</h3>
-          <p>Plataforma de gestão de atestados: validação de CRM e cruzamento de CID.</p>
+          <h3>Cerâmica Reserva</h3>
+          <p>Migração de e-commerce Odoo para Nuvemshop, com catálogo por categoria e cor.</p>
         </div>
       </a>
     </li>
@@ -746,7 +768,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
       <span class="idx-num">01</span>
       <span class="idx-name">Sites</span>
       <span class="idx-desc">Institucional, portfólio e presença digital completa — fácil de manter sozinho.</span>
-      <span class="idx-meta">13 projetos</span>
+      <span class="idx-meta">14 projetos</span>
       <span class="idx-arrow">→</span>
     </a>
     <a class="idx-row" href="servicos-landing-pages.html">
@@ -774,14 +796,14 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
       <span class="idx-num">05</span>
       <span class="idx-name">IA Aplicada</span>
       <span class="idx-desc">Inteligência artificial resolvendo um problema real de negócio.</span>
-      <span class="idx-meta">04 projetos</span>
+      <span class="idx-meta">05 projetos</span>
       <span class="idx-arrow">→</span>
     </a>
     <a class="idx-row" href="todos-os-projetos.html">
       <span class="idx-num">06</span>
       <span class="idx-name">Todos os projetos</span>
       <span class="idx-desc">Catálogo completo — reais e demonstrativos, em uma página só.</span>
-      <span class="idx-meta">26 projetos</span>
+      <span class="idx-meta">28 projetos</span>
       <span class="idx-arrow">→</span>
     </a>
   </div>
