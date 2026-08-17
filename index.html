@@ -77,7 +77,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); b
 /* FAIXA DE MINIATURAS NA HERO — prova visual na primeira dobra */
 .hero-shots { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
 .hero-shot { width: 92px; display: flex; flex-direction: column; gap: 6px; text-decoration: none; }
-.hero-shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--border); background: #000; transition: border-color 0.15s, transform 0.15s; }
+.hero-shot img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--border); background: #000; transition: border-color 0.15s, transform 0.15s; }
 .hero-shot:hover img { border-color: var(--accent); transform: translateY(-2px); }
 .hero-shot span { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--subtle); text-align: center; line-height: 1.3; }
 
@@ -296,7 +296,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 
     <div class="hero-shots" aria-label="Amostra de projetos reais entregues">
       <a class="hero-shot" href="case-gold.html">
-        <img src="home-gold-hero.webp" width="280" height="835" alt="Home do site institucional da Gold Software, com páginas de ERP e CRM" decoding="async">
+        <img src="home-gold-hero.webp" width="280" height="210" alt="Home do site institucional da Gold Software, com páginas de ERP e CRM" decoding="async">
         <span>Gold Software</span>
       </a>
       <a class="hero-shot" href="case-loudrock.html">
@@ -422,7 +422,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg); padding: 22
 <div class="destaque-wrap">
   <div class="destaque-grid">
     <a class="destaque-card" href="case-gold.html">
-      <div class="destaque-img"><img src="home-gold-destaque.webp" width="680" height="2027" alt="Home do site institucional da Gold Software, com páginas de produto ERP e CRM" loading="lazy" decoding="async"></div>
+      <div class="destaque-img"><img src="home-gold-destaque.webp" width="720" height="450" alt="Home do site institucional da Gold Software, com páginas de produto ERP e CRM" loading="lazy" decoding="async"></div>
       <div class="destaque-body">
         <span class="destaque-cat">Site / WordPress construído</span>
         <h3>Gold Software — ERP e CRM</h3>
