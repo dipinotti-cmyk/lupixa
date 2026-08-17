@@ -34,7 +34,9 @@ h1 { font-family:'Newsreader',Georgia,serif; font-weight:600; font-style:italic;
 .legend .dot { width:6px; height:6px; border-radius:50%; display:inline-block; margin-right:7px; }
 .dot-real { background:var(--green); } .dot-demo { background:rgba(255,255,255,0.45); } .dot-prod { background:#A78BFA; }
 .proj-list { border-top:1px solid var(--border); margin-top:8px; }
-.proj-row { display:grid; grid-template-columns:40px 1fr 18px; column-gap:24px; align-items:start; padding:30px 6px; border-bottom:1px solid var(--border); text-decoration:none; color:inherit; transition:background 0.18s, padding-left 0.18s; }
+.proj-row { display:grid; grid-template-columns:40px 72px 1fr 18px; column-gap:20px; align-items:start; padding:30px 6px; border-bottom:1px solid var(--border); text-decoration:none; color:inherit; transition:background 0.18s, padding-left 0.18s; }
+.proj-thumb { width:72px; height:48px; border-radius:8px; overflow:hidden; background:#0d0d0d; border:1px solid var(--border); flex-shrink:0; }
+.proj-thumb img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
 .proj-row:hover { background:rgba(255,255,255,0.025); padding-left:14px; }
 .proj-num { font-family:'DM Mono',monospace; font-size:12px; color:var(--subtle); padding-top:3px; transition:color 0.18s; }
 .proj-row:hover .proj-num { color:var(--accent); }
@@ -54,6 +56,7 @@ footer { border-top:1px solid var(--border); padding:26px 32px; text-align:cente
 @media (max-width:640px) {
   .wrap { padding:0 20px; }
   .proj-row { grid-template-columns:26px 1fr 16px; column-gap:14px; padding:24px 4px; }
+  .proj-thumb { display:none; }
   .proj-title { font-size:15px; }
 }
 
@@ -79,6 +82,7 @@ footer { border-top:1px solid var(--border); padding:26px 32px; text-align:cente
   <div class="proj-list">
       <a class="proj-row" href="case-m5.html">
         <span class="proj-num">01</span>
+        <span class="proj-thumb"><img src="home-m5-thumb.webp" width="72" height="48" alt="Miniatura do case M5 Assessoria" loading="lazy" decoding="async"></span>
         <span class="proj-main">
           <span class="proj-badge"><i class="dot dot-real"></i>Real</span>
           <div class="proj-rating">Entregue em 4 dias · Prazo era 7</div>
@@ -90,6 +94,7 @@ footer { border-top:1px solid var(--border); padding:26px 32px; text-align:cente
       </a>
       <a class="proj-row" href="case-followup.html">
         <span class="proj-num">02</span>
+        <span class="proj-thumb"><img src="thumb-followup.webp" width="72" height="48" alt="Miniatura do case Automação de Follow-up de Propostas" loading="lazy" decoding="async"></span>
         <span class="proj-main">
           <span class="proj-badge"><i class="dot dot-demo"></i>Demo</span>
           
@@ -101,6 +106,7 @@ footer { border-top:1px solid var(--border); padding:26px 32px; text-align:cente
       </a>
       <a class="proj-row" href="case-planilhas-financeiras.html">
         <span class="proj-num">03</span>
+        <span class="proj-thumb"><img src="home-planilhas-financeiras-thumb.webp" width="72" height="48" alt="Miniatura do case Planilhas Financeiras" loading="lazy" decoding="async"></span>
         <span class="proj-main">
           <span class="proj-badge"><i class="dot dot-real"></i>Real</span>
           <div class="proj-rating">Projeto entregue · Avaliação 5.0</div>
